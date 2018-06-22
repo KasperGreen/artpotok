@@ -1,0 +1,49 @@
+.AppUpdateNotifier {
+    position: fixed;
+    top: 1rem;
+    right: 1em;
+    z-index: 9999;
+    background: #3d3d3d;
+    border-radius: 1rem;
+    box-shadow: .2rem .2rem .4rem #111;
+    padding: 1.42rem;
+    font-size: 1.6rem;
+    color: #fbfbfb;
+    cursor: default !important;
+    text-align: center;
+    * {
+      cursor: default;
+    }
+
+    &-text {
+      padding: 2rem;
+      line-height: 1.42;
+    }
+    &-buttons {
+      display: flex;
+      justify-content: space-around;
+
+      &-reload {
+        background-color: green;
+      }
+      &-hide {
+        background-color: #7e7e7e;
+      }
+
+      button {
+        padding: 1.2rem;
+        border-radius: .42rem;
+        color: #fafafa;
+        border: none;
+        font-weight: bold;
+        cursor: pointer !important;
+
+        &:hover, &:focus {
+          opacity: .9;
+        }
+        &:active {
+          opacity: .8;
+        }
+      }
+    }
+}

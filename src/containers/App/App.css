@@ -1,0 +1,3 @@
+body:not(.detected_keyboard_user) {
+  outline: none;
+}

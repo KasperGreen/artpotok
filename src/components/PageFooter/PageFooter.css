@@ -1,0 +1,13 @@
+.PageFooter {
+  background: linear-gradient(180deg, #1A1E88 0%, rgba(14, 18, 107, 0) 100%), #07132D;
+  z-index: 2;
+  box-shadow: 0 0 8px rgba(123, 128, 133, 0.8);
+  text-align: center;
+  line-height: 42px;
+  font-size: 2rem;
+  color: #fefefe;
+
+  @media (--tablet) {
+    flex-direction: column;
+  }
+}

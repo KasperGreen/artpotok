@@ -1,0 +1,708 @@
+@font-face {
+  font-family: 'calibril';
+  src: url(../fonts/Calibri.eot?#iefix) format("embedded-opentype"),
+  url(../fonts/calibril.ttf) format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+@-webkit-keyframes circle {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-keyframes circle {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.circle {
+  will-change: transform;
+  -webkit-animation: circle 30s infinite;
+  animation: circle 30s infinite;
+}
+
+.svg-to1 {
+  -moz-transform-origin: 7.8% 49.8%;
+  transform-origin: 7.8% 49.8%;
+  -webkit-animation: circle 5s infinite;
+  animation: circle 5s infinite;
+  will-change: transform;
+}
+
+.svg-to2 {
+  -moz-transform-origin: 25.8% 49.8%;
+  transform-origin: 25.8% 49.8%;
+  -webkit-animation: circle 10s infinite;
+  animation: circle 10s infinite;
+  will-change: transform;
+
+}
+
+.svg-to3 {
+  -moz-transform-origin: 92.3% 49.8%;
+  transform-origin: 92.3% 49.8%;
+  -webkit-animation: circle 7s infinite;
+  animation: circle 7s infinite;
+  will-change: transform;
+
+}
+
+.svg-to4 {
+  -moz-transform-origin: 74% 49.8%;
+  -ms-transform-origin: 74% 49.8%;
+  -o-transform-origin: 74% 49.8%;
+  -webkit-transform-origin: 74% 49.8%;
+  transform-origin: 74% 49.8%;
+  -webkit-animation: circle 9s infinite;
+  animation: circle 9s infinite;
+  will-change: transform;
+
+}
+
+.svg-to5 {
+  -moz-transform-origin: 74% 49.8%;
+  transform-origin: 74% 49.8%;
+  transform: rotate(360deg);
+}
+
+body {
+  font-family: "calibril", sans-serif;
+  margin: 0;
+  padding: 0px;
+}
+
+.container {
+  width: 1000px;
+  position: relative;
+  margin: 0px auto;
+}
+
+.section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.section-name {
+  font-size: 50px;
+  padding: 50px 0px 47px 0px;
+  width: 100%;
+  text-align: center;
+  color: #444;
+  line-height: 35px;
+}
+
+a, a:hover {
+  text-decoration: none;
+  -webkit-appearance: none;
+}
+
+.menu {
+  position: fixed;
+  width: 100%;
+  background-color: #000;
+  z-index: 5000;
+  height: 69px;
+}
+
+.header {
+  padding-top: 69px;
+  background: url('../images/fest2018_top.jpg') center -6px no-repeat #402d41;
+  height: 805px;
+  box-sizing: border-box;
+}
+
+.svg-menu {
+  height: 470px;
+  opacity: 0.7;
+}
+
+.dark-orange {
+  color: #ff9933;
+}
+
+.date-fest {
+  font-size: 35px;
+}
+
+.light-orange {
+  color: #fac66e;
+}
+
+.name-fest {
+  font-size: 60px;
+  letter-spacing: 7px;
+}
+
+.date-fest, .name-fest {
+  text-align: center;
+}
+
+.right-svg-circle {
+  position: fixed;
+  right: -305px;
+  top: 70px;
+}
+
+.right-svg-circle img {
+  height: 610px;
+}
+
+.left-svg-circle {
+  position: fixed;
+  left: -300px;
+  top: 65px;
+}
+
+.left-svg-circle img {
+  height: 610px;
+}
+
+.description {
+  padding: 115px 0px;
+  background: linear-gradient(to top, #fbfafa, #ede9e9);
+}
+
+.description .text {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.form .section-descr, .description .text, .form .buttons, .footer-container, .buy-button a, .block_item .buttons {
+  width: 70%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.datename .container {
+  padding: 140px 0px;
+}
+
+.atmosphere, .biosphere {
+  padding-bottom: 46px;
+}
+
+.form {
+  background: url('/img/fest2018_zajava.jpg') center center no-repeat #402d41;
+  background-size: cover;
+  padding-bottom: 42px;
+}
+
+.form .section-descr {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 47px;
+}
+
+.form .buttons a, .block_item .buttons a {
+  display: block;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  font-size: 25px;
+  padding: 15px 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  margin: 10px 0px;
+}
+
+.buy-button a {
+  font-size: 45px;
+  color: #fff;
+  display: block;
+  background-color: #de8951;
+  padding: 35px 0px;
+  border-radius: 30px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.buy-button {
+  padding: 170px 0px;
+}
+
+.upper-price-name {
+  color: #444444;
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.buy {
+  background: #fbfafa;
+  padding-bottom: 80px;
+}
+
+.buy .container {
+  background: url('/img/fest2018-round_1.svg') no-repeat transparent;
+  background-size: 100% auto;
+  background-position: 50% 20%;
+}
+
+.logomini {
+  height: 75px;
+}
+
+.footer {
+  padding: 25px 0px;
+}
+
+.footer .logo {
+  width: 17%;
+}
+
+.col-left, .col-right, .col-right a {
+  color: #7f7f7f;
+}
+
+.col-left {
+  width: 39%;
+}
+
+.col-right {
+  width: 29%;
+}
+
+.social {
+  width: 15%;
+  text-align: right;
+  opacity: 0.4;
+  padding-top: 10px;
+}
+
+.footer .footer-container > div {
+  float: left;
+  -webkit-appearance: none;
+}
+
+.social img {
+  margin-left: 5px;
+  width: 30px;
+}
+
+.left-svg, .right-svg {
+  position: absolute;
+  opacity: 0.3;
+  top: 50px;
+}
+
+.left-svg {
+  left: -250px;
+}
+
+.right-svg {
+  right: -200px;
+}
+
+/*хэдлайнер*/
+
+/**/
+
+.miniImg {
+  height: 112.667px;
+  margin: 5px 10px;
+  border-radius: 16px;
+  background-size: cover;
+  opacity: 0.4;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.miniImg:hover {
+  opacity: 1;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
+
+.Slider2 {
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 46px;
+
+}
+
+.bigslider .slick-prev, .bigslider .slick-next {
+  bottom: 35%;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  width: 65px;
+  height: 41px;
+}
+
+.bigslider .slick-prev {
+  left: -70px;
+}
+
+.bigslider .slick-next {
+  right: -70px;
+}
+
+.big-container {
+  height: 484px;
+  position: relative;
+  border-radius: 30px;
+  border: 0px solid black;
+  overflow: hidden;
+}
+
+.big-image {
+  height: 50%;
+  box-sizing: border-box;
+  width: 33.33333333333333333%;
+  float: left;
+  background-size: cover;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+.big-image .name {
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  width: 80%;
+  background-color: #bbbfcb;
+  color: #fff;
+  font-size: 20px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  padding: 10px 20px 10px 40px;
+  text-align: right;
+}
+
+.big-image .name b {
+  position: absolute;
+  bottom: 8px;
+  left: 15px;
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 15px solid transparent;
+  border-left: 20px solid #fff;
+  border-bottom: 15px solid transparent;
+  cursor: pointer;
+}
+
+.big-image .name b.active {
+  border: 0px;
+  border-left: 7px solid #fff;
+  border-right: 7px solid #fff;
+  width: 6px;
+  height: 28px;
+}
+
+.big-image:nth-child(1) {
+  border-radius: 30px 0px 0px 0px;
+}
+
+.big-image:nth-child(3) {
+  border-radius: 0px 30px 0px 0px;
+}
+
+.big-image:nth-child(6) {
+  border-radius: 0px 0px 30px 0px;
+}
+
+.big-image:nth-child(4) {
+  border-radius: 0px 0px 0px 30px;
+}
+
+.big-image:nth-child(1), .big-image:nth-child(2) {
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.big-image:nth-child(3) {
+  border-bottom: 1px solid #fff;
+}
+
+.big-image:nth-child(4), .big-image:nth-child(5) {
+  border-right: 1px solid #fff;
+}
+
+.big-text {
+  display: none;
+  position: absolute;
+  margin: 5% 20%;
+  border: 3px solid #bdbfcc;
+  border-radius: 30px;
+  height: 400px;
+  max-width: 90%;
+  min-width: 600px;
+  background-color: #fff;
+  font-size: 15px;
+  z-index: 200;
+  box-sizing: border-box;
+}
+
+.close_desrciption {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 37px;
+  height: 37px;
+  opacity: 1;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 37px;
+  border: 3px solid #bdbfcc;
+}
+
+.desrciption_text {
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  margin: 20px;
+  overflow: auto;
+  white-space: pre-wrap;
+  display: block;
+  font-size: 15px;
+}
+
+.close_desrciption:before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.close_desrciption:after {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.close_desrciption:before, .close_desrciption:after {
+  position: absolute;
+  left: 17px;
+  content: ' ';
+  height: 27px;
+  width: 2px;
+  background-color: #333;
+  top: 5px;
+}
+
+.upper-price-counter-740, #mobile_nav_icon, .counter-block-320, .upper-price-counter-320 {
+  display: none;
+}
+
+.admin .h1-cirle, .admin .h1-title {
+  box-sizing: content-box;
+}
+
+.admin .upper-price-counter {
+  line-height: 1;
+  font-size: 25px;
+  text-align: center;
+}
+
+.admin .counter-title {
+  padding-top: 0px;
+}
+
+.admin .modal-dialog {
+  margin: 80px auto;
+}
+
+.admin .form-control, .admin .form-group {
+  width: 100%;
+}
+
+div:focus {
+  outline: none;
+}
+
+.svg-hover {
+  will-change: fill;
+  cursor: pointer;
+  transition: 1s;
+}
+.svg-hover:hover, .svg-hover.active {
+  fill: #fac66e;
+}
+
+.svg-menu, .header .container {
+  overflow: visible;
+}
+
+.tabs {
+  width: 100%;
+  box-sizing: border-box;
+  /*  border: 3px #ffffff solid;*/
+  border-radius: 30px;
+  box-shadow: 0px 0px 0px 3px #fff;
+}
+
+.about_festival {
+  background: url(/img/fest2018_zajava.jpg) center center no-repeat #402d41;
+  background-size: cover;
+  padding-bottom: 42px;
+  margin-top: 42px;
+}
+
+.about_festival .section-name {
+  color: #ffffff;
+}
+
+.header_tabs {
+  width: 100%;
+  display: flex;
+  height: 80px;
+  text-align: center;
+  border-radius: 30px 30px 0px 0px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.header_tabs span {
+  display: flex;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.header_tabs span {
+  cursor: pointer;
+}
+
+.header_tabs span.active {
+  background: #ffffff;
+  color: #333333;
+}
+
+.block_tabs {
+  height: 400px;
+  border-radius: 0px 0px 30px 30px;
+  background: #ffffff;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.block_item.hide.active {
+  display: block !important;
+  border-radius: 0px 0px 30px 30px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.header_tabs {
+  border-radius: 30px 30px 0px 0px;
+  overflow: hidden;
+}
+
+.life_festival {
+  padding-bottom: 5px;
+}
+
+.life_festival .tabs {
+  /*  border: 3px #de8951 solid;*/
+  box-shadow: 0px 0px 0px 3px #de8951;
+}
+
+.life_festival .header_tabs {
+  background: #de8951;
+}
+
+.cols {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.col_left50, .col_right50 {
+  width: 48%;
+}
+
+.hrefs {
+  margin-top: 30px;
+}
+
+.hrefs p {
+  display: block;
+  width: 400px;
+  max-width: 95%;
+  margin: 10px auto;
+  padding: 10px 0px;
+  text-align: center;
+  background-color: #de8951;
+  border-radius: 3px;
+}
+
+.hrefs p a {
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+}
+
+.cols_image, .cols_imagepp, .cols_imageart, .cols_imagekino, .img_colinstal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cols_image img {
+  height: 221px;
+}
+
+.cols_imagepp {
+  margin-top: 5px;
+}
+
+.img_colinstal {
+  margin-top: 8px;
+}
+
+.cols_imagekino {
+  margin-top: 20px;
+}
+
+.cols_imagepp img {
+  height: 160px;
+}
+
+.cols_imageart img {
+  height: 311px;
+}
+
+.cols_imagekino img {
+  height: 229px;
+}
+
+.img_colinstal img {
+  height: 157px;
+}

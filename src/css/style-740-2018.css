@@ -1,0 +1,138 @@
+@media (max-width: 1020px) {
+  .container {
+    width: 650px;
+    position: relative;
+    margin: 0px auto;
+  }
+
+  #mobile_nav_icon {
+    border-bottom: 12px double #fff;
+    border-top: 4px solid #fff;
+    cursor: pointer;
+    float: right;
+    height: 4px;
+    margin: 20px 20px 20px 0px;
+    padding-top: 4px;
+    -webkit-transition: all 0.2s ease 0s;
+    -o-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
+    width: 35px;
+    display: block;
+  }
+  .date-fest {
+    font-size: 30px;
+  }
+  .name-fest {
+    font-size: 50px;
+    letter-spacing: 3px;
+  }
+  .description {
+    padding: 50px 0px;
+  }
+  .left-svg-circle {
+    top: 215px;
+  }
+
+  .slick-prev {
+    left: 15%;
+  }
+  .slick-next {
+    right: 15%;
+  }
+  .section-name span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+  }
+  .big-image {
+    width: 50%;
+    height: 33.4%;
+    box-sizing: border-box;
+  }
+  .big-image:nth-child(1), .big-image:nth-child(3), .big-image:nth-child(5) {
+    border: 0px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+  }
+  .big-image:nth-child(2), .big-image:nth-child(4), .big-image:nth-child(6) {
+    border: 0px;
+    border-bottom: 1px solid #fff;
+  }
+  .big-image:nth-child(5), .big-image:nth-child(6) {
+    border-bottom: 0px solid #fff;
+  }
+  .big-image:nth-child(3) {
+    border-radius: 0px 30px 0px 0px;
+  }
+  .big-image:nth-child(3) {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .big-image:nth-child(6) {
+    border-radius: 0px 0px 30px 0px;
+  }
+  .big-image:nth-child(4) {
+    border-radius: 0px 0px 0px 0px;
+  }
+  .big-image:nth-child(5) {
+    border-radius: 0px 0px 0px 30px;
+  }
+  .big-container {
+    height: 570px;
+  }
+  .miniImg {
+    height: 80px;
+  }
+  .big-text {
+    min-width: 450px;
+    margin: 15% 15%;
+    height: 550px;
+  }
+  .Slider2 {
+    width: 70%;
+    margin-bottom: 50px;
+  }
+  .form .section-descr, .description .text, .form .buttons, .footer-container {
+    width: 80%;
+  }
+  .buy-button a {
+    font-size: 35px;
+    padding: 25px 15px;
+    border-radius: 30px;
+    max-width: 550px;
+    width: 100%;
+  }
+  .buy-button {
+    padding: 125px 0px;
+  }
+  .footer .footer-container > div {
+    float: none;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0px;
+  }
+  .footer {
+    padding-bottom: 25px;
+  }
+  .upper-price-counter {
+    display: none;
+  }
+  .upper-price-counter-740 {
+    display: block;
+  }
+  .buy {
+    padding-bottom: 50px;
+  }
+  .atmosphere, .biosphere {
+    padding-bottom: 0px;
+  }
+  .about_festival {
+    margin-top: 0px;
+  }
+  .form {
+    padding-bottom: 0.1px;
+  }
+  .cols_image, .cols_imagepp, .cols_imageart, .cols_imagekino, .img_colinstal {
+    display: none;
+  }
+}

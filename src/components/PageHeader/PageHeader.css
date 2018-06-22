@@ -1,0 +1,32 @@
+.PageHeader {
+  background: white;
+  text-transform: uppercase;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 0 4px #000;
+  &-inner {
+    display: flex;
+  }
+  &-list {
+    &-ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  &-menu {
+    &-item {
+      &-link {
+        padding: 1rem;
+        line-height: 42px;
+      }
+    }
+  }
+  &-logo {
+    &-image {
+      height: 42px;
+    }
+  }
+}

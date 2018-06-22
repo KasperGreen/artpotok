@@ -1,0 +1,60 @@
+.Swiper {
+  .swiper-container {
+    padding-bottom: 132px;
+  }
+
+  &-button {
+    &-next, &-prev {
+      background: url(images/arrow_right.svg) center center no-repeat;
+      display: block;
+      width: 103px;
+      height: 63px;
+      @media (--mobile) {
+        width: 50px;
+        height: 30px;
+      }
+      background-size: contain;
+      border: none;
+      position: absolute;
+      bottom: 42px !important;
+      z-index: 2;
+    }
+    &-next {
+      right: 20%;
+      @media (max-width: 1024px) {
+        right: 0;
+      }
+      transform: translateY(50%);
+    }
+    &-prev {
+      transform: rotate(180deg) translateY(-50%);
+      left: 20%;
+      @media (max-width: 1024px) {
+        left: 0;
+      }
+    }
+    &-dots {
+      z-index: 2;
+      position: absolute;
+      bottom: 42px !important;
+      left: 50% !important;
+      width: auto !important;
+      transform: translate(-50%, 50%);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      > * {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        padding: 5px;
+        @media (--mobile) {
+          width: 20px;
+          height: 20px;
+        }
+        background: white;
+        border-radius: 50%;
+      }
+    }
+  }
+}

@@ -1,0 +1,273 @@
+.Landing {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #050606 0%, #18394B 22.24%, #2E5367 33.7%, #2C88AF 49.28%, #B9A478 73.54%, #F36433 100%), #07152D;
+
+  &-logo {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    width: 16vw;
+    &-image {
+      width: 12.552083333333334vw;
+      position: relative;
+      top: 2vw;
+      animation: wave 4.2s 0.2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+    &-leaf {
+      width: 5.46875vw;
+      animation: lighthouse 1.2s 0.2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+    &-name {
+      width: 15.833333333333332vw;
+    }
+  }
+
+  &-moon {
+    position: absolute;
+    width: 35.3125vw;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  &-trees {
+    &-right {
+      &-wrapper {
+        position: absolute;
+        bottom: -2vw;
+        right: -2vw;
+        height: 100vh;
+        z-index: 3;
+
+        .Landing-image_sizer {
+          width: auto;
+          height: 100%;
+        }
+      }
+
+      height: 100%;
+      width: auto;
+
+    }
+    &-right_top {
+
+      &-wrapper {
+        position: absolute;
+        bottom: -2vw;
+        right: -2vw;
+        height: 100%;
+        z-index: 4;
+        .Landing-image_sizer {
+          width: auto;
+          height: 100%;
+        }
+      }
+
+      height: 100%;
+      width: auto;
+
+    }
+    &-left {
+      &-wrapper {
+        position: absolute;
+        top: -2vw;
+        left: -2vw;
+        height: calc(100vh + 4vw);
+        z-index: 3;
+
+        .Landing-image_sizer {
+          width: auto;
+          height: calc(100vh + 4vw);
+        }
+      }
+
+      height: 100%;
+      width: auto;
+
+    }
+    &-bottom {
+      width: 100%;
+      z-index: 2;
+      &-wrapper {
+        position: absolute;
+        bottom: -2vw;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+
+        .Landing-image_sizer {
+          width: auto;
+          height: calc(100vh + 4vw);
+        }
+      }
+
+    }
+  }
+
+  &-image_sizer {
+    visibility: hidden;
+    width: 100%;
+  }
+
+  &-aircraft {
+    &-left {
+      width: 100%;
+      &-wrapper {
+        width: 8vw;
+        position: absolute;
+        left: 19vw;
+        bottom: 1vw;
+        z-index: 999;
+      }
+    }
+    &-right {
+      width: 100%;
+      &-wrapper {
+        width: 15.78125vw;
+        position: absolute;
+        left: 35vw;
+        bottom: 9vw;
+        z-index: 999;
+      }
+    }
+  }
+
+  &-family {
+    right: 25%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 58.59375vw;
+    height: 43.072916666666664vw;
+    position: absolute;
+    bottom: 0;
+    z-index: 99;
+    &-inner {
+      animation: swing 7s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+    &-base {
+      width: 100%;
+    }
+    &-fire {
+      position: absolute;
+      width: 2.3vw;
+      top: 46.2%;
+      left: 68.9%;
+      animation: fire 0.7s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+    &-smal_fire {
+      left: 13.1%;
+      top: 15.9%;
+      position: absolute;
+      width: 1.5104166666666667vw;
+      animation: fire 0.5s infinite alternate cubic-bezier(0.6, 0.05, 0.57, 0.9);
+    }
+    &-balls {
+      position: absolute;
+      width: 4.65vw;
+      left: 25.7%;
+      top: 38.7%;
+      animation: lighthouse 0.7s 0.1s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+  }
+
+  &-trumpet {
+    width: 100%;
+    &-wrapper {
+      position: absolute;
+      width: 22vw;
+      bottom: 10vh;
+      left: 0;
+      z-index: 999;
+    }
+  }
+
+  &-contrabass {
+    width: 100%;
+    &-wrapper {
+      position: absolute;
+      width: 21.272vw;
+      top: 12.5259vh;
+      right: 12.024vw;
+      z-index: 9;
+    }
+  }
+
+  &-date {
+    font-size: 2.71vw;
+    font-family: "Bebas Neue", sans-serif;
+    color: orange;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &-text_gradient {
+      background: linear-gradient(#e9750a, #f89132 53%, #d9a11b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+
+    &-wrapper {
+      z-index: 5;
+      position: absolute;
+      top: 3.2vh;
+      left: 25%;
+      transform: translateX(-50%);
+    }
+
+    &-tickets {
+      font-size: 1.52vw;
+    }
+
+  }
+}
+
+@keyframes swing {
+  0% {
+    -webkit-transform: rotateZ(5deg);
+    -moz-transform: rotateZ(5deg);
+    transform: rotateZ(5deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-5deg);
+    -moz-transform: rotateZ(-5deg);
+    transform: rotateZ(-5deg);
+  }
+}
+
+@keyframes lighthouse {
+  0% {
+    -webkit-transform: translate3d(5%, 0, 0) rotateZ(5deg);
+    -moz-transform: translate3d(5%, 0, 0) rotateZ(5deg);
+    transform: translate3d(5%, 0, 0) rotateZ(5deg);
+  }
+  100% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotateZ(-5deg);
+    -moz-transform: translate3d(-5%, 0, 0) rotateZ(-5deg);
+    transform: translate3d(-5%, 0, 0) rotateZ(-5deg);
+  }
+}
+
+@keyframes fire {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.7);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
