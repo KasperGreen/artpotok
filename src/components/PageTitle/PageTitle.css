@@ -1,11 +1,12 @@
 .PageTitle {
+  font-family: Bebas Neue,sans-serif;
   background: linear-gradient(to bottom, #9edf1c 0%, #f0bf57 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 4.2vh;
   text-align: center;
   font-weight: 900;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 3.25vw;
 }
