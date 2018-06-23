@@ -18,6 +18,7 @@ import ParticipationContainer from 'containers/ParticipationContainer'
 import ProgramContainer from 'containers/ProgramContainer'
 import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
+import { PROGRAM_URL } from 'constants/URL'
 
 Moment.globalLocale = 'ru'
 
@@ -53,7 +54,7 @@ class App extends Component {
               <Route path={'/about'} exact component={AboutContainer} />
               <Route path={'/participation'} exact component={ParticipationContainer} />
               <Route path={'/buy_ticket'} exact component={BuyTicketContainer} />
-              <Route path={'/program'} exact component={ProgramContainer} />
+              <Route path={'/' + PROGRAM_URL} exact component={ProgramContainer} />
               <Route path={'/info'} exact component={InfoContainer} />
               <Route component={PageNotFound} />
             </Switch>
