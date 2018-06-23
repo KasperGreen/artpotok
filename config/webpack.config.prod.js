@@ -196,6 +196,9 @@ module.exports = {
                           require('postcss-custom-media')(
                             require('./custom_media.config')
                           ),
+                          require('postcss-pxtorem')(
+                            require('./pxtorem.config')
+                          ),
                           require('postcss-flexbugs-fixes'),
                           autoprefixer({
                                          browsers: [
