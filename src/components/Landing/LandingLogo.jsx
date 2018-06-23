@@ -6,6 +6,7 @@ export default class LandingLogo extends Component {
   render () {
     return (
       <div className='Landing-logo'>
+
         <div className='Landing-image_sizer'>
           <LandingLogoInner />
         </div>

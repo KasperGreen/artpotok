@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ParallaxMousemove from 'react-parallax-mousemove'
 import './Landing.css'
-import date from './images/date.png'
 import moon from './images/moon.png'
 import LandingAircraftLeft from 'components/Landing/LandingAircraftLeft'
 import LandingLogo from 'components/Landing/LandingLogo'
@@ -14,8 +13,13 @@ import LandingTreesRight from 'components/Landing/LandingTreesRight'
 import LandingTreesRightTop from 'components/Landing/LandingTreesRightTop'
 import LandingTreesBottom from 'components/Landing/LandingTreesBottom'
 import LandingDate from 'components/Landing/LandingDate'
+import classNames from 'classnames'
 
 export default class Landing extends Component {
+  state = {
+    is_loaded: false
+  }
+
   render () {
     const style = {
       outer: {
@@ -27,10 +31,22 @@ export default class Landing extends Component {
         left: 0
       }
     }
+    const {
+      state: {
+        is_loaded
+      }
+    } = this
     return (
-      <div className="Landing" ref={this.landing_element}>
+      <div
+        className={classNames(
+          'Landing',
+          {
+            'Landing-loaded': is_loaded
+          }
+        )} ref={this.landing_element}
+      >
         <img src={moon} alt={'Луна'} className='Landing-moon' />
-        <img src={date} alt={'2-5 августа 2018'} className='Landing-date' />
+        <div className='Landing-loader' />
 
         <ParallaxMousemove containerStyle={style.outer}>
           <LandingDate />
@@ -55,7 +71,14 @@ export default class Landing extends Component {
 
   componentDidMount () {
     window.addEventListener('load', () => {
-      console.log(' → Все картинки загружены ←  | ')
+      this.setState(
+        (state) => {
+          return {
+            ...state,
+            is_loaded: true
+          }
+        }
+      )
 
     })
   }

@@ -11,10 +11,10 @@ export default class LandingLogoInner extends Component {
           <img src={logo} alt="Логотип" className="Landing-logo-image" />
         </div>
         <div>
-          <img src={name} alt="Логотип" className="Landing-logo-name" />
+          <img src={name} alt="Поток" className="Landing-logo-name" />
         </div>
         <div>
-          <img src={leaf} alt="Логотип" className="Landing-logo-leaf" />
+          <img src={leaf} alt="Листочек" className="Landing-logo-leaf" />
         </div>
       </div>
     )
