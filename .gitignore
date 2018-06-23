@@ -3,6 +3,11 @@
 # dependencies
 /node_modules
 
+<<<<<<< HEAD
+=======
+/webhook.php
+/deploy.sh
+>>>>>>> 95c42d357f855cb093956ad96101e55b5060600c
 
 /production
 /deploy.sh
