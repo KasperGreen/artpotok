@@ -3,7 +3,10 @@
 # dependencies
 /node_modules
 
+
 /production
+/deploy.sh
+/deploy.php
 
 # testing
 /coverage
