@@ -36,6 +36,7 @@ export default class Landing extends Component {
         is_loaded
       }
     } = this
+
     return (
       <div
         className={classNames(
@@ -79,7 +80,24 @@ export default class Landing extends Component {
           }
         }
       )
-
     })
+    let images_is_loaded = true
+    this.landing_element.current.querySelectorAll('img').forEach((image) => {
+      if (!image.complete) images_is_loaded = false
+    })
+    if (images_is_loaded) {
+      setTimeout(() => {
+                   this.setState(
+                     (state) => {
+                       return {
+                         ...state,
+                         is_loaded: true
+                       }
+                     }
+                   )
+
+                 },
+                 200)
+    }
   }
 }
