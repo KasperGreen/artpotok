@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+/webhook.php
+/deploy.sh
+
 /production
 
 # testing
