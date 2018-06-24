@@ -72,52 +72,46 @@ export default class Landing extends Component {
   landing_element = React.createRef()
   long_images_load_timeout = null
 
-  componentDidMount () {
-    window.addEventListener('load', () => {
-      this.setState(
-        (state) => {
-          return {
-            ...state,
-            is_loaded: true
-          }
+  setLoaded = () => {
+    this.setState(
+      (state) => {
+        return {
+          ...state,
+          is_loaded: true
         }
-      )
-    })
-    let images_is_loaded = true
-    this.landing_element.current.querySelectorAll('img').forEach((image) => {
-      if (!image.complete) images_is_loaded = false
-    })
-    if (images_is_loaded) {
-      this.images_load_timeout = setTimeout(() => {
-                                              this.setState(
-                                                (state) => {
-                                                  return {
-                                                    ...state,
-                                                    is_loaded: true
-                                                  }
-                                                }
-                                              )
+      }
+    )
 
-                                            },
-                                            200)
-    }
+  }
+
+  componentDidMount () {
+    window.addEventListener('load', this.setLoaded)
+
+    this.images_load_timeout = setTimeout(
+      () => {
+
+        let images_is_loaded = true
+        this.landing_element.current.querySelectorAll('img').forEach((image) => {
+          if (!image.complete) images_is_loaded = false
+        })
+
+        if (images_is_loaded) {
+          this.setLoaded()
+        }
+
+      },
+      200)
 
     this.long_images_load_timeout = setTimeout(() => {
       if (!this.state.is_loaded) {
-        this.setState(
-          (state) => {
-            return {
-              ...state,
-              is_loaded: true
-            }
-          }
-        )
+        this.setLoaded()
       }
     }, 25000)
   }
 
   componentWillUnmount () {
     clearTimeout()
+    window.removeEventListener('load', this.setLoaded)
   }
 
 }
