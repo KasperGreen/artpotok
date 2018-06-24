@@ -68,7 +68,9 @@ export default class Landing extends Component {
     )
   }
 
+  images_load_timeout = null
   landing_element = React.createRef()
+  long_images_load_timeout = null
 
   componentDidMount () {
     window.addEventListener('load', () => {
@@ -86,18 +88,36 @@ export default class Landing extends Component {
       if (!image.complete) images_is_loaded = false
     })
     if (images_is_loaded) {
-      setTimeout(() => {
-                   this.setState(
-                     (state) => {
-                       return {
-                         ...state,
-                         is_loaded: true
-                       }
-                     }
-                   )
+      this.images_load_timeout = setTimeout(() => {
+                                              this.setState(
+                                                (state) => {
+                                                  return {
+                                                    ...state,
+                                                    is_loaded: true
+                                                  }
+                                                }
+                                              )
 
-                 },
-                 200)
+                                            },
+                                            200)
     }
+
+    this.long_images_load_timeout = setTimeout(() => {
+      if (!this.state.is_loaded) {
+        this.setState(
+          (state) => {
+            return {
+              ...state,
+              is_loaded: true
+            }
+          }
+        )
+      }
+    }, 25000)
   }
+
+  componentWillUnmount () {
+    clearTimeout()
+  }
+
 }
