@@ -50,6 +50,7 @@
     "react-hot-loader": "^4.3.3",
     "react-id-swiper": "^1.6.2",
     "react-moment": "^0.7.0",
+    "react-motion": "^0.5.2",
     "react-parallax-mousemove": "^1.1.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
