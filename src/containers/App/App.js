@@ -19,6 +19,8 @@ import ProgramContainer from 'containers/ProgramContainer'
 import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
 import { PROGRAM_URL } from 'constants/URL'
+import { hot } from 'react-hot-loader'
+
 
 Moment.globalLocale = 'ru'
 
@@ -98,4 +100,5 @@ class App extends Component {
   }
 }
 
-export default App
+
+export default hot(module)(App)

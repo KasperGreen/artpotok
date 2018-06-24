@@ -47,6 +47,7 @@
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.3.1",
     "react-helmet": "^5.2.0",
+    "react-hot-loader": "^4.3.3",
     "react-id-swiper": "^1.6.2",
     "react-moment": "^0.7.0",
     "react-parallax-mousemove": "^1.1.0",
