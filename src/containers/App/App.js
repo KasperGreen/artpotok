@@ -18,7 +18,15 @@ import ParticipationContainer from 'containers/ParticipationContainer'
 import ProgramContainer from 'containers/ProgramContainer'
 import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
-import { MASTER_CLASS_URL, MUSIC_URL, PROGRAM_URL, TECHNO_ASHRAM_URL, VIDEO_MAPPING_URL, VJ_URL } from 'constants/URL'
+import {
+  LECTURE_URL,
+  MASTER_CLASS_URL,
+  MUSIC_URL,
+  PROGRAM_URL,
+  TECHNO_ASHRAM_URL,
+  VIDEO_MAPPING_URL,
+  VJ_URL
+} from 'constants/URL'
 import { hot } from 'react-hot-loader'
 import ProgramMusicContainer from 'containers/ProgramMusicContainer'
 import ProgramMusicStageContainer from 'containers/ProgramMusicStageContainer'
@@ -29,6 +37,8 @@ import ProgramTechnoAshramContainer from 'containers/ProgramTechnoAshramContaine
 import ProgramTechnoAshramEventContainer from 'containers/ProgramTechnoAshramEventContainer'
 import ProgramVjContainer from 'containers/ProgramVjContainer'
 import ProgramVideoMappingContainer from 'containers/ProgramVideoMappingContainer'
+import ProgramLectureContainer from 'containers/ProgramLectureContainer'
+import ProgramLectureListContainer from 'containers/ProgramLectureListContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -89,6 +99,17 @@ class App extends Component {
                 path={MASTER_CLASS_URL + '/:master_class_name'}
                 exact
                 component={ProgramMasterClassContainer}
+              />
+
+              <Route
+                path={LECTURE_URL}
+                exact
+                component={ProgramLectureListContainer}
+              />
+              <Route
+                path={LECTURE_URL + '/:lecture_name'}
+                exact
+                component={ProgramLectureContainer}
               />
 
               <Route
