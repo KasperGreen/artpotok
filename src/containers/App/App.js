@@ -22,6 +22,7 @@ import {
   LECTURE_URL,
   MASTER_CLASS_URL,
   MUSIC_URL,
+  PRACTICE_URL,
   PROGRAM_URL,
   TECHNO_ASHRAM_URL,
   VIDEO_MAPPING_URL,
@@ -39,6 +40,8 @@ import ProgramVjContainer from 'containers/ProgramVjContainer'
 import ProgramVideoMappingContainer from 'containers/ProgramVideoMappingContainer'
 import ProgramLectureContainer from 'containers/ProgramLectureContainer'
 import ProgramLectureListContainer from 'containers/ProgramLectureListContainer'
+import ProgramPracticeListContainer from 'containers/ProgramPracticeListContainer'
+import ProgramPracticeContainer from 'containers/ProgramPracticeContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -111,6 +114,18 @@ class App extends Component {
                 exact
                 component={ProgramLectureContainer}
               />
+
+              <Route
+                path={PRACTICE_URL}
+                exact
+                component={ProgramPracticeListContainer}
+              />
+              <Route
+                path={PRACTICE_URL + '/:practice_name'}
+                exact
+                component={ProgramPracticeContainer}
+              />
+
 
               <Route
                 path={TECHNO_ASHRAM_URL}
