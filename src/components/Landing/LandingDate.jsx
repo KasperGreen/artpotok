@@ -16,8 +16,8 @@ export default class LandingDate extends Component {
             width: '100%'
           }}
           config={{
-            xFactor: -0.004,
-            yFactor: 0,
+            xFactor: -0.04,
+            yFactor: 0.02,
             springSettings: {
               stiffness: 25,
               damping: 20
