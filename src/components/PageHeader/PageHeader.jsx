@@ -25,7 +25,7 @@ export default class PageHeader extends Component {
         <Container>
           <div className='PageHeader-inner'>
             <div className="PageHeader-logo">
-              <NavLink exact to="/">
+              <NavLink exact to="/" className="PageHeader-logo-link">
                 <img src={logo_image} alt={'Логотип Потока'} className='PageHeader-logo-image' />
               </NavLink>
             </div>

@@ -22,8 +22,9 @@
       &-link {
         text-decoration: none;
         color: #111;
-        padding: 1rem;
+        padding: 0 1rem;
         line-height: 42px;
+        height: 42px;
         display: block;
         &-active {
           color: white;
@@ -33,6 +34,10 @@
     }
   }
   &-logo {
+    &-link {
+      display: block;
+      line-height: 0;
+    }
     &-image {
       height: 42px;
     }
