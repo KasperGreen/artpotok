@@ -20,6 +20,11 @@ export default class ProgramMasterClassList extends Component {
                   Пример мастер-класса
                 </Link>
               </li>
+              <li>
+                <Link to={MASTER_CLASS_URL + '/other-master-class-name-example'}>
+                  Пример другого мастер-класса
+                </Link>
+              </li>
             </ul>
           </nav>
         </Container>
