@@ -89,12 +89,13 @@ export default class Landing extends Component {
 
     this.images_load_timeout = setTimeout(
       () => {
-
+        console.groupCollapsed()
         let images_is_loaded = true
         this.landing_element.current.querySelectorAll('img').forEach((image) => {
           if (!image.complete) images_is_loaded = false
+          console.log('images', image.complete, image)
         })
-
+        console.groupEnd()
         if (images_is_loaded) {
           this.setLoaded()
         }
@@ -106,7 +107,7 @@ export default class Landing extends Component {
       if (!this.state.is_loaded) {
         this.setLoaded()
       }
-    }, 25000)
+    }, 15000)
   }
 
   componentWillUnmount () {
