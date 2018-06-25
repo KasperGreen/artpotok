@@ -18,11 +18,13 @@ import ParticipationContainer from 'containers/ParticipationContainer'
 import ProgramContainer from 'containers/ProgramContainer'
 import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
-import { MUSIC_URL, PROGRAM_URL } from 'constants/URL'
+import { MASTER_CLASS_URL, MUSIC_URL, PROGRAM_URL } from 'constants/URL'
 import { hot } from 'react-hot-loader'
 import ProgramMusicContainer from 'containers/ProgramMusicContainer'
 import ProgramMusicStageContainer from 'containers/ProgramMusicStageContainer'
 import ProgramMusicArtistContainer from 'containers/ProgramMusicArtistContainer'
+import ProgramMasterClassContainer from 'containers/ProgramMasterClassContainer'
+import ProgramMasterClassListContainer from 'containers/ProgramMasterClassListContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -58,10 +60,34 @@ class App extends Component {
               <Route path={'/about'} exact component={AboutContainer} />
               <Route path={'/participation'} exact component={ParticipationContainer} />
               <Route path={'/buy_ticket'} exact component={BuyTicketContainer} />
+
+
               <Route path={PROGRAM_URL} exact component={ProgramContainer} />
+
               <Route path={MUSIC_URL} exact component={ProgramMusicContainer} />
-              <Route path={MUSIC_URL + '/:stage'} exact component={ProgramMusicStageContainer} />
-              <Route path={MUSIC_URL + '/:stage/:artist'} exact component={ProgramMusicArtistContainer} />
+              <Route
+                path={MUSIC_URL + '/:stage'}
+                exact
+                component={ProgramMusicStageContainer}
+              />
+              <Route
+                path={MUSIC_URL + '/:stage/:artist'}
+                exact
+                component={ProgramMusicArtistContainer}
+              />
+
+              <Route
+                path={MASTER_CLASS_URL}
+                exact
+                component={ProgramMasterClassListContainer}
+              />
+              <Route
+                path={MASTER_CLASS_URL + '/:master_class_name'}
+                exact
+                component={ProgramMasterClassContainer}
+              />
+
+
               <Route path={'/info'} exact component={InfoContainer} />
               <Route component={PageNotFound} />
             </Switch>
