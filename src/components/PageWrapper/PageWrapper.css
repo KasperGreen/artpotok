@@ -1,4 +1,5 @@
 .PageWrapper {
+  background: #fefefe;
   &-main {
     min-height: calc(100vh - 42px);
   }
