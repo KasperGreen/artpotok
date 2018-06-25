@@ -36,6 +36,7 @@ export default class PageHeader extends Component {
                     <li key={key} className='PageHeader-menu-item'>
                       <NavLink
                         className='PageHeader-menu-item-link'
+                        activeClassName='PageHeader-menu-item-link-active'
                         {...{to, onClick: menuClose}}>
                         {title}
                       </NavLink>

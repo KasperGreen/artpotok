@@ -9,6 +9,7 @@
     display: flex;
   }
   &-list {
+    margin-left: 2rem;
     &-ul {
       list-style: none;
       display: flex;
@@ -19,8 +20,15 @@
   &-menu {
     &-item {
       &-link {
+        text-decoration: none;
+        color: #111;
         padding: 1rem;
         line-height: 42px;
+        display: block;
+        &-active {
+          color: white;
+          background: black;
+        }
       }
     }
   }
