@@ -18,7 +18,7 @@ import ParticipationContainer from 'containers/ParticipationContainer'
 import ProgramContainer from 'containers/ProgramContainer'
 import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
-import { MASTER_CLASS_URL, MUSIC_URL, PROGRAM_URL, TECHNO_ASHRAM_URL } from 'constants/URL'
+import { MASTER_CLASS_URL, MUSIC_URL, PROGRAM_URL, TECHNO_ASHRAM_URL, VJ_URL } from 'constants/URL'
 import { hot } from 'react-hot-loader'
 import ProgramMusicContainer from 'containers/ProgramMusicContainer'
 import ProgramMusicStageContainer from 'containers/ProgramMusicStageContainer'
@@ -27,6 +27,7 @@ import ProgramMasterClassContainer from 'containers/ProgramMasterClassContainer'
 import ProgramMasterClassListContainer from 'containers/ProgramMasterClassListContainer'
 import ProgramTechnoAshramContainer from 'containers/ProgramTechnoAshramContainer'
 import ProgramTechnoAshramEventContainer from 'containers/ProgramTechnoAshramEventContainer'
+import ProgramVjContainer from 'containers/ProgramVjContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -98,6 +99,12 @@ class App extends Component {
                 path={TECHNO_ASHRAM_URL + '/:event_name'}
                 exact
                 component={ProgramTechnoAshramEventContainer}
+              />
+
+              <Route
+                path={VJ_URL}
+                exact
+                component={ProgramVjContainer}
               />
 
 
