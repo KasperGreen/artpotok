@@ -68,11 +68,33 @@ export default class Landing extends Component {
     )
   }
 
+  checkImagesLoad = () => {
+    this.images_load_timeout = setTimeout(
+      () => {
+        console.groupCollapsed()
+        let images_is_loaded = true
+        this.landing_element.current.querySelectorAll('img').forEach((image) => {
+          if (!image.complete) images_is_loaded = false
+          console.log('images', image.complete, image)
+        })
+        console.groupEnd()
+        if (images_is_loaded) {
+          this.setLoaded()
+        }
+        else {
+          this.check_timeout = setTimeout(this.checkImagesLoad())
+        }
+
+      },
+      200)
+
+  }
+  check_timeout = null
   images_load_timeout = null
   landing_element = React.createRef()
   long_images_load_timeout = null
-
   setLoaded = () => {
+    clearTimeout(this.check_timeout)
     this.setState(
       (state) => {
         return {
@@ -87,31 +109,19 @@ export default class Landing extends Component {
   componentDidMount () {
     window.addEventListener('load', this.setLoaded)
 
-    this.images_load_timeout = setTimeout(
-      () => {
-        console.groupCollapsed()
-        let images_is_loaded = true
-        this.landing_element.current.querySelectorAll('img').forEach((image) => {
-          if (!image.complete) images_is_loaded = false
-          console.log('images', image.complete, image)
-        })
-        console.groupEnd()
-        if (images_is_loaded) {
-          this.setLoaded()
-        }
-
-      },
-      200)
+    this.checkImagesLoad()
 
     this.long_images_load_timeout = setTimeout(() => {
       if (!this.state.is_loaded) {
         this.setLoaded()
       }
-    }, 15000)
+    }, 20000)
   }
 
   componentWillUnmount () {
-    clearTimeout()
+    clearTimeout(this.check_timeout)
+    clearTimeout(this.images_load_timeout)
+    clearTimeout(this.long_images_load_timeout)
     window.removeEventListener('load', this.setLoaded)
   }
 
