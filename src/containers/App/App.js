@@ -18,9 +18,11 @@ import ParticipationContainer from 'containers/ParticipationContainer'
 import ProgramContainer from 'containers/ProgramContainer'
 import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
-import { PROGRAM_URL } from 'constants/URL'
+import { MUSIC_URL, PROGRAM_URL } from 'constants/URL'
 import { hot } from 'react-hot-loader'
-
+import ProgramMusicContainer from 'containers/ProgramMusicContainer'
+import ProgramMusicStageContainer from 'containers/ProgramMusicStageContainer'
+import ProgramMusicArtistContainer from 'containers/ProgramMusicArtistContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -56,7 +58,10 @@ class App extends Component {
               <Route path={'/about'} exact component={AboutContainer} />
               <Route path={'/participation'} exact component={ParticipationContainer} />
               <Route path={'/buy_ticket'} exact component={BuyTicketContainer} />
-              <Route path={'/' + PROGRAM_URL} exact component={ProgramContainer} />
+              <Route path={PROGRAM_URL} exact component={ProgramContainer} />
+              <Route path={MUSIC_URL} exact component={ProgramMusicContainer} />
+              <Route path={MUSIC_URL + '/:stage'} exact component={ProgramMusicStageContainer} />
+              <Route path={MUSIC_URL + '/:stage/:artist'} exact component={ProgramMusicArtistContainer} />
               <Route path={'/info'} exact component={InfoContainer} />
               <Route component={PageNotFound} />
             </Switch>
@@ -99,6 +104,5 @@ class App extends Component {
 
   }
 }
-
 
 export default hot(module)(App)
