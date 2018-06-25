@@ -4,4 +4,5 @@ export const PROGRAM_URL = '/program',
   VIDEO_MAPPING_URL = PROGRAM_URL + '/video-mapping',
   VJ_URL = PROGRAM_URL + '/vj',
   MASTER_CLASS_URL = PROGRAM_URL + '/master-class',
-  PRACTICE_URL = PROGRAM_URL + '/practice'
+  PRACTICE_URL = PROGRAM_URL + '/practice',
+  TECHNO_ASHRAM_URL = PROGRAM_URL + '/techno-ashram'
