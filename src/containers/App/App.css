@@ -1,5 +1,9 @@
 html {
+  color: #111;
   font-size: calc(100vw / 1280 * 10);
+  @media (min-width: 1281px) {
+    font-size: 10Px;
+  }
 }
 
 body:not(.detected_keyboard_user) {
