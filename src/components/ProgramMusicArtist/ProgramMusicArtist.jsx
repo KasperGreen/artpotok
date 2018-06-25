@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './ProgramMusicArtist.css'
-import PageWrapper from 'components/PageWrapper'
 import PageTitle from 'components/PageTitle/PageTitle'
 import Container from 'components/Container'
 
