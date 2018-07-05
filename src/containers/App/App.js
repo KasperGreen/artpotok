@@ -9,9 +9,10 @@ import 'normalize.css'
 import './App.css'
 import _ from 'lodash'
 import AppUpdateNotifier from 'containers/App/AppUpdateNotifier'
-import ym, { YMInitializer } from 'react-yandex-metrika'
+import ym from 'react-yandex-metrika'
 import { METRIKA_ID } from 'constants/METRIKA'
 import 'fonts/BebasNeueRegular/stylesheet.css'
+import 'fonts/Montserrat/stylesheet.css'
 import AboutContainer from 'containers/AboutContainer'
 import PageNotFound from 'containers/PageNotFoundContainer'
 import ParticipationContainer from 'containers/ParticipationContainer'
@@ -42,9 +43,11 @@ import ProgramLectureContainer from 'containers/ProgramLectureContainer'
 import ProgramLectureListContainer from 'containers/ProgramLectureListContainer'
 import ProgramPracticeListContainer from 'containers/ProgramPracticeListContainer'
 import ProgramPracticeContainer from 'containers/ProgramPracticeContainer'
+import UserState from 'context/User/UserState'
 
 Moment.globalLocale = 'ru'
 
+@UserState
 class App extends Component {
 
   render () {
@@ -53,17 +56,17 @@ class App extends Component {
       <AppContext.Provider value={{}}>
         <Router>
           <div className="App">
-            <YMInitializer
+            {/*<YMInitializer
               version="2"
               accounts={[METRIKA_ID]}
               options={{
                 clickmap: true,
                 trackLinks: true,
                 accurateTrackBounce: true,
-                webvisor: true,
-                trackHash: true,
+
+                trackHash: true,webvisor: true,
               }}
-            />
+            />*/}
             <Route
               path={'/'} render={({location}) => {
               if (_.some(window['yaCounter' + METRIKA_ID])) {
@@ -152,6 +155,7 @@ class App extends Component {
 
 
               <Route path={'/info'} exact component={InfoContainer} />
+
 
               <Route component={PageNotFound} />
 

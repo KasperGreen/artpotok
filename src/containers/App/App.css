@@ -1,8 +1,11 @@
 html {
   color: #111;
   font-size: calc(100vw / 1280 * 10);
-  @media (min-width: 1281px) {
+  @media (--desktop) {
     font-size: 10Px;
+  }
+  @media (--mobile) {
+    font-size: calc(100vw / 320 * 10);
   }
 }
 
