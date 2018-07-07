@@ -4,6 +4,7 @@ import LogoutAfterMessage from 'components/LogoutAfterMessage'
 import userContextConnection from 'context/User/userContextConnection'
 import PropTypes from 'prop-types'
 import LogoutContainerAction from 'containers/LogoutContainer/LogoutContainerAction'
+import Confirmed from 'components/Confirmed'
 
 @userContextConnection
 export default class LogoutContainer extends Component {
@@ -20,7 +21,9 @@ export default class LogoutContainer extends Component {
          ?
          <LogoutAfterMessage />
          :
-         <LogoutContainerAction {...{logout}} />
+         <Confirmed content={<h2>Выходим?</h2>}>
+           <LogoutContainerAction {...{logout}} />
+         </Confirmed>
         }
       </PageWrapper>
     )
