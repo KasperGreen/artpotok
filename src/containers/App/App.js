@@ -44,6 +44,9 @@ import ProgramLectureListContainer from 'containers/ProgramLectureListContainer'
 import ProgramPracticeListContainer from 'containers/ProgramPracticeListContainer'
 import ProgramPracticeContainer from 'containers/ProgramPracticeContainer'
 import UserState from 'context/User/UserState'
+import LoginContainer from 'containers/LoginContainer'
+import ProfileContainer from 'containers/Profile'
+import LogoutContainer from 'containers/LogoutContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -78,8 +81,11 @@ class App extends Component {
             <Switch>
               <Route path={'/'} exact component={Main} />
               <Route path={'/about'} exact component={AboutContainer} />
+              <Route path={'/logout'} exact component={LogoutContainer} />
+              <Route path={'/login'} exact component={LoginContainer} />
               <Route path={'/participation'} exact component={ParticipationContainer} />
               <Route path={'/buy_ticket'} exact component={BuyTicketContainer} />
+              <Route path={'/profile'} exact component={ProfileContainer} />
 
 
               <Route path={PROGRAM_URL} exact component={ProgramContainer} />

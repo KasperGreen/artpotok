@@ -5,7 +5,9 @@ import './PageHeader.css'
 import classNames from 'classnames'
 import menu from './data/page_header_menu'
 import Container from 'components/Container'
+import userContextConnection from 'context/User/userContextConnection'
 
+@userContextConnection('user')
 export default class PageHeader extends Component {
   state = {
     menu_opened: false,
@@ -16,6 +18,9 @@ export default class PageHeader extends Component {
     const {
       state: {
         menu_opened
+      },
+      props: {
+        user: {is_guest}
       },
       menuToggle,
       menuClose
@@ -43,6 +48,29 @@ export default class PageHeader extends Component {
                     </li>
                   )
                 })}
+                <li>
+                  {is_guest
+                   ?
+                   <NavLink
+                     to={'/login'}
+                     activeStyle={{pointerEvents: 'none'}}
+                     className='PageHeader-menu-item-link'
+                     activeClassName='PageHeader-menu-item-link-active'
+                   >
+                     Войти
+                   </NavLink>
+                   :
+                   <NavLink
+                     to={'/logout'}
+                     activeStyle={{pointerEvents: 'none'}}
+                     className='PageHeader-menu-item-link'
+                     activeClassName='PageHeader-menu-item-link-active'
+                   >
+                     Выйти
+                   </NavLink>
+                  }
+
+                </li>
               </ul>
             </nav>
             <div className='PageHeader-mobile_nav-icon' id="mobile_nav_icon" onClick={menuToggle} />
