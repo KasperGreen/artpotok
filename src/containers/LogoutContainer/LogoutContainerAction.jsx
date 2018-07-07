@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export default class LogoutContainerAction extends Component {
   render () {
-    return <div></div>
+    return <div>Выходит</div>
   }
 
   componentDidMount () {
