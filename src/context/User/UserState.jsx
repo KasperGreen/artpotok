@@ -14,7 +14,8 @@ export default function (WrappedComponent) {
         logout,
         register,
         hasRole,
-        hasAnyRole
+        hasAnyRole,
+        hasAllRoles
       } = this
 
       return (
@@ -25,7 +26,8 @@ export default function (WrappedComponent) {
             logout,
             register,
             hasRole,
-            hasAnyRole
+            hasAnyRole,
+            hasAllRoles
           }}
         >
           <WrappedComponent />
@@ -35,6 +37,16 @@ export default function (WrappedComponent) {
 
     authAttempt = (user_authorization_data) => {
       return Api.post('user/login', user_authorization_data, this, 'is_login_progress')
+    }
+    hasAllRoles = (roles_array) => {
+      const {
+          state: {
+            roles = []
+          }
+        } = this,
+        fined_roles = roles.filter(role => roles_array.includes(role))
+
+      return roles_array.length === fined_roles.length
     }
     hasAnyRole = (roles_array) => {
       const {
