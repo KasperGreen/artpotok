@@ -52,6 +52,7 @@ import LoginContainer from 'containers/LoginContainer'
 import ProfileContainer from 'containers/Profile'
 import LogoutContainer from 'containers/LogoutContainer'
 import RegisterContainer from 'containers/RegisterContainer'
+import Test from 'containers/Test'
 
 Moment.globalLocale = 'ru'
 
@@ -86,6 +87,7 @@ class App extends Component {
             <Switch>
               <Route path={'/'} exact component={Main} />
               <Route path={'/about'} exact component={AboutContainer} />
+              <Route path={'/test'} exact component={Test} />
               <Route path={'/participation'} exact component={ParticipationContainer} />
               <Route path={'/buy_ticket'} exact component={BuyTicketContainer} />
 
