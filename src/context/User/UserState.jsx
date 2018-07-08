@@ -12,7 +12,9 @@ export default function (WrappedComponent) {
       const {
         authAttempt,
         logout,
-        register
+        register,
+        hasRole,
+        hasAnyRole
       } = this
 
       return (
@@ -21,7 +23,9 @@ export default function (WrappedComponent) {
             ...this.state,
             authAttempt,
             logout,
-            register
+            register,
+            hasRole,
+            hasAnyRole
           }}
         >
           <WrappedComponent />
@@ -31,6 +35,24 @@ export default function (WrappedComponent) {
 
     authAttempt = (user_authorization_data) => {
       return Api.post('user/login', user_authorization_data, this, 'is_login_progress')
+    }
+    hasAnyRole = (roles_array) => {
+      const {
+        state: {
+          roles = []
+        }
+      } = this
+
+      return roles.find(role => roles_array.includes(role)) ? true : false
+    }
+    hasRole = (role_name) => {
+      const {
+        state: {
+          roles = []
+        }
+      } = this
+
+      return roles.includes(role_name)
     }
     logout = () => {
       return Api.get('user/logout', this, 'is_logout_progress')
@@ -49,5 +71,6 @@ export default function (WrappedComponent) {
       Api.get('user', this, 'is_user_loading')
 
     }
+
   }
 }

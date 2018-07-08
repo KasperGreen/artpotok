@@ -9,6 +9,7 @@ export default {
   name: '',
   email: '',
   id: '',
+  roles: [],
   is_login_progress: false,
   is_register_progress: false
 }
