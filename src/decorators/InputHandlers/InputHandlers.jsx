@@ -10,6 +10,7 @@ export default class InputHandlers extends PureComponent {
     const {
       props: {
         children,
+        ControlledComponent,
         onInputChange,
         onUpdateObject,
         onUpdateValue,
@@ -57,13 +58,23 @@ export default class InputHandlers extends PureComponent {
 
     const {
         props:
-          {onInputChange, onUpdateValue, onUpdateObject, getName},
+          {onInputChange, onUpdateValue, onUpdateObject, getName, ControlledComponent},
       } = this,
       name = getName()
 
     onInputChange(name, value)
     onUpdateObject({[name]: value})
     onUpdateValue(value)
+    if(ControlledComponent) {
+      ControlledComponent.setState(
+        (state) => {
+          return {
+            ...state,
+            ...{[name]: value}
+          }
+        }
+      )
+    }
 
   }
 
@@ -81,6 +92,7 @@ export default class InputHandlers extends PureComponent {
     onInputChange: PropTypes.func,
     name: PropTypes.string,
     onUpdateValue: PropTypes.func,
+    ControlledComponent: PropTypes.object,
     onUpdateObject: PropTypes.func,
     value: PropTypes.oneOfType(
       [
