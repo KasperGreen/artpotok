@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import './Login.css'
 import Container from 'components/Container'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { REGISTER_URL } from 'constants/URL'
 
 export default class Login extends Component {
   state = {
     email: 'admin@test.ru',
     password: 'test',
-    remember: false
+    remember: true
   }
 
   render () {
@@ -50,7 +51,7 @@ export default class Login extends Component {
             </div>
             <div>
               <input {...{onChange: onCheckboxChange}} type={'checkbox'}
-                     value={1}
+                     value={remember}
                      defaultChecked={remember}
                      name={'remember'}
               /> Запомнить
@@ -59,6 +60,9 @@ export default class Login extends Component {
               {error_text}
             </div>
             <button disabled={is_login_progress}>Войти</button>
+            <div>
+              <Link to={REGISTER_URL}>Регистрация</Link>
+            </div>
           </form>
         </Container>
       </div>
@@ -110,7 +114,10 @@ export default class Login extends Component {
         email,
         password,
         remember
-      })
+      }).then((data) => {
+        console.log(' → ', data, ' ← data | ')
+
+    })
 
   }
 }

@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import userContextConnection from 'context/User/userContextConnection'
 import PageWrapper from 'components/PageWrapper'
 import PropTypes from 'prop-types'
+import Container from 'components/Container'
 
 @userContextConnection
 export default class ProfileContainer extends Component {
   render () {
-    console.log(' → ', this.props, ' ← this.props | ')
 
     const {
       props: {
@@ -18,9 +18,11 @@ export default class ProfileContainer extends Component {
 
     return (
       <PageWrapper>
-        <h1>{name}</h1>
-        {is_admin && <h2>Администратор</h2>}
-        {email}
+        <Container>
+          <h1>{name}</h1>
+          {is_admin && <h2>Администратор</h2>}
+          {email}
+        </Container>
       </PageWrapper>
     )
   }

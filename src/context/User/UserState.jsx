@@ -11,7 +11,8 @@ export default function (WrappedComponent) {
     render () {
       const {
         authAttempt,
-        logout
+        logout,
+        register
       } = this
 
       return (
@@ -19,7 +20,8 @@ export default function (WrappedComponent) {
           value={{
             ...this.state,
             authAttempt,
-            logout
+            logout,
+            register
           }}
         >
           <WrappedComponent />
@@ -28,11 +30,13 @@ export default function (WrappedComponent) {
     }
 
     authAttempt = (user_authorization_data) => {
-      Api.post('user/login', user_authorization_data, this, 'is_login_progress')
+      return Api.post('user/login', user_authorization_data, this, 'is_login_progress')
     }
-
     logout = () => {
-      Api.get('user/logout', this, 'is_logout_progress')
+      return Api.get('user/logout', this, 'is_logout_progress')
+    }
+    register = (registration_data) => {
+      return Api.post('user/register', registration_data, this, 'is_register_progress')
     }
 
     componentDidMount () {
@@ -42,6 +46,7 @@ export default function (WrappedComponent) {
           this.setState(data)
         }
       })
+      Api.get('user', this, 'is_user_loading')
 
     }
   }

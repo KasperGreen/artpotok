@@ -24,7 +24,9 @@ import {
   MASTER_CLASS_URL,
   MUSIC_URL,
   PRACTICE_URL,
+  PROFILE_URL,
   PROGRAM_URL,
+  REGISTER_URL,
   TECHNO_ASHRAM_URL,
   VIDEO_MAPPING_URL,
   VJ_URL
@@ -47,6 +49,7 @@ import UserState from 'context/User/UserState'
 import LoginContainer from 'containers/LoginContainer'
 import ProfileContainer from 'containers/Profile'
 import LogoutContainer from 'containers/LogoutContainer'
+import RegisterContainer from 'containers/RegisterContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -85,7 +88,8 @@ class App extends Component {
               <Route path={'/login'} exact component={LoginContainer} />
               <Route path={'/participation'} exact component={ParticipationContainer} />
               <Route path={'/buy_ticket'} exact component={BuyTicketContainer} />
-              <Route path={'/profile'} exact component={ProfileContainer} />
+              <Route path={PROFILE_URL} exact component={ProfileContainer} />
+              <Route path={REGISTER_URL} exact component={RegisterContainer} />
 
 
               <Route path={PROGRAM_URL} exact component={ProgramContainer} />

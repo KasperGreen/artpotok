@@ -9,5 +9,6 @@ export default {
   name: '',
   email: '',
   id: '',
-  is_login_progress: false
+  is_login_progress: false,
+  is_register_progress: false
 }

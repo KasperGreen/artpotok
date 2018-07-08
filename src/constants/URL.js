@@ -5,4 +5,6 @@ export const PROGRAM_URL = '/program',
   VJ_URL = PROGRAM_URL + '/vj',
   MASTER_CLASS_URL = PROGRAM_URL + '/master-class',
   PRACTICE_URL = PROGRAM_URL + '/practice',
-  TECHNO_ASHRAM_URL = PROGRAM_URL + '/techno-ashram'
+  TECHNO_ASHRAM_URL = PROGRAM_URL + '/techno-ashram',
+  PROFILE_URL = '/profile',
+  REGISTER_URL = '/register'
