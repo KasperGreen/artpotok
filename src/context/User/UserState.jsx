@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import user_initial_state from 'context/User/user_initial_state'
 import UserContext from './UserContext'
 import Api from 'api/Api'
-import localforage from 'localforage'
+import localforageHelper from 'helpers/localforageHelper'
 
 export default function (WrappedComponent) {
   return class UserState extends Component {
@@ -75,11 +75,7 @@ export default function (WrappedComponent) {
 
     componentDidMount () {
 
-      localforage.getItem(this.constructor.name).then((data) => {
-        if (data) {
-          this.setState(data)
-        }
-      })
+      localforageHelper.connectState(this)
       Api.get('user', this, 'is_user_loading')
 
     }
