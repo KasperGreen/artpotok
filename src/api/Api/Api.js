@@ -2,7 +2,7 @@ import axios from 'axios'
 import localforage from 'localforage'
 import { API_URL } from 'constants/API'
 
-const http = axios.create(
+const httpRequest = axios.create(
   {
     withCredentials: true,
     responseEncoding: 'utf8',
@@ -12,15 +12,12 @@ const http = axios.create(
 
 class Api {
   get = (url, SummonerComponent, progress_prop_name) => {
-    console.log(' → ', SummonerComponent, ' ← SummonerComponent | ')
-
-    this.request({url, method: 'get'}, SummonerComponent, progress_prop_name)
+    return this.request({url, method: 'get'}, SummonerComponent, progress_prop_name)
   }
 
   post = (url, data, SummonerComponent, progress_prop_name) => {
 
-
-    this.request(
+    return this.request(
       {
         url,
         data,
@@ -32,44 +29,42 @@ class Api {
   }
   request = (config, SummonerComponent, progress_prop_name = 'is_in_progress') => {
 
-
     config.url = API_URL + config.url
 
-    console.log(' → ', config, ' ← config | ')
+    return new Promise((resolve, reject) => {
+      httpRequest(
+        config
+      )
+        .then((response) => {
 
-    http(
-      config
-    )
-      .then((response) => {
 
-        console.log(' → ', response.data, ' ← response.data | ')
-
-        SummonerComponent.setState(
-          (state) => {
-            const new_state = {
-              ...state,
-              ...response.data
+          SummonerComponent.setState(
+            (state) => {
+              const new_state = {
+                ...state,
+                ...response.data
+              }
+              localforage.setItem(SummonerComponent.constructor.name, new_state)
+              return new_state
             }
-            localforage.setItem(SummonerComponent.constructor.name, new_state)
-
-            return new_state
-          }
-        )
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
-      .finally(() => {
-        SummonerComponent.setState(
-          (state) => {
-            return {
-              ...state,
-              [progress_prop_name]: false
+          )
+          resolve(response)
+        })
+        .catch(function (error) {
+          reject(error)
+        })
+        .finally(() => {
+          SummonerComponent.setState(
+            (state) => {
+              return {
+                ...state,
+                [progress_prop_name]: false
+              }
             }
-          }
-        )
+          )
 
-      })
+        })
+    })
   }
 }
 
