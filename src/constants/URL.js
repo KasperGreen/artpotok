@@ -7,4 +7,6 @@ export const PROGRAM_URL = '/program',
   PRACTICE_URL = PROGRAM_URL + '/practice',
   TECHNO_ASHRAM_URL = PROGRAM_URL + '/techno-ashram',
   PROFILE_URL = '/profile',
+  LOGIN_URL = '/login',
+  LOGOUT_URL = '/logout',
   REGISTER_URL = '/register'

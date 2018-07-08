@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import menu from './data/page_header_menu'
 import Container from 'components/Container'
 import userContextConnection from 'context/User/userContextConnection'
+import { LOGIN_URL, PROFILE_URL } from 'constants/URL'
 
 @userContextConnection('user')
 export default class PageHeader extends Component {
@@ -52,7 +53,7 @@ export default class PageHeader extends Component {
                   {is_guest
                    ?
                    <NavLink
-                     to={'/login'}
+                     to={LOGIN_URL}
                      activeStyle={{pointerEvents: 'none'}}
                      className='PageHeader-menu-item-link'
                      activeClassName='PageHeader-menu-item-link-active'
@@ -61,12 +62,12 @@ export default class PageHeader extends Component {
                    </NavLink>
                    :
                    <NavLink
-                     to={'/logout'}
+                     to={PROFILE_URL}
                      activeStyle={{pointerEvents: 'none'}}
                      className='PageHeader-menu-item-link'
                      activeClassName='PageHeader-menu-item-link-active'
                    >
-                     Выйти
+                     Профиль
                    </NavLink>
                   }
 

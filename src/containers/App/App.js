@@ -21,6 +21,8 @@ import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
 import {
   LECTURE_URL,
+  LOGIN_URL,
+  LOGOUT_URL,
   MASTER_CLASS_URL,
   MUSIC_URL,
   PRACTICE_URL,
@@ -84,11 +86,12 @@ class App extends Component {
             <Switch>
               <Route path={'/'} exact component={Main} />
               <Route path={'/about'} exact component={AboutContainer} />
-              <Route path={'/logout'} exact component={LogoutContainer} />
-              <Route path={'/login'} exact component={LoginContainer} />
               <Route path={'/participation'} exact component={ParticipationContainer} />
               <Route path={'/buy_ticket'} exact component={BuyTicketContainer} />
+
               <Route path={PROFILE_URL} exact component={ProfileContainer} />
+              <Route path={LOGIN_URL} exact component={LoginContainer} />
+              <Route path={LOGOUT_URL} exact component={LogoutContainer} />
               <Route path={REGISTER_URL} exact component={RegisterContainer} />
 
 
