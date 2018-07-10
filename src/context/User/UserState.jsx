@@ -36,7 +36,7 @@ export default function (WrappedComponent) {
     }
 
     authAttempt = (user_authorization_data) => {
-      return Api.post('user/login', user_authorization_data, this, 'is_login_progress')
+      return Api.post('user/login', user_authorization_data, this, {progress_prop_name: 'is_login_progress'})
     }
     hasAllRoles = (roles_array) => {
       const {
@@ -67,16 +67,16 @@ export default function (WrappedComponent) {
       return roles.includes(role_name)
     }
     logout = () => {
-      return Api.get('user/logout', this, 'is_logout_progress')
+      return Api.get('user/logout', this, {progress_prop_name: 'is_logout_progress'})
     }
     register = (registration_data) => {
-      return Api.post('user/register', registration_data, this, 'is_register_progress')
+      return Api.post('user/register', registration_data, this, {progress_prop_name: 'is_register_progress'})
     }
 
     componentDidMount () {
 
       localforageHelper.connectState(this)
-      Api.get('user', this, 'is_user_loading')
+      Api.get('user', this, {progress_prop_name: 'is_user_loading'})
 
     }
 

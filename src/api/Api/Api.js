@@ -11,11 +11,11 @@ const httpRequest = axios.create(
 )
 
 class Api {
-  get = (url, SummonerComponent, progress_prop_name) => {
-    return this.request({url, method: 'get'}, SummonerComponent, progress_prop_name)
+  get = (url, ControlledComponent, params) => {
+    return this.request({url, method: 'get'}, ControlledComponent, params)
   }
 
-  post = (url, data, SummonerComponent, progress_prop_name) => {
+  post = (url, data, ControlledComponent, params) => {
 
     return this.request(
       {
@@ -23,28 +23,32 @@ class Api {
         data,
         method: 'post'
       },
-      SummonerComponent,
-      progress_prop_name
+      ControlledComponent,
+      params
     )
   }
-  request = (config, SummonerComponent, progress_prop_name = 'is_in_progress') => {
-
+  request = (config, ControlledComponent, params) => {
+    const {
+      progress_prop_name = 'is_in_progress'
+    } = params
     config.url = API_URL + config.url
 
     return new Promise((resolve, reject) => {
       httpRequest(
-        config
+        {
+          ...config,
+          ...params
+        }
       )
         .then((response) => {
 
-
-          SummonerComponent.setState(
+          ControlledComponent.setState(
             (state) => {
               const new_state = {
                 ...state,
                 ...response.data
               }
-              localforage.setItem(SummonerComponent.constructor.name, new_state)
+              localforage.setItem(ControlledComponent.constructor.name, new_state)
               return new_state
             }
           )
@@ -54,7 +58,7 @@ class Api {
           reject(error)
         })
         .finally(() => {
-          SummonerComponent.setState(
+          ControlledComponent.setState(
             (state) => {
               return {
                 ...state,
