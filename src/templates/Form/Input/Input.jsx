@@ -116,6 +116,7 @@ export default class Input extends Component {
     value: PropTypes.any,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
+    label: PropTypes.node,
     ControlledComponent: PropTypes.object
   }
 
