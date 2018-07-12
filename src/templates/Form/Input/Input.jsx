@@ -13,12 +13,11 @@ export default class Input extends Component {
           phone,
           email,
           password,
+          file,
           required,
           errors,
           ...other_props
         },
-        getName,
-        getValueObjectData,
         getErrors
       } = this,
       input_errors = getErrors() || [],
@@ -26,9 +25,10 @@ export default class Input extends Component {
         type: 'text'
       }
     if (number) additional_props.type = 'number'
-    if (phone) additional_props.type = 'phone'
-    if (email) additional_props.type = 'email'
-    if (password) additional_props.type = 'password'
+    else if (phone) additional_props.type = 'phone'
+    else if (email) additional_props.type = 'email'
+    else if (password) additional_props.type = 'password'
+    else if (file) additional_props.type = 'file'
 
     return (
       <div className='Input'>
@@ -37,12 +37,10 @@ export default class Input extends Component {
           <div className='Input-inner'>
             <InputHandlers {...{
               ...additional_props,
-              ...other_props,
-              getName,
-              getValueObjectData
+              ...other_props
             }}
             >
-              <input />
+              <input ref={this.element} />
             </InputHandlers>
             <div>{input_errors.map((error, key) => {
               return <div className='Input-error' key={key}>{error}</div>
@@ -54,12 +52,13 @@ export default class Input extends Component {
     )
   }
 
+  element = React.createRef()
   getErrors = () => {
     const {
-      getName,
       props: {
+        name,
         errors: {
-          [getName()]: input_errors
+          [name]: input_errors
         } = {}
       }
     } = this
@@ -67,19 +66,6 @@ export default class Input extends Component {
     return input_errors
   }
 
-  getName = () => {
-    const {
-        props: {
-          name
-        },
-        getValueObjectData
-      } = this,
-      data_from_object = getValueObjectData()
-    if (_.some(data_from_object)) {
-      return data_from_object.name
-    }
-    return name
-  }
   getValueObjectData = () => {
     const {
         props: {
@@ -112,7 +98,9 @@ export default class Input extends Component {
     phone: PropTypes.bool,
     number: PropTypes.bool,
     email: PropTypes.bool,
+    file: PropTypes.bool,
     password: PropTypes.bool,
+    name: PropTypes.string.isRequired,
     value: PropTypes.any,
     disabled: PropTypes.bool,
     required: PropTypes.bool,

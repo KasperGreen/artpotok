@@ -8,30 +8,35 @@ export default class InputHandlers extends PureComponent {
 
   render () {
     const {
-      props: {
-        children,
-        ControlledComponent,
-        onInputChange,
-        onUpdateObject,
-        onUpdateValue,
-        active_value,
-        onChangeValue,
+        props: {
+          children,
+          ControlledComponent,
+          onInputChange,
+          onUpdateObject,
+          onUpdateValue,
+          active_value,
+          onChangeValue,
+
+          ...props
+        },
+        onChange,
         getValueObjectData,
-        getName,
-        ...props
-      },
-      onChange,
-      getDefaultValue,
-    } = this
+        getDefaultValue,
+      } = this,
+      result_props = {
+        ...props,
+        ...getValueObjectData(),
+        ...getDefaultValue()
+      }
+
+    if (props.type === 'file') {
+      delete result_props.value
+      delete result_props.defaultValue
+    }
 
     return (
       <Decorator {...{onChange}}>
-        <Decorator {...{
-          ...props,
-          ...getValueObjectData(),
-          ...getDefaultValue(),
-
-        }} >
+        <Decorator {...result_props} >
           {children}
         </Decorator>
       </Decorator>
@@ -50,27 +55,62 @@ export default class InputHandlers extends PureComponent {
     }
   }
 
+  getValueObjectData = () => {
+    const {
+      props: {
+        name,
+        ControlledComponent: {
+          state: {
+            form: {
+              [name]: value
+            },
+          }
+        }
+      }
+    } = this
+
+    return {name, value}
+  }
+
   onChange = (e) => {
-    const {value} = e.target
-    this.onChangeValue(value)
+    const {
+      props: {
+        type,
+        multiple
+      }
+    } = this
+    const {value, files} = e.target
+
+    this.onChangeValue(type === 'file'
+                       ? multiple
+                         ? files : files[0]
+                       : value)
   }
   onChangeValue = (value) => {
 
     const {
-        props:
-          {onInputChange, onUpdateValue, onUpdateObject, getName, ControlledComponent},
-      } = this,
-      name = getName()
+      props:
+        {
+          name,
+          onInputChange,
+          onUpdateValue,
+          onUpdateObject,
+          ControlledComponent
+        },
+    } = this
 
     onInputChange(name, value)
     onUpdateObject({[name]: value})
     onUpdateValue(value)
-    if(ControlledComponent) {
+    if (ControlledComponent) {
       ControlledComponent.setState(
         (state) => {
           return {
             ...state,
-            ...{[name]: value}
+            form: {
+              ...state.form,
+              [name]: value
+            }
           }
         }
       )

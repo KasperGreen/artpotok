@@ -4,6 +4,7 @@ import PageTitle from 'components/PageTitle/PageTitle'
 import { Link } from 'react-router-dom'
 import { MUSIC_URL } from 'constants/URL'
 import Container from 'components/Container'
+import NewStageForm from 'components/NewStageForm'
 
 export default class ProgramMusic extends Component {
   render () {
@@ -19,6 +20,7 @@ export default class ProgramMusic extends Component {
               <li><Link to={MUSIC_URL + '/digital'}>Электронная сцена</Link></li>
             </ul>
           </nav>
+          <NewStageForm />
         </Container>
       </div>
     )
