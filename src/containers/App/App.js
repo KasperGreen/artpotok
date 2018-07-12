@@ -60,7 +60,8 @@ Moment.globalLocale = 'ru'
 class App extends Component {
 
   render () {
-
+  console.log(' → ', process.env, ' ← process.env | ')
+  
     return (
       <AppContext.Provider value={{}}>
         <Router>
