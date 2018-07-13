@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import FormContextConnector from 'ui/Form/FormContextConnector'
 import InputHandlers from 'decorators/InputHandlers'
-import FormInputErrors from 'ui/Form/FormInputErrors'
 import PropTypes from 'prop-types'
 import './FormInput.css'
+import FormElementWrapper from 'ui/Form/FormElementWrapper'
+
 @FormContextConnector
 export default class FormInput extends Component {
   render () {
@@ -21,9 +22,7 @@ export default class FormInput extends Component {
           errors,
           ...other_props
         },
-        getErrors
       } = this,
-      input_errors = getErrors() || [],
       additional_props = {
         type: 'text'
       }
@@ -35,38 +34,19 @@ export default class FormInput extends Component {
     else if (checkbox) additional_props.type = 'checkbox'
 
     return (
-      <div className='FormInput'>
-        <label>
-          <div>{label}</div>
-          <div className='FormInput-inner'>
-            <InputHandlers {...{
-              ...additional_props,
-              ...other_props
-            }}
-            >
-              <input ref={this.element} />
-            </InputHandlers>
-            <FormInputErrors {...{errors: input_errors}} />
-          </div>
-
-        </label>
-      </div>
+      <FormElementWrapper {...this.props}>
+        <InputHandlers {...{
+          ...additional_props,
+          ...other_props
+        }}
+        >
+          <input ref={this.element} />
+        </InputHandlers>
+      </FormElementWrapper>
     )
   }
 
   element = React.createRef()
-  getErrors = () => {
-    const {
-      props: {
-        name,
-        errors: {
-          [name]: input_errors
-        } = {}
-      }
-    } = this
-
-    return input_errors
-  }
   static propTypes = {
     phone: PropTypes.bool,
     checkbox: PropTypes.bool,

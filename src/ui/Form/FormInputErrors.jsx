@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
+import './FormInputErrors.css'
 export default class FormInputErrors extends Component {
   render () {
     const {
@@ -10,10 +10,10 @@ export default class FormInputErrors extends Component {
     } = this
     if (!errors) return false
     return (
-      <ul className='FormInput-errors'>
+      <ul className='FormInputErrors'>
         {errors.map((error, key) => {
           return (
-            <li key={key} className='FormInput-errors-error'>
+            <li key={key} className='FormInputErrors-error'>
               {error}
             </li>
           )

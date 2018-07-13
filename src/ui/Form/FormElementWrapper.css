@@ -1,0 +1,6 @@
+.FormElementWrapper {
+  margin-top: 10px;
+  &-inner {
+    display: flex;
+  }
+}

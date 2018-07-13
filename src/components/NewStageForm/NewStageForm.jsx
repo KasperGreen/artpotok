@@ -7,16 +7,11 @@ import Form from 'ui/Form'
 
 export default class NewStageForm extends Component {
   state = {
-    form: {
-      title: '',
-      name: '',
-      description: '',
-      image: '',
-    },
     created: false,
     id: false,
     description: false,
     name: false,
+    upload_progress: false,
     title: false,
     image: false,
     is_in_progress: false,
@@ -25,14 +20,19 @@ export default class NewStageForm extends Component {
   render () {
     const {
       state: {
-        is_in_progress
+        is_in_progress,
+        upload_progress,
+        created,
+        name
       },
       onSubmit
     } = this
 
+    if (created) return <div>Сцена <strong>{name}</strong> создана</div>
+
     return (
       <div className='NewStageForm'>
-        <Form {...{onSubmit}}>
+        <Form {...{onSubmit, progress: upload_progress}}>
           <FormInput
             name={'name'}
             required
@@ -54,7 +54,7 @@ export default class NewStageForm extends Component {
             label={'Изображение'}
             name={'image'}
           />
-          <button>Создать</button>
+          <button disabled={is_in_progress}>Создать</button>
         </Form>
         {is_in_progress && <h1>Данные отправляются</h1>}
       </div>
@@ -62,7 +62,7 @@ export default class NewStageForm extends Component {
   }
 
   onSubmit = (data) => {
-    Api.put('stage', data, this, 'is_in_progress')
+    Api.put('stages', data, this, {progress_prop_name: 'is_in_progress'})
   }
 
   componentDidMount () {

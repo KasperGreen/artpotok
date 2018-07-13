@@ -1,0 +1,8 @@
+.FormProgress {
+  height: 22px;
+  background: #f2dede;
+  &-bar {
+    background: green;
+    height: 100%;
+  }
+}

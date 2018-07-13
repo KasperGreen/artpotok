@@ -17,8 +17,6 @@ class Api {
     const data = new FormData()
 
     forEach(raw_data, (value, key) => {
-      console.log(' → ', key, value, ' ← key, value | ')
-
       data.append(key, value)
     })
     return data
@@ -38,27 +36,43 @@ class Api {
       params
     )
   }
-  put = (url, raw_data = [], ...other_attributes) => {
+  put = (url, raw_data = [], ControlledComponent, params) => {
 
     const data = this.generateFormData(raw_data),
       config = {
         url,
         data,
-        headers: { 'content-type': 'multipart/form-data' },
+        headers: {'content-type': 'multipart/form-data'},
         method: 'post',
         onUploadProgress: function (progressEvent) {
-          let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-          console.log(' → ', percentCompleted, ' ← percentCompleted | ')
+          let upload_progress = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+          ControlledComponent.setState(
+            (state) => {
+              return {
+                ...state,
+                upload_progress
+              }
+            }
+          )
         }
       }
-    console.log(' → ', data, ' ← data | ')
 
-    return this.request(config, ...other_attributes)
+    return this.request(config, ControlledComponent, params)
   }
   request = (config, ControlledComponent, params) => {
     const {
       progress_prop_name = 'is_in_progress'
     } = params
+
+    ControlledComponent.setState(
+      (state) => {
+        return {
+          ...state,
+          [progress_prop_name]: true
+
+        }
+      }
+    )
 
     return new Promise((resolve, reject) => {
       httpRequest(
