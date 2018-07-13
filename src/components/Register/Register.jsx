@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import './Register.css'
 import Container from 'components/Container'
-import InputEmail from 'templates/Form/Input/InputEmail'
-import InputPassword from 'templates/Form/Input/InputPassword'
 import userContextConnection from 'context/User/userContextConnection'
-import InputText from 'templates/Form/Input/InputText'
+import Form from 'ui/Form'
+import FormInput from 'ui/Form/FormInput'
+import PropTypes from 'prop-types'
 
 @userContextConnection
 export default class Register extends Component {
   state = {
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
     errors: {}
   }
 
@@ -22,93 +18,87 @@ export default class Register extends Component {
         is_register_progress
       },
       state: {
-        email,
-        password,
-        password_confirmation,
-        name,
         errors
       },
-      onUpdateObject,
       onSubmit
     } = this
+
     return (
       <div className='Register'>
         <Container>
-          <form {...{onSubmit}} autoComplete="off">
+          <Form {...{onSubmit, errors}} autoComplete="off">
             <h1>Регистрация</h1>
             <div>
-              <InputText
+              <FormInput
+                name={'name'}
                 label={'Отображаемое имя'}
                 autoComplete='usertitle'
                 placeholder={'Иван Иванов'}
-                value={{name}}
                 required
-                {...{onUpdateObject, errors}}
               />
             </div>
             <div>
-              <InputEmail
+              <FormInput
+                email
+                name={'email'}
                 label={'Адрес электронной почты (используется для авторизации)'}
                 autoComplete='username'
-                value={{email}}
                 required
-                {...{onUpdateObject, errors}}
               />
             </div>
             <div>
-              <InputPassword
+              <FormInput
+                password
+                name={'password'}
                 label={'Пароль'}
                 autoComplete='password'
-                value={{password}}
                 required
-                {...{onUpdateObject, errors}}
               />
             </div>
             <div>
-              <InputPassword
+              <FormInput
+                password
+                name={'password_confirmation'}
                 label={'Повтор пароля'}
                 autoComplete='password'
-                value={{password_confirmation}}
                 required
-                {...{onUpdateObject, errors}}
               />
             </div>
             <button disabled={is_register_progress}>Зарегистрироваться</button>
             {is_register_progress && <div>Запрос регистрации</div>}
-          </form>
+          </Form>
         </Container>
       </div>
     )
   }
 
-  onSubmit = (e) => {
-    e.preventDefault()
+  onSubmit = (registration_data) => {
     const {
-      state: {
-        password, email, name, password_confirmation
+      props: {
+        register
       }
     } = this
-    this.props.register({password, email, name, password_confirmation})
-        .catch(
-          (error) => {
-            const {
-              response: {
-                data: {
-                  errors
-                } = {}
+    register(registration_data)
+      .catch(
+        (error) => {
+          const {
+            response: {
+              data: {
+                errors
               } = {}
-            } = error
+            } = {}
+          } = error
 
-            this.setState(
-              (state) => {
-                return {
-                  ...state,
-                  errors
-                }
+          this.setState(
+            (state) => {
+              return {
+                ...state,
+                errors
               }
-            )
+            }
+          )
 
-          })
+        })
   }
 
   onUpdateObject = (new_data) => {
@@ -121,4 +111,8 @@ export default class Register extends Component {
       }
     )
   }
+  static propTypes = {
+    register: PropTypes.func,
+  }
+
 }

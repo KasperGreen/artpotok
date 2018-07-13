@@ -1,0 +1,16 @@
+.FormInput {
+  margin-top: 10px;
+  &-inner {
+    display: flex;
+  }
+  &-errors {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &-error {
+      color: red;
+      padding-left: 12px;
+    }
+  }
+
+}

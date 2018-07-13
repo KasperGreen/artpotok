@@ -57,19 +57,21 @@ export default class InputHandlers extends PureComponent {
 
   getValueObjectData = () => {
     const {
-      props: {
-        name,
-        ControlledComponent: {
-          state: {
-            form: {
-              [name]: value
-            },
+        props: {
+          name,
+          ControlledComponent: {
+            state: {
+              form: {
+                [name]: value
+              },
+            }
           }
-        }
-      }
-    } = this
+        },
+        getDefaultValue
+      } = this,
+      defaultValue = getDefaultValue()
 
-    return {name, value}
+    return {name, value, defaultValue}
   }
 
   onChange = (e) => {
@@ -79,13 +81,20 @@ export default class InputHandlers extends PureComponent {
         multiple
       }
     } = this
-    const {value, files} = e.target
+    const {value, files, checked} = e.target
 
-    this.onChangeValue(type === 'file'
-                       ? multiple
-                         ? files : files[0]
-                       : value)
+    let result_value = value
+
+    if (type === 'checkbox') {
+      result_value = checked
+
+    } else if (type === 'file') {
+      result_value = multiple ? files : files[0]
+    }
+
+    this.onChangeValue(result_value)
   }
+
   onChangeValue = (value) => {
 
     const {

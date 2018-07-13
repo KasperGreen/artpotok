@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './NewStageForm.css'
 import Api from 'api/Api'
-import Input from 'templates/Form/Input'
+import FormInput from 'ui/Form/FormInput'
+import Form from 'ui/Form'
 
 export default class NewStageForm extends Component {
   state = {
@@ -31,47 +32,37 @@ export default class NewStageForm extends Component {
 
     return (
       <div className='NewStageForm'>
-        <form {...{onSubmit}}>
-          <Input
+        <Form {...{onSubmit}}>
+          <FormInput
             name={'name'}
             required
             label={'Имя латиницей для URL'}
-            ControlledComponent={this}
           />
-          <Input
+          <FormInput
             required
             name={'title'}
             label={'Название сцены'}
-            ControlledComponent={this}
           />
-          <Input
+          <FormInput
             required
             name={'description'}
             label={'Описание сцены'}
-            ControlledComponent={this}
           />
-          <Input
+          <FormInput
             file
             required
             label={'Изображение'}
             name={'image'}
-            ControlledComponent={this}
           />
           <button>Создать</button>
-        </form>
+        </Form>
         {is_in_progress && <h1>Данные отправляются</h1>}
       </div>
     )
   }
 
-  onSubmit = (e) => {
-    e.preventDefault()
-    const {
-      state: {
-        form
-      }
-    } = this
-    Api.put('stage', form, this, 'is_in_progress')
+  onSubmit = (data) => {
+    Api.put('stage', data, this, 'is_in_progress')
   }
 
   componentDidMount () {

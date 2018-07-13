@@ -3,6 +3,8 @@ import './Login.css'
 import Container from 'components/Container'
 import { Link, Redirect } from 'react-router-dom'
 import { REGISTER_URL } from 'constants/URL'
+import Form from 'ui/Form'
+import FormInput from 'ui/Form/FormInput'
 
 export default class Login extends Component {
   state = {
@@ -14,11 +16,6 @@ export default class Login extends Component {
   render () {
     const {
       onSubmit,
-      onChange,
-      onCheckboxChange,
-      state: {
-        remember, password, email
-      },
       props: {
         is_login_progress, error_text,
         is_logged_in
@@ -30,30 +27,27 @@ export default class Login extends Component {
     return (
       <div className='Login'>
         <Container>
-          <form {...{onSubmit}}>
+          <Form {...{onSubmit}}>
             <div>
-              <input
-                autoComplete='username' {...{onChange}}
-                type={'text'}
-                value={email}
+              <FormInput
+                label={'Почта'}
                 name={'email'}
-                placeholder={'email'}
+                autoComplete='username'
+                placeholder={'example@email.com'}
               />
             </div>
             <div>
-              <input
-                autoComplete='current-password' {...{onChange}}
-                type={'password'}
-                value={password}
+              <FormInput
+                label={'Пароль'}
+                password
+                autoComplete='current-password'
                 name={'password'}
-                placeholder={'password'}
               />
             </div>
             <div>
-              <input {...{onChange: onCheckboxChange}} type={'checkbox'}
-                     value={remember}
-                     defaultChecked={remember}
-                     name={'remember'}
+              <FormInput
+                checkbox
+                name={'remember'}
               /> Запомнить
             </div>
             <div>
@@ -63,7 +57,7 @@ export default class Login extends Component {
             <div>
               <Link to={REGISTER_URL}>Регистрация</Link>
             </div>
-          </form>
+          </Form>
         </Container>
       </div>
     )
@@ -96,28 +90,18 @@ export default class Login extends Component {
     )
 
   }
-  onSubmit = (e) => {
+  onSubmit = (user_data) => {
     const {
       props: {
         authAttempt
       },
-      state: {
-        email,
-        password,
-        remember
-      }
     } = this
-    e.preventDefault()
 
-    authAttempt(
-      {
-        email,
-        password,
-        remember
-      }).then((data) => {
-        console.log(' → ', data, ' ← data | ')
+    authAttempt(user_data)
+      .then((response_data) => {
+        console.log(' → ', response_data, ' ← response_data | ')
 
-    })
+      })
 
   }
 }

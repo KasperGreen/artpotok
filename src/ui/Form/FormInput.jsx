@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import './Input.css'
+import FormContextConnector from 'ui/Form/FormContextConnector'
 import InputHandlers from 'decorators/InputHandlers'
-import _ from 'lodash'
+import FormInputErrors from 'ui/Form/FormInputErrors'
 import PropTypes from 'prop-types'
-
-export default class Input extends Component {
+import './FormInput.css'
+@FormContextConnector
+export default class FormInput extends Component {
   render () {
+
     const {
         props: {
           label,
@@ -14,7 +16,8 @@ export default class Input extends Component {
           email,
           password,
           file,
-          required,
+          checkbox,
+          form,
           errors,
           ...other_props
         },
@@ -29,12 +32,13 @@ export default class Input extends Component {
     else if (email) additional_props.type = 'email'
     else if (password) additional_props.type = 'password'
     else if (file) additional_props.type = 'file'
+    else if (checkbox) additional_props.type = 'checkbox'
 
     return (
-      <div className='Input'>
+      <div className='FormInput'>
         <label>
           <div>{label}</div>
-          <div className='Input-inner'>
+          <div className='FormInput-inner'>
             <InputHandlers {...{
               ...additional_props,
               ...other_props
@@ -42,9 +46,7 @@ export default class Input extends Component {
             >
               <input ref={this.element} />
             </InputHandlers>
-            <div>{input_errors.map((error, key) => {
-              return <div className='Input-error' key={key}>{error}</div>
-            })}</div>
+            <FormInputErrors {...{errors: input_errors}} />
           </div>
 
         </label>
@@ -65,37 +67,9 @@ export default class Input extends Component {
 
     return input_errors
   }
-
-  getValueObjectData = () => {
-    const {
-        props: {
-          value,
-          active_value
-        },
-        isValidValueObject
-      } = this,
-      result_object = {}
-
-    if (isValidValueObject(value)) {
-      result_object.name = _.keys(value)[0]
-      result_object.value = _.values(value)[0]
-    }
-
-    if (isValidValueObject(active_value)) {
-
-      result_object.name = _.keys(active_value)[0]
-      result_object.active_value = _.values(active_value)[0]
-    }
-
-    return result_object
-  }
-  isValidValueObject = (value) => {
-
-    return _.isObject(value) && _.size(value) === 1
-  }
-
   static propTypes = {
     phone: PropTypes.bool,
+    checkbox: PropTypes.bool,
     number: PropTypes.bool,
     email: PropTypes.bool,
     file: PropTypes.bool,
