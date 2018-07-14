@@ -17,7 +17,8 @@ export default class Login extends Component {
     const {
       onSubmit,
       props: {
-        is_login_progress, error_text,
+        is_login_progress,
+        error_text,
         is_logged_in
       }
     } = this
