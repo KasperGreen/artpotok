@@ -13,6 +13,13 @@ const httpRequest = axios.create(
 )
 
 class Api {
+  delete = (url, ControlledComponent, params) => {
+    const config = {
+      url,
+      method: 'delete'
+    }
+    return this.request(config, ControlledComponent, params)
+  }
   generateFormData = (raw_data) => {
     const data = new FormData()
 
@@ -59,7 +66,7 @@ class Api {
 
     return this.request(config, ControlledComponent, params)
   }
-  request = (config, ControlledComponent, params) => {
+  request = (config, ControlledComponent, params = {}) => {
     const {
       progress_prop_name = 'is_in_progress'
     } = params

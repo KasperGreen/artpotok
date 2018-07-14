@@ -1,25 +1,24 @@
 import React, { Component } from 'react'
 import './ProgramMusic.css'
 import PageTitle from 'components/PageTitle/PageTitle'
-import { Link } from 'react-router-dom'
-import { MUSIC_URL } from 'constants/URL'
 import Container from 'components/Container'
 import NewStageForm from 'components/NewStageForm'
+import ProgramMusicStages from 'components/ProgramMusic/ProgramMusicStages'
 
 export default class ProgramMusic extends Component {
   render () {
+    const {
+      props: {
+        stages_list
+      }
+    } = this
     return (
       <div className='ProgramMusic'>
         <Container>
           <PageTitle>
-            Музыкальная сцена
+            Музыкальные сцены
           </PageTitle>
-          <nav>
-            <ul>
-              <li><Link to={MUSIC_URL + '/life'}>Живая сцена</Link></li>
-              <li><Link to={MUSIC_URL + '/digital'}>Электронная сцена</Link></li>
-            </ul>
-          </nav>
+          <ProgramMusicStages {...{stages_list}} />
           <NewStageForm />
         </Container>
       </div>

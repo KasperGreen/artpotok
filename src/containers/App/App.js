@@ -53,10 +53,12 @@ import ProfileContainer from 'containers/Profile'
 import LogoutContainer from 'containers/LogoutContainer'
 import RegisterContainer from 'containers/RegisterContainer'
 import Test from 'containers/Test'
+import StagesState from 'context/Stages/StagesState'
 
 Moment.globalLocale = 'ru'
 
 @UserState
+@StagesState
 class App extends Component {
 
   render () {
