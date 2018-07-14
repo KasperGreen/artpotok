@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import './NewStageForm.css'
 import Api from 'api/Api'
 import FormInput from 'ui/Form/FormInput'
