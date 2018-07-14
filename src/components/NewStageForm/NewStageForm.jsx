@@ -4,6 +4,7 @@ import './NewStageForm.css'
 import Api from 'api/Api'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
+import FormTextArea from 'ui/Form/FormTextArea'
 
 export default class NewStageForm extends Component {
   state = {
@@ -43,7 +44,7 @@ export default class NewStageForm extends Component {
             name={'title'}
             label={'Название сцены'}
           />
-          <FormInput
+          <FormTextArea
             required
             name={'description'}
             label={'Описание сцены'}
@@ -66,6 +67,5 @@ export default class NewStageForm extends Component {
   }
 
   componentDidMount () {
-    console.log(' → ', ReactDOM.findDOMNode(this).querySelector('form input'), ' ← ReactDOM.findDOMNode(this) | ')
   }
 }
