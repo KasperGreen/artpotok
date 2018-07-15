@@ -45,6 +45,8 @@ class Api {
   }
   put = (url, raw_data = [], ControlledComponent, params) => {
 
+    const {progress_prop_name = 'upload_progress'} = params
+
     const data = this.generateFormData(raw_data),
       config = {
         url,
@@ -57,7 +59,7 @@ class Api {
             (state) => {
               return {
                 ...state,
-                upload_progress
+                [progress_prop_name]: upload_progress
               }
             }
           )
@@ -68,7 +70,9 @@ class Api {
   }
   request = (config, ControlledComponent, params = {}) => {
     const {
-      progress_prop_name = 'is_in_progress'
+      progress_prop_name = 'is_in_progress',
+      errors_prop_name = 'errors',
+      data_section_name = false
     } = params
 
     ControlledComponent.setState(
@@ -92,17 +96,41 @@ class Api {
 
           ControlledComponent.setState(
             (state) => {
-              const new_state = {
-                ...state,
-                ...response.data
+
+              state[errors_prop_name] = false
+
+              if (data_section_name) {
+                state[data_section_name] = {...state[data_section_name], ...response.data}
               }
-              localforage.setItem(ControlledComponent.constructor.name, new_state)
-              return new_state
+              else {
+                state = {
+                  ...state,
+                  ...response.data
+                }
+              }
+              localforage.setItem(ControlledComponent.constructor.name, state)
+              return state
             }
           )
           resolve(response)
         })
         .catch(function (error) {
+          const {
+            response: {
+              data: {
+                errors
+              } = {}
+            } = {}
+          } = error
+
+          ControlledComponent.setState(
+            (state) => {
+              return {
+                ...state,
+                [errors_prop_name]: errors
+              }
+            }
+          )
           reject(error)
         })
         .finally(() => {

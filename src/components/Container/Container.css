@@ -1,4 +1,8 @@
 .Container {
   max-width: 120rem;
   margin: 0 auto;
+
+  @media(--mobile) {
+    max-width: 28rem;
+  }
 }

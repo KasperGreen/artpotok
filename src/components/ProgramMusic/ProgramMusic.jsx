@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import './ProgramMusic.css'
 import PageTitle from 'components/PageTitle/PageTitle'
 import Container from 'components/Container'
-import NewStageForm from 'components/NewStageForm'
 import ProgramMusicStages from 'components/ProgramMusic/ProgramMusicStages'
+import { Link } from 'react-router-dom'
+import { ADD_MUSIC_STAGE_URL } from 'constants/URL'
 
 export default class ProgramMusic extends Component {
   render () {
@@ -19,7 +20,9 @@ export default class ProgramMusic extends Component {
             Музыкальные сцены
           </PageTitle>
           <ProgramMusicStages {...{stages_list}} />
-          <NewStageForm />
+          <div>
+            <Link to={ADD_MUSIC_STAGE_URL}>Добавить новую сцену</Link>
+          </div>
         </Container>
       </div>
     )

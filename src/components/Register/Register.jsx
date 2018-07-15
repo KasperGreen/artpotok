@@ -101,16 +101,6 @@ export default class Register extends Component {
         })
   }
 
-  onUpdateObject = (new_data) => {
-    this.setState(
-      (state) => {
-        return {
-          ...state,
-          ...new_data
-        }
-      }
-    )
-  }
   static propTypes = {
     register: PropTypes.func,
   }

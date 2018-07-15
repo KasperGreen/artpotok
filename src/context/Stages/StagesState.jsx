@@ -10,7 +10,7 @@ export default function (WrappedComponent) {
 
     render () {
       const {
-        deleteStage, restoreStage
+        deleteStage, restoreStage, addStage
       } = this
 
       return (
@@ -18,7 +18,8 @@ export default function (WrappedComponent) {
           value={{
             ...this.state,
             deleteStage,
-            restoreStage
+            restoreStage,
+            addStage
           }}
         >
           <WrappedComponent />
@@ -26,6 +27,13 @@ export default function (WrappedComponent) {
       )
     }
 
+    addStage = (data) => {
+      return Api.put('stages', data, this, {
+        progress_prop_name: 'add_stage_progress',
+        errors_prop_name: 'add_form_errors',
+        data_section_name: 'stages_list'
+      })
+    }
     _loadStages = () => {
       Api.get('stages', this, {progress_prop_name: 'stages_loading'})
       return this
@@ -36,16 +44,8 @@ export default function (WrappedComponent) {
          .then(() => {
            this.setState(
              (state) => {
-               return {
-                 ...state,
-                 stages_list: {
-                   ...state.stages_list,
-                   [id]: {
-                     ...state.stages_list[id],
-                     deleted: true
-                   }
-                 },
-               }
+               state.stages_list[id].deleted = true
+               return state
              }
            )
          })
@@ -57,16 +57,8 @@ export default function (WrappedComponent) {
          .then(() => {
            this.setState(
              (state) => {
-               return {
-                 ...state,
-                 stages_list: {
-                   ...state.stages_list,
-                   [id]: {
-                     ...state.stages_list[id],
-                     deleted: false
-                   }
-                 },
-               }
+               state.stages_list[id].deleted = true
+               return state
              }
            )
          })

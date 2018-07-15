@@ -1,5 +1,6 @@
 export const PROGRAM_URL = '/program',
   MUSIC_URL = PROGRAM_URL + '/music',
+  ADD_MUSIC_STAGE_URL = MUSIC_URL + '/add-stage',
   LECTURE_URL = PROGRAM_URL + '/lecture',
   VIDEO_MAPPING_URL = PROGRAM_URL + '/video-mapping',
   VJ_URL = PROGRAM_URL + '/vj',

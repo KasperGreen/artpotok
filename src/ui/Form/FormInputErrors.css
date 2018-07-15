@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   &-error {
+    font-size: 8px;
     color: red;
     padding-left: 12px;
   }
