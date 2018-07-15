@@ -4,8 +4,8 @@ import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
-import { Redirect } from 'react-router-dom'
-import { MUSIC_URL } from 'constants/URL'
+import { Link } from 'react-router-dom'
+import { ADD_MUSIC_STAGE_URL, MUSIC_URL } from 'constants/URL'
 import _ from 'lodash'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
 
@@ -39,8 +39,16 @@ export default class NewStageForm extends Component {
 
     if (created) return (
       <div>
-        Сцена <strong>{name}</strong> создана
-        <Redirect to={[MUSIC_URL, name].join('/')} />
+        <div>
+          Сцена <strong>{name}</strong> создана. <Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link>
+        </div>
+        <div>
+          <Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link>
+        </div>
+        <div>
+          <Link to={ADD_MUSIC_STAGE_URL}>Создать другую сцену</Link>
+        </div>
+
       </div>)
 
     return (
