@@ -57,7 +57,7 @@ export default function (WrappedComponent) {
          .then(() => {
            this.setState(
              (state) => {
-               state.stages_list[id].deleted = true
+               state.stages_list[id].deleted = false
                return state
              }
            )
