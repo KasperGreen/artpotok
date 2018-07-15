@@ -21,6 +21,7 @@ import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
 import {
   ADD_MUSIC_STAGE_URL,
+  EDIT_MUSIC_STAGE_URL,
   LECTURE_URL,
   LOGIN_URL,
   LOGOUT_URL,
@@ -56,6 +57,7 @@ import RegisterContainer from 'containers/RegisterContainer'
 import Test from 'containers/Test'
 import StagesState from 'context/Stages/StagesState'
 import NewStageContainer from 'containers/NewStageContainer'
+import EditStageContainer from 'containers/EditStageContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -105,6 +107,7 @@ class App extends Component {
 
               <Route path={MUSIC_URL} exact component={ProgramMusicContainer} />
               <Route path={ADD_MUSIC_STAGE_URL} component={NewStageContainer} />
+              <Route path={EDIT_MUSIC_STAGE_URL + '/:id'} component={EditStageContainer} />
               <Route
                 path={MUSIC_URL + '/:stage'}
                 exact

@@ -10,7 +10,7 @@ export default function (WrappedComponent) {
 
     render () {
       const {
-        deleteStage, restoreStage, addStage
+        deleteStage, restoreStage, addStage, updateStage
       } = this
 
       return (
@@ -19,7 +19,8 @@ export default function (WrappedComponent) {
             ...this.state,
             deleteStage,
             restoreStage,
-            addStage
+            addStage,
+            updateStage
           }}
         >
           <WrappedComponent />
@@ -27,6 +28,10 @@ export default function (WrappedComponent) {
       )
     }
 
+    _loadStages = () => {
+      Api.get('stages', this, {progress_prop_name: 'stages_loading'})
+      return this
+    }
     addStage = (data) => {
       return Api.put('stages', data, this, {
         progress_prop_name: 'add_stage_progress',
@@ -34,11 +39,6 @@ export default function (WrappedComponent) {
         data_section_name: 'stages_list'
       })
     }
-    _loadStages = () => {
-      Api.get('stages', this, {progress_prop_name: 'stages_loading'})
-      return this
-    }
-
     deleteStage = (id) => {
       Api.delete(['stages', id].join('/'), this)
          .then(() => {
@@ -50,7 +50,6 @@ export default function (WrappedComponent) {
            )
          })
     }
-
     restoreStage = (id) => {
 
       Api.get(['stages/restore', id].join('/'), this)
@@ -62,6 +61,13 @@ export default function (WrappedComponent) {
              }
            )
          })
+    }
+    updateStage = (id, data) => {
+      return Api.put('/stages/update/' + id, data, this, {
+        progress_prop_name: 'update_stage_progress',
+        errors_prop_name: 'update_stage_form_errors',
+        data_section_name: 'stages_list'
+      })
     }
 
     componentDidMount () {

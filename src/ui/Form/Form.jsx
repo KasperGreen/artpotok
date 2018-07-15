@@ -53,6 +53,25 @@ export default class Form extends Component {
     onSubmit(form)
   }
 
+  componentDidMount () {
+    const {
+      props: {
+        default_form_data
+      }
+    } = this
+
+    if (default_form_data) {
+      this.setState(
+        (state) => {
+          return {
+            ...state,
+            form: default_form_data
+          }
+        }
+      )
+    }
+  }
+
   static defaultProps = {
     onSubmit: (data) => {
       console.log('onSubmit метод не задан у формы. Переданные данные в обработчик: → ', data, ' ← data | ')
@@ -61,7 +80,19 @@ export default class Form extends Component {
   }
   static propTypes = {
     children: PropTypes.node.isRequired,
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    default_form_data: PropTypes.object,
+    errors: PropTypes.oneOfType(
+      [
+        PropTypes.object,
+        PropTypes.bool
+      ]
+    ),
+    progress: PropTypes.oneOfType(
+      [
+        PropTypes.number,
+        PropTypes.bool
+      ])
   }
 
 }

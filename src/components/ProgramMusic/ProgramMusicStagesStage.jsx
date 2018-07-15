@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import './ProgramMusicStagesStage.css'
 import PropTypes from 'prop-types'
-import { MUSIC_URL } from 'constants/URL'
+import { EDIT_MUSIC_STAGE_URL, MUSIC_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
 import { IMAGES_URL } from 'constants/API'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
+import { withRouter } from 'react-router'
 
-
+@withRouter
 @stagesContextConnection('context')
 export default class ProgramMusicStagesStage extends Component {
   state = {
@@ -23,7 +24,8 @@ export default class ProgramMusicStagesStage extends Component {
         deleted
       },
       deleteStage,
-      restoreStage
+      restoreStage,
+      editStage
     } = this
 
     if (deleted) return (
@@ -43,6 +45,10 @@ export default class ProgramMusicStagesStage extends Component {
             {description}
           </div>
           <button onClick={deleteStage}>Delete</button>
+          <button
+            onClick={editStage}
+          >Редактировать
+          </button>
         </Link>
       </section>
     )
@@ -61,7 +67,19 @@ export default class ProgramMusicStagesStage extends Component {
     } = this
     deleteStage(id)
   }
+  editStage = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
 
+    const {
+      props: {
+        id,
+        history
+      }
+    } = this
+
+    history.push([EDIT_MUSIC_STAGE_URL, id].join('/'))
+  }
   restoreStage = (e) => {
     e.preventDefault()
     e.stopPropagation()

@@ -45,7 +45,12 @@ export default class FormElementWrapper extends Component {
   static propTypes = {
     children: PropTypes.node,
     label: PropTypes.string,
-    errors: PropTypes.array
+    errors: PropTypes.oneOfType(
+      [
+        PropTypes.object,
+        PropTypes.bool
+      ]
+    )
   }
 
 }
