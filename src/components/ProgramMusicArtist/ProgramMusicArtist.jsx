@@ -13,6 +13,7 @@ export default class ProgramMusicArtist extends Component {
           artist_name, getArtistByName
         }
       } = this,
+
       {title, description, sound_cloud_url, image} = getArtistByName(artist_name) || {}
 
 
