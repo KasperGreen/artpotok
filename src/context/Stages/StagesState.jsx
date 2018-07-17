@@ -3,6 +3,7 @@ import StagesContext from './StagesContext'
 import Api from 'api/Api'
 import localforageHelper from 'helpers/localforageHelper'
 import stages_initial_state from 'context/Stages/stages_initial_state'
+import _ from 'lodash'
 
 export default function (WrappedComponent) {
   return class StagesState extends Component {
@@ -10,7 +11,8 @@ export default function (WrappedComponent) {
 
     render () {
       const {
-        deleteStage, restoreStage, addStage, updateStage
+        deleteStage, restoreStage, addStage, updateStage,
+        getStageByName, getStageById
       } = this
 
       return (
@@ -20,7 +22,9 @@ export default function (WrappedComponent) {
             deleteStage,
             restoreStage,
             addStage,
-            updateStage
+            updateStage,
+            getStageByName,
+            getStageById
           }}
         >
           <WrappedComponent />
@@ -49,6 +53,28 @@ export default function (WrappedComponent) {
              }
            )
          })
+    }
+    getStageById = (stage_id) => {
+      const {
+        state: {
+          stages_list
+        }
+      } = this
+
+      return stages_list[stage_id]
+    }
+    getStageByName = (stage_name) => {
+      const {
+        state: {
+          stages_list
+        }
+      } = this,
+        filtred = _.filter(stages_list, ({name}) => {
+          return name === stage_name
+        })
+
+      return _.head(_.toArray(filtred))
+
     }
     restoreStage = (id) => {
 

@@ -1,0 +1,19 @@
+.ProgramMusicArtistsArtist {
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 20px;
+
+
+  &-link {
+    display: block;
+  }
+  &-title {
+
+  }
+  &-description {
+
+  }
+  &-image {
+
+  }
+}

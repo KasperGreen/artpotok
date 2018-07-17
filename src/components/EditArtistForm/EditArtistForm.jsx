@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './EditStageForm.css'
+import './EditArtistForm.css'
 import Form from 'ui/Form'
 import FormInput from 'ui/Form/FormInput'
 import FormTextArea from 'ui/Form/FormTextArea'
@@ -8,7 +8,7 @@ import _ from 'lodash'
 import { MUSIC_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
 
-export default class EditStageForm extends Component {
+export default class EditArtistForm extends Component {
   state = {
     updated: false
   }
@@ -17,18 +17,18 @@ export default class EditStageForm extends Component {
     const {
       onSubmit,
       props: {
-        update_stage_form_errors,
-        update_stage_progress,
+        update_artist_form_errors,
+        update_artist_progress,
         match: {
           params: {
             id
           }
         },
-        stages_list: {
+        artists_list: {
           [id]: {
             title, description, name
           } = {},
-          [id]: stage_data
+          [id]: artist_data
         }
       },
       state: {
@@ -47,35 +47,18 @@ export default class EditStageForm extends Component {
       </div>)
 
     return (
-      <div className='EditStageForm'>
+      <div className='EditArtistForm'>
         <Container>
-          {stage_data &&
+          {artist_data &&
           <Form {...{onSubmit}}
-                progress={update_stage_progress}
+                progress={update_artist_progress}
                 default_form_data={{title, description, name}}
-                errors={update_stage_form_errors}
+                errors={update_artist_form_errors}
           >
-            <FormInput
-              required
-              pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
-              label={'Имя для URL (не менять без крайней необходимости)'}
-              name='name'
-            />
-            <FormInput
-              required
-              label={'Название'}
-              name='title'
-            />
-            <FormTextArea
-              required
-              label={'Описание'}
-              name='description'
-            />
-            <FormInput
-              file
-              label={'Изображение'}
-              name='image'
-            />
+            <FormInput label={'Имя для URL (не менять без крайней необходимости)'} name='name' />
+            <FormInput label={'Название'} name='title' />
+            <FormTextArea label={'Описание'} name='description' />
+            <FormInput label={'Изображение'} file name='image' />
             <button>Сохранить</button>
           </Form>
           }
@@ -87,7 +70,7 @@ export default class EditStageForm extends Component {
   onSubmit = (data) => {
     const {
       props: {
-        updateStage,
+        updateArtist,
         match: {
           params: {
             id
@@ -96,7 +79,7 @@ export default class EditStageForm extends Component {
       }
     } = this
 
-    updateStage(id, data).then((response) => {
+    updateArtist(id, data).then((response) => {
       this.setState(
         (state) => {
           return {

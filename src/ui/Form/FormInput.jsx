@@ -60,6 +60,7 @@ export default class FormInput extends Component {
     required: PropTypes.bool,
     label: PropTypes.node,
     pattern: PropTypes.string,
+    placeholder: PropTypes.string,
     ControlledComponent: PropTypes.object
   }
 

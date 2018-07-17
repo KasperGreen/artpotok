@@ -20,7 +20,8 @@ import ProgramContainer from 'containers/ProgramContainer'
 import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
 import {
-  ADD_MUSIC_STAGE_URL,
+  ADD_MUSIC_ARTIST_URL,
+  ADD_MUSIC_STAGE_URL, EDIT_MUSIC_ARTIST_URL,
   EDIT_MUSIC_STAGE_URL,
   LECTURE_URL,
   LOGIN_URL,
@@ -58,11 +59,15 @@ import Test from 'containers/Test'
 import StagesState from 'context/Stages/StagesState'
 import NewStageContainer from 'containers/NewStageContainer'
 import EditStageContainer from 'containers/EditStageContainer'
+import NewArtistContainer from 'containers/NewArtistContainer'
+import EditArtistContainer from 'containers/EditArtistContainer'
+import ArtistsState from 'context/Artists/ArtistsState'
 
 Moment.globalLocale = 'ru'
 
 @UserState
 @StagesState
+@ArtistsState
 class App extends Component {
 
   render () {
@@ -106,10 +111,15 @@ class App extends Component {
               <Route path={PROGRAM_URL} exact component={ProgramContainer} />
 
               <Route path={MUSIC_URL} exact component={ProgramMusicContainer} />
+
               <Route path={ADD_MUSIC_STAGE_URL} component={NewStageContainer} />
               <Route path={EDIT_MUSIC_STAGE_URL + '/:id'} component={EditStageContainer} />
+
+              <Route path={ADD_MUSIC_ARTIST_URL + '/:stage_id'} component={NewArtistContainer} />
+              <Route path={EDIT_MUSIC_ARTIST_URL + '/:id'} component={EditArtistContainer} />
+
               <Route
-                path={MUSIC_URL + '/:stage'}
+                path={MUSIC_URL + '/:stage_name'}
                 exact
                 component={ProgramMusicStageContainer}
               />

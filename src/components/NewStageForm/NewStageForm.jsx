@@ -54,11 +54,15 @@ export default class NewStageForm extends Component {
     return (
       <div className='NewStageForm'>
         <Container>
-          <Form {...{onSubmit, progress: add_stage_progress, errors: add_form_errors}}>
+          <Form {...{
+            onSubmit,
+            progress: add_stage_progress,
+            errors: add_form_errors,
+          }}>
             <FormInput
               name={'name'}
               required
-              //pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
+              pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
               label={'Имя латиницей для URL'}
             />
             <FormInput
