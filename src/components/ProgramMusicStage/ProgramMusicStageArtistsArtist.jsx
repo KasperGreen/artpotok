@@ -5,8 +5,10 @@ import './ProgramMusicStageArtistsArtist.css'
 import PropTypes from 'prop-types'
 import { IMAGES_URL } from 'constants/API'
 import { withRouter } from 'react-router'
+import artistsContextConnection from 'context/Artists/artistsContextConnection'
 
 @withRouter
+@artistsContextConnection('context')
 export default class ProgramMusicStageArtistsArtist extends Component {
   render () {
     const {
@@ -29,7 +31,6 @@ export default class ProgramMusicStageArtistsArtist extends Component {
         Удалено. <button onClick={restoreArtist}>Restore</button>
       </div>
     )
-
 
     return (
       <section className='ProgramMusicArtistsArtist'>
@@ -73,7 +74,6 @@ export default class ProgramMusicStageArtistsArtist extends Component {
     e.stopPropagation()
 
     console.log(' → ', e, ' ← e | ')
-
 
     const {
       props: {

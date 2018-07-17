@@ -124,7 +124,7 @@ class App extends Component {
                 component={ProgramMusicStageContainer}
               />
               <Route
-                path={MUSIC_URL + '/:stage/:artist'}
+                path={MUSIC_URL + '/:stage_name/:artist_name'}
                 exact
                 component={ProgramMusicArtistContainer}
               />

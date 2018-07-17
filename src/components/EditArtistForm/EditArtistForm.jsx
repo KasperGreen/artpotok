@@ -7,7 +7,9 @@ import Container from 'components/Container'
 import _ from 'lodash'
 import { MUSIC_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
+import stagesContextConnection from 'context/Stages/stagesContextConnection'
 
+@stagesContextConnection('stage')
 export default class EditArtistForm extends Component {
   state = {
     updated: false
@@ -17,6 +19,9 @@ export default class EditArtistForm extends Component {
     const {
       onSubmit,
       props: {
+        stage: {
+          getStageById
+        },
         update_artist_form_errors,
         update_artist_progress,
         match: {
@@ -26,7 +31,7 @@ export default class EditArtistForm extends Component {
         },
         artists_list: {
           [id]: {
-            title, description, name
+            title, description, name, sound_cloud_url, stage_id,
           } = {},
           [id]: artist_data
         }
@@ -34,7 +39,19 @@ export default class EditArtistForm extends Component {
       state: {
         updated
       }
-    } = this
+    } = this,
+      stage = getStageById(stage_id)
+
+    if (updated) return (
+      <div>
+        <div>
+          Артист <strong>{name}</strong> Обновлён. <Link to={[MUSIC_URL, stage.name, name].join('/')}>Перейти к артисту.</Link>
+        </div>
+        <div>
+          <Link to={[MUSIC_URL, stage.name].join('/')}>Вернуться ко списку всех артистов на сцене {stage.title}</Link>
+        </div>
+      </div>)
+
 
     if (updated) return (
       <div>
@@ -52,11 +69,12 @@ export default class EditArtistForm extends Component {
           {artist_data &&
           <Form {...{onSubmit}}
                 progress={update_artist_progress}
-                default_form_data={{title, description, name}}
+                default_form_data={{title, description, name, sound_cloud_url}}
                 errors={update_artist_form_errors}
           >
             <FormInput label={'Имя для URL (не менять без крайней необходимости)'} name='name' />
             <FormInput label={'Название'} name='title' />
+            <FormInput label={'SoundCloud URL'} name='sound_cloud_url' />
             <FormTextArea label={'Описание'} name='description' />
             <FormInput label={'Изображение'} file name='image' />
             <button>Сохранить</button>

@@ -8,8 +8,8 @@ export default class ProgramMusicArtistContainer extends Component {
       props: {
         match: {
           params: {
-            stage,
-            artist
+            stage_name,
+            artist_name
           }
         }
       }
@@ -17,7 +17,7 @@ export default class ProgramMusicArtistContainer extends Component {
 
     return (
       <PageWrapper>
-        <ProgramMusicArtist {...{artist, stage}} />
+        <ProgramMusicArtist {...{artist_name, stage_name}} />
       </PageWrapper>
     )
   }

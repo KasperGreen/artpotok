@@ -3,6 +3,7 @@ import ArtistsContext from './ArtistsContext'
 import Api from 'api/Api'
 import localforageHelper from 'helpers/localforageHelper'
 import artists_initial_state from './artists_initial_state'
+import _ from 'lodash'
 
 export default function (WrappedComponent) {
   return class ArtistsState extends Component {
@@ -10,7 +11,7 @@ export default function (WrappedComponent) {
 
     render () {
       const {
-        deleteArtist, restoreArtist, addArtist, updateArtist
+        deleteArtist, restoreArtist, addArtist, updateArtist, getArtistById, getArtistByName
       } = this
 
       return (
@@ -20,7 +21,9 @@ export default function (WrappedComponent) {
             deleteArtist,
             restoreArtist,
             addArtist,
-            updateArtist
+            updateArtist,
+            getArtistById,
+            getArtistByName
           }}
         >
           <WrappedComponent />
@@ -49,6 +52,28 @@ export default function (WrappedComponent) {
              }
            )
          })
+    }
+    getArtistById = (artist_id) => {
+      const {
+        state: {
+          artists_list
+        }
+      } = this
+
+      return artists_list[artist_id]
+    }
+    getArtistByName = (artist_name) => {
+      const {
+          state: {
+            artists_list
+          }
+        } = this,
+        filtred = _.filter(artists_list, ({name}) => {
+          return name === artist_name
+        })
+
+      return _.head(_.toArray(filtred))
+
     }
     restoreArtist = (id) => {
 
