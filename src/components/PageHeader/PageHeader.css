@@ -1,45 +1,14 @@
 .PageHeader {
   background: white;
-  text-transform: uppercase;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 0 4px #000;
+
   &-inner {
     display: flex;
-  }
-  &-list {
-    margin-left: 2rem;
-    &-ul {
-      list-style: none;
-      display: flex;
-      padding: 0;
-      margin: 0;
-    }
-  }
-  &-menu {
-    &-item {
-      &-link {
-        text-decoration: none;
-        color: #111;
-        padding: 0 1rem;
-        line-height: 42px;
-        height: 42px;
-        display: block;
-        &-active {
-          color: white;
-          background: black;
-        }
-      }
-    }
-  }
-  &-logo {
-    &-link {
-      display: block;
-      line-height: 0;
-    }
-    &-image {
-      height: 42px;
-    }
+    height: 32px;
+    align-items: center;
+    justify-content: space-around;
   }
 }

@@ -1,0 +1,9 @@
+.Button {
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+  background: none;
+  border: none;
+  line-height: 22px;
+  font-size: 1rem;
+  height: 22px;
+}

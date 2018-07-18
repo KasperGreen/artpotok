@@ -1,0 +1,35 @@
+.PageHeaderMenu {
+  &-item {
+    &-link {
+      text-decoration: none;
+      color: #111;
+      padding: 0 1rem;
+      line-height: 42px;
+      height: 42px;
+      display: block;
+      &-active {
+        color: white;
+        background: black;
+      }
+    }
+  }
+  &-mobile_menu_button {
+    text-transform: uppercase;
+    font-family: 'Bebas Neue', sans-serif;
+    background: none;
+    border: none;
+    line-height: 22px;
+    font-size: 1rem;
+    height: 22px;
+  }
+  &-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    @media (--mobile) {
+        display: none;
+    }
+  }
+}

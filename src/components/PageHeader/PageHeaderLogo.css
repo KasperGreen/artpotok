@@ -1,0 +1,12 @@
+.PageHeaderLogo {
+  &-link {
+    display: block;
+    line-height: 0;
+  }
+  &-image {
+    height: 42px;
+    @media (--mobile) {
+      height: 22px;
+    }
+  }
+}
