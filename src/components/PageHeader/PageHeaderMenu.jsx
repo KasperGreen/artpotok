@@ -3,6 +3,7 @@ import './PageHeaderMenu.css'
 import classNames from 'classnames'
 import menu from 'components/PageHeader/data/page_header_menu'
 import { NavLink } from 'react-router-dom'
+import Button from 'components/Button/Button'
 
 export default class PageHeaderMenu extends Component {
 
@@ -23,7 +24,7 @@ export default class PageHeaderMenu extends Component {
         className={classNames(
           'PageHeaderMenu',
           {
-            'PageHeaderMenu-opened': menu_is_opened
+            menu_is_opened
           })}
       >
         <button className='PageHeaderMenu-mobile_menu_button' onClick={toggleMenu}>
@@ -33,12 +34,14 @@ export default class PageHeaderMenu extends Component {
           {menu.map(({to, title}, key) => {
             return (
               <li key={key} className='PageHeaderMenu-menu-item'>
-                <NavLink
-                  className='PageHeaderMenu-menu-item-link'
-                  activeClassName='PageHeaderMenu-menu-item-link-active'
-                  {...{to, onClick: closeMenu}}>
-                  {title}
-                </NavLink>
+                <Button>
+                  <NavLink
+                    className='PageHeaderMenu-menu-item-link'
+                    activeClassName='PageHeaderMenu-menu-item-link-active'
+                    {...{to, onClick: closeMenu}}>
+                    {title}
+                  </NavLink>
+                </Button>
               </li>
             )
           })}
