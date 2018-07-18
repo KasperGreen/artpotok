@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
 import { LOGOUT_URL } from 'constants/URL'
+import Button from 'components/Button/Button'
+import './Profile.css'
 
 @userContextConnection
-export default class ProfileContainer extends Component {
+export default class Profile extends Component {
   render () {
 
     const {
@@ -22,17 +24,25 @@ export default class ProfileContainer extends Component {
     return (
       <PageWrapper>
         <Container>
-          <h1>{name}</h1>
+          <ul className='Profile-header'>
+            <li>
+              <h1>{name}</h1>
+            </li>
+            <li>
+              <Button>
+                <Link to={LOGOUT_URL}>Выйти из профиля</Link>
+              </Button>
+            </li>
+          </ul>
+
           {is_admin && <h2>Это профиль администратора</h2>}
-          <div>
+          <p>
             <strong>Почта:</strong> {email}
-          </div>
-          <div>
+          </p>
+          <p>
             <strong>Роли:</strong> {roles.join(', ')}
-          </div>
-          <div>
-            <Link to={LOGOUT_URL}>Выйти из профиля</Link>
-          </div>
+          </p>
+
         </Container>
       </PageWrapper>
     )

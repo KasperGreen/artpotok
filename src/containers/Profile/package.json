@@ -1,5 +1,5 @@
 {
-  "name": "ProfileContainer",
+  "name": "Profile",
   "version": "1.0.0",
-  "main": "ProfileContainer.jsx"
+  "main": "Profile.jsx"
 }
