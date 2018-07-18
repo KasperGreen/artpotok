@@ -1,0 +1,86 @@
+.m {
+  --xs: 8px;
+  --s: 12px;
+  --m: 16px;
+  --l: 24px;
+  --xl: 36px;
+  &-xs {
+    margin: var(--xs)
+  }
+  &l-xs {
+    margin-left: var(--xs)
+  }
+  &r-xs {
+    margin-right: var(--xs)
+  }
+  &t-xs {
+    margin-top: var(--xs)
+  }
+  &b-xs {
+    margin-bottom: var(--xs)
+  }
+
+  &-s {
+    margin: var(--s)
+  }
+  &l-s {
+    margin-left: var(--s)
+  }
+  &r-s {
+    margin-right: var(--s)
+  }
+  &t-s {
+    margin-top: var(--s)
+  }
+  &b-s {
+    margin-bottom: var(--s)
+  }
+
+  &-m {
+    margin: var(--m)
+  }
+  &l-m {
+    margin-left: var(--m)
+  }
+  &r-m {
+    margin-right: var(--m)
+  }
+  &t-m {
+    margin-top: var(--m)
+  }
+  &b-m {
+    margin-bottom: var(--m)
+  }
+
+  &-l {
+    margin: var(--l)
+  }
+  &l-l {
+    margin-left: var(--l)
+  }
+  &r-l {
+    margin-right: var(--l)
+  }
+  &t-l {
+    margin-top: var(--l)
+  }
+  &b-l {
+    margin-bottom: var(--l)
+  }
+
+  &-xl {
+    margin: var(--xl)
+  }
+  &l-xl {
+    margin-left: var(--xl)
+  }
+  &r-xl {
+    margin-right: var(--xl)
+  }
+  &t-xl {
+    margin-top: var(--xl)
+  }
+  &b-xl {
+    margin-bottom: var(--xl)
+  }
+}

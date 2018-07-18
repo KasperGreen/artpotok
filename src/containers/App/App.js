@@ -19,6 +19,7 @@ import ParticipationContainer from 'containers/ParticipationContainer'
 import ProgramContainer from 'containers/ProgramContainer'
 import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
+import 'css/margins.css'
 import {
   ADD_MUSIC_ARTIST_URL,
   ADD_MUSIC_STAGE_URL, EDIT_MUSIC_ARTIST_URL,
