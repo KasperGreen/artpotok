@@ -7,7 +7,10 @@
 
   &-inner {
     display: flex;
-    height: 32px;
+    height: 50px;
+    @media (--mobile) {
+        height: 32px;
+    }
     align-items: center;
     justify-content: space-around;
   }

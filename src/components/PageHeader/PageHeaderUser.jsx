@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import './PageHeaderUser.css'
 import { LOGIN_URL, PROFILE_URL } from 'constants/URL'
 import userContextConnection from 'context/User/userContextConnection'
@@ -15,7 +15,7 @@ export default class PageHeaderUser extends Component {
     } = this
 
     return (
-      <Fragment>
+      <div className='PageHeaderMenuUser'>
         <Switch>
           <Route path={'/profile'}>
             <h3>Профиль</h3>
@@ -31,7 +31,7 @@ export default class PageHeaderUser extends Component {
             </NavLink>
           </Route>
         </Switch>
-      </Fragment>
+      </div>
     )
   }
 }

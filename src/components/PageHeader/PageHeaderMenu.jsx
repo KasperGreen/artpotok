@@ -33,7 +33,7 @@ export default class PageHeaderMenu extends Component {
         <ul className='PageHeaderMenu-links'>
           {menu.map(({to, title}, key) => {
             return (
-              <li key={key} className='PageHeaderMenu-menu-item'>
+              <li key={key} className='PageHeaderMenu-menu-item ml-m'>
                 <Button>
                   <NavLink
                     className='PageHeaderMenu-menu-item-link'
