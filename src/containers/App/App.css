@@ -9,7 +9,10 @@ html {
     font-size: calc(100vw / 320 * 10);
   }
 }
-
+body {
+  overflow-x: hidden;
+  width: 100vw;
+}
 body:not(.detected_keyboard_user) {
   outline: none;
 }
