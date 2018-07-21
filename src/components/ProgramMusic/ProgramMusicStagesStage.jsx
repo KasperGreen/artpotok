@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { IMAGES_URL } from 'constants/API'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
 import { withRouter } from 'react-router'
+import Button from 'components/Button/Button'
 
 @withRouter
 @stagesContextConnection('context')
@@ -19,7 +20,6 @@ export default class ProgramMusicStagesStage extends Component {
       props: {
         title,
         name,
-        description,
         image,
         deleted
       },
@@ -28,28 +28,36 @@ export default class ProgramMusicStagesStage extends Component {
       editStage
     } = this
 
-    if (deleted) return (
-      <div>
-        Удалено. <button onClick={restoreStage}>Restore</button>
-      </div>
-    )
-
     return (
       <section className='ProgramMusicStagesStage'>
         <Link className='ProgramMusicStagesStage-link' to={[MUSIC_URL, name].join('/')}>
           <h3 className='ProgramMusicStagesStage-title'>
             {title}
           </h3>
-          <img src={IMAGES_URL + '/size100/' + image} alt={title} />
-          <div>
-            {description}
-          </div>
-          <button onClick={deleteStage}>Delete</button>
-          <button
+          <img
+            src={IMAGES_URL + '/size400/' + image}
+            className='ProgramMusicStagesStage-image'
+            alt={title}
+          />
+        </Link>
+        <div className='ProgramMusicStagesStage-buttons'>
+          <Button
+            onClick={deleteStage}
+          >Удалить
+          </Button>
+          <Button
             onClick={editStage}
           >Редактировать
-          </button>
-        </Link>
+          </Button>
+        </div>
+        {deleted &&
+        <div className='ProgramMusicStagesStage-deleted'>
+          <div className='ProgramMusicStagesStage-deleted-inner'>
+            <div className='mb-m'>Удалено.</div>
+            <div><Button onClick={restoreStage}>Восстановить</Button></div>
+          </div>
+        </div>
+        }
       </section>
     )
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './ProgramMusic.css'
+import './ProgramMusicStages.css'
 import PropTypes from 'prop-types'
 import ProgramMusicStagesStage from 'components/ProgramMusic/ProgramMusicStagesStage'
 import _ from 'lodash'

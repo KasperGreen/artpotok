@@ -2,6 +2,8 @@ html {
   color: #111;
   font-size: calc(100vw / 1280 * 10);
   font-family: Montserrat, sans-serif;
+  box-sizing: border-box;
+
   @media (--desktop) {
     font-size: 10Px;
   }
