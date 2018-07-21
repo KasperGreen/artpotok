@@ -5,6 +5,7 @@ import Container from 'components/Container'
 import ProgramMusicStages from 'components/ProgramMusic/ProgramMusicStages'
 import { Link } from 'react-router-dom'
 import { ADD_MUSIC_STAGE_URL } from 'constants/URL'
+import ActionButton from 'components/ActionButton'
 
 export default class ProgramMusic extends Component {
   render () {
@@ -21,7 +22,9 @@ export default class ProgramMusic extends Component {
           </PageTitle>
           <ProgramMusicStages {...{stages_list}} />
           <div>
-            <Link to={ADD_MUSIC_STAGE_URL}>Добавить новую сцену</Link>
+            <ActionButton>
+              <Link to={ADD_MUSIC_STAGE_URL} title={'Добавить новую сцену'}>+</Link>
+            </ActionButton>
           </div>
         </Container>
       </div>
