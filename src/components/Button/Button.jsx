@@ -6,12 +6,18 @@ export default class Button extends Component {
   render () {
     const {
       props: {
-        children
+        children,
+        ...other_props
       }
     } = this
     return (
-      <Decorator className='Button'>
-        {children}
+      <Decorator
+        default_element_type={'button'}
+        className='Button'
+      >
+        <Decorator {...other_props}>
+          {children}
+        </Decorator>
       </Decorator>
     )
   }
