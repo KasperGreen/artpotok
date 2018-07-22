@@ -94,7 +94,8 @@ class Api {
       )
         .then((response) => {
 
-          ControlledComponent.setState(
+          this.stateSync(
+            ControlledComponent,
             (state) => {
 
               state[errors_prop_name] = false
@@ -108,13 +109,12 @@ class Api {
                   ...response.data
                 }
               }
-              localforage.setItem(ControlledComponent.constructor.name, state)
               return state
             }
           )
           resolve(response)
         })
-        .catch(function (error) {
+        .catch((error) => {
           const {
             response: {
               data: {
@@ -123,7 +123,8 @@ class Api {
             } = {}
           } = error
 
-          ControlledComponent.setState(
+          this.stateSync(
+            ControlledComponent,
             (state) => {
               return {
                 ...state,
@@ -134,22 +135,32 @@ class Api {
           reject(error)
         })
         .finally(() => {
-          console.log(' → ', progress_prop_name, ' ← progress_prop_name | ')
 
-          setTimeout(() => {
-            ControlledComponent.setState(
-              (state) => {
-                return {
-                  ...state,
-                  [progress_prop_name]: false
-                }
+          this.stateSync(
+            ControlledComponent,
+            (state) => {
+              return {
+                ...state,
+                [progress_prop_name]: false
               }
-            )
-
-          }, 200)
+            }
+          )
         })
     })
   }
+
+  stateSync = (ControlledComponent, stateFunction = state => state) => {
+
+    ControlledComponent.setState(
+      (controlled_state) => {
+        const state = stateFunction(controlled_state)
+        localforage.setItem(ControlledComponent.constructor.name, state)
+        return state
+      }
+    )
+
+  }
+
 }
 
 export default new Api()
