@@ -12,6 +12,8 @@ export default class Program extends Component {
           <PageTitle>
             Программа
           </PageTitle>
+        </Container>
+        <Container>
           <nav>
             <ProgramList />
           </nav>

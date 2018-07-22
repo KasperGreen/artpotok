@@ -12,10 +12,9 @@ export default class Button extends Component {
     } = this
     return (
       <Decorator
-        default_element_type={'button'}
         className='Button'
       >
-        <Decorator {...other_props}>
+        <Decorator {...other_props} default_element_type={'button'}>
           {children}
         </Decorator>
       </Decorator>

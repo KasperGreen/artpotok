@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { ADD_MUSIC_STAGE_URL, MUSIC_URL } from 'constants/URL'
 import _ from 'lodash'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
+import Button from 'components/Button'
 
 @stagesContextConnection('context')
 export default class NewStageForm extends Component {
@@ -38,7 +39,7 @@ export default class NewStageForm extends Component {
     } = this
 
     if (created) return (
-      <div>
+      <div className='NewStageForm-created'>
         <div>
           Сцена <strong>{name}</strong> создана. <Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link>
         </div>
@@ -54,21 +55,26 @@ export default class NewStageForm extends Component {
     return (
       <div className='NewStageForm'>
         <Container>
+          <h2 className='NewStageForm-title'>
+            Новая сцена
+          </h2>
           <Form {...{
             onSubmit,
             progress: add_stage_progress,
             errors: add_form_errors,
           }}>
             <FormInput
+              required
+              name={'title'}
+              label={'Название сцены'}
+              placeholder={'Новая сцена'}
+            />
+            <FormInput
               name={'name'}
               required
               pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
               label={'Имя латиницей для URL'}
-            />
-            <FormInput
-              required
-              name={'title'}
-              label={'Название сцены'}
+              placeholder={'new-stage'}
             />
             <FormTextArea
               required
@@ -81,7 +87,9 @@ export default class NewStageForm extends Component {
               label={'Изображение'}
               name={'image'}
             />
-            <button disabled={add_stage_progress}>Создать</button>
+            <div className='NewStageForm-buttons'>
+              <Button disabled={add_stage_progress}>Сохранить</Button>
+            </div>
           </Form>
           {add_stage_progress && <h1>Данные отправляются</h1>}
         </Container>

@@ -24,7 +24,7 @@ export default class FormTextArea extends Component {
           ...other_props
         }}
         >
-          <textarea ref={this.element} />
+          <textarea className='FormTextArea' ref={this.element} />
         </InputHandlers>
       </FormElementWrapper>
     )

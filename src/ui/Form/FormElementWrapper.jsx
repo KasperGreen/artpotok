@@ -17,11 +17,13 @@ export default class FormElementWrapper extends Component {
     return (
       <div className='FormElementWrapper'>
         <label>
-          <div>{label}</div>
-          <div className='FormElementWrapper-inner'>
-            <div>
-              {children}
-            </div>
+          <div className='FormElementWrapper-label'>
+            {label}
+          </div>
+          <div className='FormElementWrapper-input-wrapper'>
+            {children}
+          </div>
+          <div className='FormElementWrapper-errors'>
             <FormInputErrors {...{errors: input_errors}} />
           </div>
         </label>

@@ -1,7 +1,6 @@
 .ProgramMusicStagesStage {
   border: 1px solid gray;
-  padding: 10px;
-  margin: 20px;
+  margin: 24px;
   position: relative;
 
   &-buttons {

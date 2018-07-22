@@ -1,6 +1,16 @@
 .FormElementWrapper {
-  margin-top: 10px;
-  &-inner {
-    display: flex;
+  margin-bottom: 16px;
+  &-input-wrapper {
+
+  }
+  &-label {
+    font-weight: bold;
+    color: #555;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  &-errors {
+    color: red;
+    font-size: 10px;
   }
 }

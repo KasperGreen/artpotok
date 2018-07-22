@@ -40,7 +40,7 @@ export default class FormInput extends Component {
           ...other_props
         }}
         >
-          <input ref={this.element} />
+          <input ref={this.element} className='FormInput-input' />
         </InputHandlers>
       </FormElementWrapper>
     )

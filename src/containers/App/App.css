@@ -1,8 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   color: #111;
   font-size: calc(100vw / 1280 * 10);
   font-family: Montserrat, sans-serif;
-  box-sizing: border-box;
 
   @media (--desktop) {
     font-size: 10Px;
@@ -11,10 +14,12 @@ html {
     font-size: calc(100vw / 320 * 10);
   }
 }
+
 body {
   overflow-x: hidden;
   width: 100vw;
 }
+
 body:not(.detected_keyboard_user) {
   outline: none;
 }

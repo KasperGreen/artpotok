@@ -33,11 +33,11 @@ export default class PageHeaderMenu extends Component {
         <ul className='PageHeaderMenu-links'>
           {menu.map(({to, title}, key) => {
             return (
-              <li key={key} className='PageHeaderMenu-menu-item ml-m'>
+              <li key={key} className='PageHeaderMenu-item ml-m'>
                 <Button>
                   <NavLink
-                    className='PageHeaderMenu-menu-item-link'
-                    activeClassName='PageHeaderMenu-menu-item-link-active'
+                    className='PageHeaderMenu-item-link'
+                    activeClassName='PageHeaderMenu-item-link-active'
                     {...{to, onClick: closeMenu}}>
                     {title}
                   </NavLink>

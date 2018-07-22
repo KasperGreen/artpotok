@@ -44,7 +44,7 @@ export default class ProgramList extends Component {
         <ul className='ProgramList-flex'>
           {links.map(({url, title}, key) => {
             return (
-              <li key={key}>
+              <li key={key} className='ProgramList-item'>
                 <Button>
                   <Link to={url}>
                     {title}

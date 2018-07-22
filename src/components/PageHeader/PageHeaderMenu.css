@@ -1,5 +1,10 @@
 .PageHeaderMenu {
   &-item {
+    @media (--mobile) {
+      font-size: 32px;
+      margin: 0 0 42px 0;
+    }
+
     &-link {
       text-decoration: none;
       color: #111;
@@ -7,6 +12,7 @@
       line-height: 42px;
       height: 42px;
       display: block;
+
       &-active {
         color: white;
         background: black;
@@ -16,15 +22,13 @@
   &-mobile_menu_button {
     display: none;
     @media (--mobile) {
-        display: block;
+      display: block;
     }
     text-transform: uppercase;
     font-family: 'Bebas Neue', sans-serif;
     background: none;
     border: none;
-    line-height: 22px;
-    font-size: 1rem;
-    height: 22px;
+    font-size: 24px;
   }
   &-links {
     list-style: none;
@@ -38,7 +42,7 @@
       flex-direction: column;
       position: absolute;
       right: 0;
-      top: 32px;
+      top: 42px;
       width: 100%;
       height: calc(100vh - 32px);
       transform: translateX(100%);
@@ -50,6 +54,5 @@
 
       }
     }
-
   }
 }
