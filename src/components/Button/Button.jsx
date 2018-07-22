@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Button.css'
 import Decorator from 'decorators/Decorator'
-
+import PropTypes from 'prop-types'
 export default class Button extends Component {
   render () {
     const {
@@ -20,4 +20,9 @@ export default class Button extends Component {
       </Decorator>
     )
   }
+
+  static propTypes = {
+    disabled: PropTypes.bool,
+  }
+
 }

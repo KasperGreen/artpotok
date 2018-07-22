@@ -12,4 +12,9 @@
   &:hover {
     color: #f13f40;
   }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: .42;
+  }
 }
