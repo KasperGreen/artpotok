@@ -21,8 +21,10 @@ import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
 import 'css/margins.css'
 import {
+  ADD_MASTER_CLASS_URL,
   ADD_MUSIC_ARTIST_URL,
   ADD_MUSIC_STAGE_URL,
+  EDIT_MASTER_CLASS_URL,
   EDIT_MUSIC_ARTIST_URL,
   EDIT_MUSIC_STAGE_URL,
   EDIT_PAGE_URL,
@@ -67,6 +69,9 @@ import EditArtistContainer from 'containers/EditArtistContainer'
 import ArtistsState from 'context/Artists/ArtistsState'
 import PagesState from 'context/Pages/PagesState'
 import EditPageContainer from 'containers/EditPageContainer'
+import MastersState from 'context/Masters/MastersState'
+import NewMasterContainer from 'containers/NewMasterContainer'
+import EditMasterContainer from 'containers/EditMasterContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -74,6 +79,7 @@ Moment.globalLocale = 'ru'
 @PagesState
 @StagesState
 @ArtistsState
+@MastersState
 class App extends Component {
 
   render () {
@@ -135,6 +141,9 @@ class App extends Component {
                 component={ProgramMusicArtistContainer}
               />
 
+
+              <Route path={ADD_MASTER_CLASS_URL} component={NewMasterContainer} />
+              <Route path={EDIT_MASTER_CLASS_URL + '/:id'} component={EditMasterContainer} />
               <Route
                 path={MASTER_CLASS_URL}
                 exact
