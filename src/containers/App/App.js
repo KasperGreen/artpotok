@@ -63,10 +63,12 @@ import EditStageContainer from 'containers/EditStageContainer'
 import NewArtistContainer from 'containers/NewArtistContainer'
 import EditArtistContainer from 'containers/EditArtistContainer'
 import ArtistsState from 'context/Artists/ArtistsState'
+import PagesState from 'context/Pages/PagesState'
 
 Moment.globalLocale = 'ru'
 
 @UserState
+@PagesState
 @StagesState
 @ArtistsState
 class App extends Component {
