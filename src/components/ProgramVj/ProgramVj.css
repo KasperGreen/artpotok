@@ -1,3 +1,11 @@
 .ProgramVj {
 
+  &-description {
+    font-size: 16px;
+  }
+
+  &-image {
+    max-width: 100%;
+  }
+
 }
