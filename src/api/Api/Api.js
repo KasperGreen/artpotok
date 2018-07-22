@@ -53,9 +53,10 @@ class Api {
         data,
         headers: {'content-type': 'multipart/form-data'},
         method: 'post',
-        onUploadProgress: function (progressEvent) {
+        onUploadProgress: (progressEvent) => {
           let upload_progress = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-          ControlledComponent.setState(
+          this.stateSync(
+            ControlledComponent,
             (state) => {
               return {
                 ...state,
@@ -75,14 +76,13 @@ class Api {
       data_section_name = false
     } = params
 
-    ControlledComponent.setState(
-      (state) => {
-        return {
-          ...state,
-          [progress_prop_name]: true
-
-        }
-      }
+    this.stateSync(ControlledComponent,
+                   (state) => {
+                     return {
+                       ...state,
+                       [progress_prop_name]: true
+                     }
+                   }
     )
 
     return new Promise((resolve, reject) => {
