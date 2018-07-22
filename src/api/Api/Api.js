@@ -134,15 +134,17 @@ class Api {
           reject(error)
         })
         .finally(() => {
-          ControlledComponent.setState(
-            (state) => {
-              return {
-                ...state,
-                [progress_prop_name]: false
+          setTimeout(() => {
+            ControlledComponent.setState(
+              (state) => {
+                return {
+                  ...state,
+                  [progress_prop_name]: false
+                }
               }
-            }
-          )
+            )
 
+          }, 200)
         })
     })
   }

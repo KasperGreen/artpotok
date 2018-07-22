@@ -7,6 +7,7 @@ import Button from 'components/Button'
 import FormTextArea from 'ui/Form/FormTextArea'
 import pagesContextConnection from 'context/Pages/pagesContextConnection'
 import _ from 'lodash'
+import PropTypes from 'prop-types'
 
 @pagesContextConnection('context')
 export default class NewPageForm extends Component {
@@ -33,7 +34,8 @@ export default class NewPageForm extends Component {
           </h2>
           <Form {...{
             default_form_data: {
-              name: this.props.name
+              name: this.props.name,
+              section: this.props.section
             },
             onSubmit,
             progress: add_page_progress,
@@ -43,7 +45,7 @@ export default class NewPageForm extends Component {
               required
               name={'title'}
               label={'Название сцены'}
-              placeholder={'Новая сцена'}
+              placeholder={'Новая страница'}
             />
             <FormTextArea
               required
@@ -79,6 +81,10 @@ export default class NewPageForm extends Component {
       )
 
     })
+  }
+
+  static propTypes = {
+    section: PropTypes.string,
   }
 
 }

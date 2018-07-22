@@ -26,7 +26,7 @@ export default class ProgramVj extends Component {
         id
       } = page || {}
 
-    if (!page) return <NewPageForm name={page_name} />
+    if (!page) return <NewPageForm name={page_name} section={'program'}  />
 
     return (
       <div className='ProgramVj'>

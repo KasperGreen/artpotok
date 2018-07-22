@@ -56,7 +56,7 @@ export default class EditPageForm extends Component {
           {page_data &&
           <Form {...{onSubmit}}
                 progress={update_page_progress}
-                default_form_data={{title, description, name}}
+                default_form_data={{title, description, name, section: section_name}}
                 errors={update_page_form_errors}
           >
             <FormInput
