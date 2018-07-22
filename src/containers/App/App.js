@@ -22,8 +22,10 @@ import BuyTicketContainer from 'containers/BuyTicketContainer'
 import 'css/margins.css'
 import {
   ADD_MUSIC_ARTIST_URL,
-  ADD_MUSIC_STAGE_URL, EDIT_MUSIC_ARTIST_URL,
+  ADD_MUSIC_STAGE_URL,
+  EDIT_MUSIC_ARTIST_URL,
   EDIT_MUSIC_STAGE_URL,
+  EDIT_PAGE_URL,
   LECTURE_URL,
   LOGIN_URL,
   LOGOUT_URL,
@@ -64,6 +66,7 @@ import NewArtistContainer from 'containers/NewArtistContainer'
 import EditArtistContainer from 'containers/EditArtistContainer'
 import ArtistsState from 'context/Artists/ArtistsState'
 import PagesState from 'context/Pages/PagesState'
+import EditPageContainer from 'containers/EditPageContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -187,6 +190,13 @@ class App extends Component {
                 path={VIDEO_MAPPING_URL}
                 exact
                 component={ProgramVideoMappingContainer}
+              />
+
+
+              <Route
+                path={EDIT_PAGE_URL + '/:page_id/:section_name'}
+                exact
+                component={EditPageContainer}
               />
 
 
