@@ -2,23 +2,25 @@ import React, { Component } from 'react'
 import artistsContextConnection from 'context/Artists/artistsContextConnection'
 import { ADD_MUSIC_ARTIST_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
+import './ProgramMusicStageArtists.css'
 import ProgramMusicStageArtistsArtist from 'components/ProgramMusicStage/ProgramMusicStageArtistsArtist'
 import _ from 'lodash'
+
 @artistsContextConnection
 export default class ProgramMusicStageArtists extends Component {
   render () {
     const {
-        props: {
-          stage_name,
-          stage_id,
-          artists_list
-        }
-      } = this
+      props: {
+        stage_name,
+        stage_id,
+        artists_list
+      }
+    } = this
 
     return (
-      <div>
+      <div className='ProgramMusicStageArtists'>
         <nav>
-          <ul>
+          <ul className='ProgramMusicStageArtists-list'>
             {_.map(artists_list, (artist, key) => {
               return (
                 <li key={key}>

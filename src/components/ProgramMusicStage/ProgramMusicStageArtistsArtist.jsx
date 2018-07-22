@@ -38,7 +38,7 @@ export default class ProgramMusicStageArtistsArtist extends Component {
           <h3 className='ProgramMusicArtistsArtist-title'>
             {title}
           </h3>
-          <img src={IMAGES_URL + '/size100/' + image} alt={title} />
+          <img className='ProgramMusicArtistsArtist-image' src={IMAGES_URL + '/size400/' + image} alt={title} />
           <div>
             {description}
           </div>

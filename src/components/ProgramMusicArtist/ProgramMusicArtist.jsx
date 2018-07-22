@@ -15,13 +15,14 @@ export default class ProgramMusicArtist extends Component {
       } = this,
       {title, description, sound_cloud_url, image} = getArtistByName(artist_name) || {}
 
-
     return (
       <div className='ProgramMusicArtist'>
         <Container>
           <PageTitle>{title}</PageTitle>
-          <img src={IMAGES_URL + '/size400/' + image} alt={title} />
-          {description}
+          <img className='ProgramMusicArtist-image' src={IMAGES_URL + '/size400/' + image} alt={title} />
+          <div className='ProgramMusicArtist-description'>
+            {description}
+          </div>
           {sound_cloud_url}
         </Container>
       </div>

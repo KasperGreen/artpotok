@@ -1,3 +1,8 @@
 .ProgramMusicArtist {
+  &-image {
+    max-width: 100%;
+  }
+  &-description {
 
+  }
 }
