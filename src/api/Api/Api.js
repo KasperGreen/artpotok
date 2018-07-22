@@ -134,6 +134,8 @@ class Api {
           reject(error)
         })
         .finally(() => {
+          console.log(' → ', progress_prop_name, ' ← progress_prop_name | ')
+
           setTimeout(() => {
             ControlledComponent.setState(
               (state) => {

@@ -18,7 +18,12 @@ export default class FormProgress extends Component {
   }
 
   static propTypes = {
-    percent: PropTypes.number,
+    percent: PropTypes.oneOfType(
+      [
+        PropTypes.bool,
+        PropTypes.number
+      ]
+    ),
   }
 
 }

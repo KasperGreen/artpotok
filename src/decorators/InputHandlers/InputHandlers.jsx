@@ -21,12 +21,10 @@ export default class InputHandlers extends PureComponent {
         },
         onChange,
         getValueObjectData,
-        getDefaultValue,
       } = this,
       result_props = {
         ...props,
-        ...getValueObjectData(),
-        ...getDefaultValue()
+        ...getValueObjectData()
       }
 
     if (props.type === 'file') {
@@ -62,7 +60,7 @@ export default class InputHandlers extends PureComponent {
           ControlledComponent: {
             state: {
               form: {
-                [name]: value
+                [name]: value = ''
               },
             }
           }
