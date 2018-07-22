@@ -1,3 +1,5 @@
 .ProgramVideoMapping {
-
+  &-image {
+    max-width: 100%;
+  }
 }

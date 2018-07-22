@@ -39,7 +39,8 @@ export default class ProgramVideoMapping extends Component {
             {description}
           </div>
           <div>
-            <img src={IMAGES_URL + '/size400/' + image} alt={title} className='ProgramVideoMapping-image' />
+            <img src={IMAGES_URL + '/size400/' + image} alt={title}
+                 className='ProgramVideoMapping-image' />
           </div>
           <div>
             <Button>
