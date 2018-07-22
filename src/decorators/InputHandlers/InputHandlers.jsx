@@ -41,18 +41,6 @@ export default class InputHandlers extends PureComponent {
     )
   }
 
-  getDefaultValue = () => {
-    const {
-      props: {
-        defaultValue,
-        value
-      }
-    } = this
-    if (_.isUndefined(defaultValue) && _.isUndefined(value)) {
-      return {defaultValue: ''}
-    }
-  }
-
   getValueObjectData = () => {
     const {
         props: {
@@ -64,12 +52,10 @@ export default class InputHandlers extends PureComponent {
               },
             }
           }
-        },
-        getDefaultValue
-      } = this,
-      defaultValue = getDefaultValue()
+        }
+      } = this
 
-    return {name, value, defaultValue}
+    return {name, value}
   }
 
   onChange = (e) => {
