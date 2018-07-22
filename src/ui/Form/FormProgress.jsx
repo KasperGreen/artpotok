@@ -9,7 +9,7 @@ export default class FormProgress extends Component {
         percent
       }
     } = this
-    if (!percent) return false
+    if (!percent || percent === 100) return false
     return (
       <div className='FormProgress'>
         <div className='FormProgress-bar' style={{width: percent + '%'}} />
