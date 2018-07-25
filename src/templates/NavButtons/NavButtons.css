@@ -1,0 +1,11 @@
+.NavButtons {
+  margin-top: 24px;
+  li {
+    margin-bottom: 12px;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
