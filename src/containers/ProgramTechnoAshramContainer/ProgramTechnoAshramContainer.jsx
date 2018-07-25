@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PageWrapper from 'components/PageWrapper'
-import ProgramTechnoAshram from 'components/ProgramTechnoAshram'
+import ProgramTechnoAshramList from 'components/ProgramTechnoAshram/ProgramTechnoAshramList'
 
 export default class ProgramTechnoAshramContainer extends Component {
   render () {
 
     return (
       <PageWrapper>
-        <ProgramTechnoAshram />
+        <ProgramTechnoAshramList />
       </PageWrapper>
     )
   }

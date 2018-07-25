@@ -21,13 +21,17 @@ import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
 import 'css/margins.css'
 import {
+  ADD_ASHRAM_URL,
   ADD_MASTER_CLASS_URL,
   ADD_MUSIC_ARTIST_URL,
   ADD_MUSIC_STAGE_URL,
+  ADD_PRACTICE_URL,
+  EDIT_ASHRAM_URL,
   EDIT_MASTER_CLASS_URL,
   EDIT_MUSIC_ARTIST_URL,
   EDIT_MUSIC_STAGE_URL,
   EDIT_PAGE_URL,
+  EDIT_PRACTICE_URL,
   LECTURE_URL,
   LOGIN_URL,
   LOGOUT_URL,
@@ -72,6 +76,12 @@ import EditPageContainer from 'containers/EditPageContainer'
 import MastersState from 'context/Masters/MastersState'
 import NewMasterContainer from 'containers/NewMasterContainer'
 import EditMasterContainer from 'containers/EditMasterContainer'
+import EditAshramContainer from 'containers/EditAshramContainer'
+import NewAshramContainer from 'containers/NewAshram'
+import EditPracticeContainer from 'containers/EditPracticeContainer/EditPracticeContainer'
+import NewPracticeContainer from 'containers/NewPractice'
+import AshramsState from 'context/Ashrams/AshramsState'
+import PracticesState from 'context/Practices/PracticesState'
 
 Moment.globalLocale = 'ru'
 
@@ -80,6 +90,8 @@ Moment.globalLocale = 'ru'
 @StagesState
 @ArtistsState
 @MastersState
+@AshramsState
+@PracticesState
 class App extends Component {
 
   render () {
@@ -166,6 +178,9 @@ class App extends Component {
                 component={ProgramLectureContainer}
               />
 
+
+              <Route path={ADD_PRACTICE_URL} component={NewPracticeContainer} />
+              <Route path={EDIT_PRACTICE_URL + '/:id'} component={EditPracticeContainer} />
               <Route
                 path={PRACTICE_URL}
                 exact
@@ -177,14 +192,15 @@ class App extends Component {
                 component={ProgramPracticeContainer}
               />
 
-
+              <Route path={ADD_ASHRAM_URL} component={NewAshramContainer} />
+              <Route path={EDIT_ASHRAM_URL + '/:id'} component={EditAshramContainer} />
               <Route
                 path={TECHNO_ASHRAM_URL}
                 exact
                 component={ProgramTechnoAshramContainer}
               />
               <Route
-                path={TECHNO_ASHRAM_URL + '/:event_name'}
+                path={TECHNO_ASHRAM_URL + '/:ashram_name'}
                 exact
                 component={ProgramTechnoAshramEventContainer}
               />

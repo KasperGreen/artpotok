@@ -8,7 +8,7 @@ export default class ProgramTechnoAshramEventContainer extends Component {
       props: {
         match: {
           params: {
-            event_name
+            ashram_name
           }
         }
       }
@@ -16,7 +16,7 @@ export default class ProgramTechnoAshramEventContainer extends Component {
 
     return (
       <PageWrapper>
-        <ProgramTechnoAshramEvent {...{event_name}} />
+        <ProgramTechnoAshramEvent {...{ashram_name}} />
       </PageWrapper>
     )
   }

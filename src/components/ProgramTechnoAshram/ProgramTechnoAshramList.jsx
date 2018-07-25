@@ -1,41 +1,41 @@
 import React, { Component } from 'react'
-import './ProgramPracticeList.css'
+import './ProgramTechnoAshramList.css'
 import Container from 'components/Container'
 import PageTitle from 'components/PageTitle'
 import { Link } from 'react-router-dom'
-import { ADD_PRACTICE_URL } from 'constants/URL'
-import practicesContextConnection from 'context/Practices/practicesContextConnection'
+import { ADD_ASHRAM_URL } from 'constants/URL'
+import ashramsContextConnection from 'context/Ashrams/ashramsContextConnection'
 import _ from 'lodash'
-import ProgramPracticeListItem from 'components/ProgramPracticeList/ProgramPracticeListItem'
+import ProgramTechnoAshramListItem from 'components/ProgramTechnoAshram/ProgramTechnoAshramListItem'
 import ActionButton from 'components/ActionButton'
 
-@practicesContextConnection
-export default class ProgramPracticeList extends Component {
+@ashramsContextConnection
+export default class ProgramTechnoAshramList extends Component {
   render () {
     const {
       props: {
-        practices_list
+        ashrams_list
       }
     } = this
     return (
-      <div className='ProgramPracticeList'>
+      <div className='ProgramTechnoAshramList'>
         <Container>
           <PageTitle>
-            Список практик
+            Техно-Ашрам
           </PageTitle>
           <nav>
             <ul className='ProgramMasterClassList-ul'>
-              {_.map(practices_list, (practice, key) => {
+              {_.map(ashrams_list, (ashram, key) => {
                 return (
                   <li key={key}>
-                    <ProgramPracticeListItem {...practice} />
+                    <ProgramTechnoAshramListItem {...ashram} />
                   </li>
                 )
               })}
             </ul>
           </nav>
           <ActionButton>
-            <Link to={ADD_PRACTICE_URL} title={'Добавить новую практику'}>+</Link>
+            <Link to={ADD_ASHRAM_URL} title={'Добавить новую практику'}>+</Link>
           </ActionButton>
         </Container>
       </div>
