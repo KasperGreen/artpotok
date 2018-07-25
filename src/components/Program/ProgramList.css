@@ -1,16 +1,19 @@
 .ProgramList {
-  &-flex {
+  &-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     @media (--mobile) {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
     }
   }
   &-item {
+    @media (--desktop) {
+        margin-left: 12px;
+    }
     margin-bottom: 12px;
   }
 }

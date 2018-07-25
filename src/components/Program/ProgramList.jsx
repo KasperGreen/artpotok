@@ -41,7 +41,7 @@ export default class ProgramList extends Component {
   render () {
     return (
       <nav className='ProgramList'>
-        <ul className='ProgramList-flex'>
+        <ul className='ProgramList-ul'>
           {links.map(({url, title}, key) => {
             return (
               <li key={key} className='ProgramList-item'>
