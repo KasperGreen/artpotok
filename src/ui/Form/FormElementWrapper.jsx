@@ -2,20 +2,27 @@ import React, { Component } from 'react'
 import './FormElementWrapper.css'
 import PropTypes from 'prop-types'
 import FormInputErrors from 'ui/Form/FormInputErrors'
+import classNames from 'classnames'
 
 export default class FormElementWrapper extends Component {
   render () {
     const {
         props: {
           children,
-          label
+          label,
+          checkbox
         },
         getErrors
       } = this,
       input_errors = getErrors() || []
 
     return (
-      <div className='FormElementWrapper'>
+      <div
+        className={classNames(
+          'FormElementWrapper',
+          {checkbox}
+        )}
+      >
         <label>
           <div className='FormElementWrapper-label'>
             {label}

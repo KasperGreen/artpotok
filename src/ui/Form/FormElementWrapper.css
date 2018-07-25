@@ -1,15 +1,29 @@
 .FormElementWrapper {
   margin-bottom: 16px;
-  &-input-wrapper {
 
+  &.checkbox {
+    label {
+      display: flex;
+      input {
+        width: auto;
+      }
+    }
+  }
+  &-input-wrapper {
+    order: 1;
   }
   &-label {
+    .checkbox & {
+      margin-left: 8px;
+    }
+    order: 2;
     font-weight: bold;
     color: #555;
     font-size: 12px;
     margin-bottom: 4px;
   }
   &-errors {
+    order: 3;
     color: red;
     font-size: 10px;
   }

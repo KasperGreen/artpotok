@@ -1,4 +1,14 @@
 .Login {
   max-width: 420px;
   margin: 10rem auto;
+  &-errors {
+    color: #d81f06;
+    margin-bottom: 24px;
+  }
+  &-buttons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
 }

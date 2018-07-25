@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { REGISTER_URL } from 'constants/URL'
 import Form from 'ui/Form'
 import FormInput from 'ui/Form/FormInput'
+import Button from 'components/Button'
 
 export default class Login extends Component {
   state = {
@@ -29,6 +30,9 @@ export default class Login extends Component {
       <div className='Login'>
         <Container>
           <Form {...{onSubmit}}>
+            <div className='Login-errors'>
+              {error_text}
+            </div>
             <div>
               <FormInput
                 label={'Почта'}
@@ -49,15 +53,21 @@ export default class Login extends Component {
               <FormInput
                 checkbox
                 name={'remember'}
-              /> Запомнить
+                label={'Запомнить'}
+              />
             </div>
-            <div>
-              {error_text}
-            </div>
-            <button disabled={is_login_progress}>Войти</button>
-            <div>
-              <Link to={REGISTER_URL}>Регистрация</Link>
-            </div>
+            <nav>
+              <ul className='Login-buttons'>
+                <li>
+                  <Button>
+                    <Link to={REGISTER_URL}>Регистрация</Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button disabled={is_login_progress}>Войти</Button>
+                </li>
+              </ul>
+            </nav>
           </Form>
         </Container>
       </div>
