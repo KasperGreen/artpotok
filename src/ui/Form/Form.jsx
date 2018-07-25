@@ -3,6 +3,7 @@ import form_initial_state from 'ui/Form/data/form_initial_state'
 import PropTypes from 'prop-types'
 import FormContext from 'ui/Form/FormContext'
 import FormProgress from 'ui/Form/FormProgress'
+import Text from 'templates/Text'
 
 export default class Form extends Component {
 
@@ -31,11 +32,14 @@ export default class Form extends Component {
           onSubmit
         }}
         >
-          {children}
+          <Text>
+            {children}
 
-          {typeof progress === 'number' && <FormProgress percent={progress} />
-          }
+            {typeof progress === 'number' && <FormProgress percent={progress} />
+            }
+          </Text>
         </form>
+
       </FormContext.Provider>
     )
   }

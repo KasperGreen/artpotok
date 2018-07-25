@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './About.css'
 import PageTitle from 'components/PageTitle/PageTitle'
 import Container from 'components/Container'
-import Text from 'templates'
+import Text from 'templates/Text'
 import userContextConnection from 'context/User/userContextConnection'
 import work_image from './images/work.png'
 @userContextConnection('user')

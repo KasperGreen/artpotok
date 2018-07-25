@@ -23,27 +23,29 @@ export default class Profile extends Component {
 
     return (
       <PageWrapper>
-        <Container>
-          <ul className='Profile-header'>
-            <li>
-              <h1>{name}</h1>
-            </li>
-            <li>
-              <Button>
-                <Link to={LOGOUT_URL}>Выйти из профиля</Link>
-              </Button>
-            </li>
-          </ul>
+        <div className='Profile'>
+          <Container>
+            <ul className='Profile-header'>
+              <li>
+                <h1>{name}</h1>
+              </li>
+              <li>
+                <Button>
+                  <Link to={LOGOUT_URL}>Выйти из профиля</Link>
+                </Button>
+              </li>
+            </ul>
 
-          {is_admin && <h2>Это профиль администратора</h2>}
-          <p>
-            <strong>Почта:</strong> {email}
-          </p>
-          <p>
-            <strong>Роли:</strong> {roles.join(', ')}
-          </p>
+            {is_admin && <h2>Это профиль администратора</h2>}
+            <p>
+              <strong>Почта:</strong> {email}
+            </p>
+            <p>
+              <strong>Роли:</strong> {roles.join(', ')}
+            </p>
 
-        </Container>
+          </Container>
+        </div>
       </PageWrapper>
     )
   }

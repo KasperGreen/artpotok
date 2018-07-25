@@ -9,6 +9,8 @@ import { ADD_MUSIC_STAGE_URL, MUSIC_URL } from 'constants/URL'
 import _ from 'lodash'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
 import Button from 'components/Button'
+import Text from 'templates/Text'
+import NavButtons from 'templates/NavButtons'
 
 @stagesContextConnection('context')
 export default class NewStageForm extends Component {
@@ -40,15 +42,18 @@ export default class NewStageForm extends Component {
 
     if (created) return (
       <div className='NewStageForm-created'>
-        <div>
-          Сцена <strong>{name}</strong> создана. <Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link>
-        </div>
-        <div>
-          <Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link>
-        </div>
-        <div>
-          <Link to={ADD_MUSIC_STAGE_URL}>Создать другую сцену</Link>
-        </div>
+        <Text>
+          <div>
+            Сцена <strong>{name}</strong> создана.
+          </div>
+          <NavButtons>
+            <ul>
+              <li><Button><Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link></Button></li>
+              <li><Button><Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link></Button></li>
+              <li><Button><Link to={ADD_MUSIC_STAGE_URL}>Создать другую сцену</Link></Button></li>
+            </ul>
+          </NavButtons>
+        </Text>
 
       </div>)
 
