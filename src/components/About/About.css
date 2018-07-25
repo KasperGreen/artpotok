@@ -1,3 +1,8 @@
 .About {
-
+  margin-top: 4.2rem;
+  &-image {
+    max-width: 42%;
+    display: block;
+    margin: 4.2rem auto;
+  }
 }
