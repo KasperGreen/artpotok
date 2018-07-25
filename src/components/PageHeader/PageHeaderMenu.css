@@ -13,9 +13,8 @@
       height: 42px;
       display: block;
 
-      &-active {
-        color: white;
-        background: black;
+      &-active  {
+        color: #926d00 !important;
       }
     }
   }
