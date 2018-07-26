@@ -7,6 +7,7 @@ import { IMAGES_URL } from 'constants/API'
 import ashramsContextConnection from 'context/Ashrams/ashramsContextConnection'
 import { withRouter } from 'react-router'
 import Button from 'components/Button'
+import Interface from 'containers/Interface'
 
 @withRouter
 @ashramsContextConnection('context')
@@ -40,16 +41,18 @@ export default class ProgramTechnoAshramListItem extends Component {
             alt={title}
           />
         </Link>
-        <div className='ProgramTechnoAshramListItem-buttons'>
-          <Button
-            onClick={deleteAshram}
-          >Удалить
-          </Button>
-          <Button
-            onClick={editAshram}
-          >Редактировать
-          </Button>
-        </div>
+        <Interface need_admin>
+          <div className='ProgramTechnoAshramListItem-buttons'>
+            <Button
+              onClick={deleteAshram}
+            >Удалить
+            </Button>
+            <Button
+              onClick={editAshram}
+            >Редактировать
+            </Button>
+          </div>
+        </Interface>
         {deleted &&
         <div className='ProgramTechnoAshramListItem-deleted'>
           <div className='ProgramTechnoAshramListItem-deleted-inner'>

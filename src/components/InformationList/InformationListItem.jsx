@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import './ProgramPracticeListItem.css'
+import './InformationListItem.css'
 import PropTypes from 'prop-types'
 import { EDIT_PRACTICE_URL, PRACTICE_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
 import { IMAGES_URL } from 'constants/API'
-import practicesContextConnection from 'context/Practices/practicesContextConnection'
+import informationsContextConnection from 'context/Informations/informationsContextConnection'
 import { withRouter } from 'react-router'
 import Button from 'components/Button'
-import Interface from 'containers/Interface'
 
 @withRouter
-@practicesContextConnection('context')
-export default class ProgramPracticeListItem extends Component {
+@informationsContextConnection('context')
+export default class InformationListItem extends Component {
   state = {
     deleted: false
   }
@@ -30,32 +29,30 @@ export default class ProgramPracticeListItem extends Component {
     } = this
 
     return (
-      <section className='ProgramPracticeListItem'>
-        <Link className='ProgramPracticeListItem-link' to={[PRACTICE_URL, name].join('/')}>
-          <h3 className='ProgramPracticeListItem-title'>
+      <section className='InformationListItem'>
+        <Link className='InformationListItem-link' to={[PRACTICE_URL, name].join('/')}>
+          <h3 className='InformationListItem-title'>
             {title}
           </h3>
           <img
             src={IMAGES_URL + '/size400/' + image}
-            className='ProgramPracticeListItem-image'
+            className='InformationListItem-image'
             alt={title}
           />
         </Link>
-        <Interface need_admin>
-          <div className='ProgramPracticeListItem-buttons'>
-            <Button
-              onClick={deletePractice}
-            >Удалить
-            </Button>
-            <Button
-              onClick={editPractice}
-            >Редактировать
-            </Button>
-          </div>
-        </Interface>
+        <div className='InformationListItem-buttons'>
+          <Button
+            onClick={deletePractice}
+          >Удалить
+          </Button>
+          <Button
+            onClick={editPractice}
+          >Редактировать
+          </Button>
+        </div>
         {deleted &&
-        <div className='ProgramPracticeListItem-deleted'>
-          <div className='ProgramPracticeListItem-deleted-inner'>
+        <div className='InformationListItem-deleted'>
+          <div className='InformationListItem-deleted-inner'>
             <div className='mb-m'>Удалено.</div>
             <div><Button onClick={restorePractice}>Восстановить</Button></div>
           </div>

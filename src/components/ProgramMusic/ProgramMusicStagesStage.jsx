@@ -7,6 +7,7 @@ import { IMAGES_URL } from 'constants/API'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
 import { withRouter } from 'react-router'
 import Button from 'components/Button/Button'
+import Interface from 'containers/Interface'
 
 @withRouter
 @stagesContextConnection('context')
@@ -40,16 +41,18 @@ export default class ProgramMusicStagesStage extends Component {
             alt={title}
           />
         </Link>
-        <div className='ProgramMusicStagesStage-buttons'>
-          <Button
-            onClick={deleteStage}
-          >Удалить
-          </Button>
-          <Button
-            onClick={editStage}
-          >Редактировать
-          </Button>
-        </div>
+        <Interface need_admin>
+          <div className='ProgramMusicStagesStage-buttons'>
+            <Button
+              onClick={deleteStage}
+            >Удалить
+            </Button>
+            <Button
+              onClick={editStage}
+            >Редактировать
+            </Button>
+          </div>
+        </Interface>
         {deleted &&
         <div className='ProgramMusicStagesStage-deleted'>
           <div className='ProgramMusicStagesStage-deleted-inner'>

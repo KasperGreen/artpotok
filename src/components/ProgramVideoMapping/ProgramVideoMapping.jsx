@@ -8,6 +8,7 @@ import { IMAGES_URL } from 'constants/API'
 import { Link } from 'react-router-dom'
 import Button from 'components/Button'
 import { EDIT_PAGE_URL } from 'constants/URL'
+import Interface from 'containers/Interface'
 
 @pagesContextConnection
 export default class ProgramVideoMapping extends Component {
@@ -39,17 +40,21 @@ export default class ProgramVideoMapping extends Component {
             {description}
           </div>
           <div>
-            <img src={IMAGES_URL + '/size400/' + image} alt={title}
-                 className='ProgramVideoMapping-image' />
+            <img
+              src={IMAGES_URL + '/size400/' + image} alt={title}
+              className='ProgramVideoMapping-image'
+            />
           </div>
           <div>
-            <Button>
-              <Link
-                to={[EDIT_PAGE_URL, id, 'program'].join('/')}
-              >
-                Редактировать
-              </Link>
-            </Button>
+            <Interface need_admin>
+              <Button>
+                <Link
+                  to={[EDIT_PAGE_URL, id, 'program'].join('/')}
+                >
+                  Редактировать
+                </Link>
+              </Button>
+            </Interface>
           </div>
         </Container>
       </div>

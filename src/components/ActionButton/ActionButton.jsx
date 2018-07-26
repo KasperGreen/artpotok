@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './ActionButton.css'
 import Decorator from 'decorators/Decorator'
+import Interface from 'containers/Interface'
 
 export default class ActionButton extends Component {
   render () {
@@ -10,11 +11,13 @@ export default class ActionButton extends Component {
       }
     } = this
     return (
-      <div className='ActionButton'>
-        <Decorator className='ActionButton-button'>
-          {children}
-        </Decorator>
-      </div>
+      <Interface need_admin>
+        <div className='ActionButton'>
+          <Decorator className='ActionButton-button'>
+            {children}
+          </Decorator>
+        </div>
+      </Interface>
     )
   }
 }

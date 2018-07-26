@@ -7,6 +7,7 @@ import { IMAGES_URL } from 'constants/API'
 import mastersContextConnection from 'context/Masters/mastersContextConnection'
 import { withRouter } from 'react-router'
 import Button from 'components/Button'
+import Interface from 'containers/Interface'
 
 @withRouter
 @mastersContextConnection('context')
@@ -40,16 +41,18 @@ export default class ProgramMasterClassListItem extends Component {
             alt={title}
           />
         </Link>
-        <div className='ProgramMasterClassListItem-buttons'>
-          <Button
-            onClick={deleteMaster}
-          >Удалить
-          </Button>
-          <Button
-            onClick={editMaster}
-          >Редактировать
-          </Button>
-        </div>
+        <Interface need_admin>
+          <div className='ProgramMasterClassListItem-buttons'>
+            <Button
+              onClick={deleteMaster}
+            >Удалить
+            </Button>
+            <Button
+              onClick={editMaster}
+            >Редактировать
+            </Button>
+          </div>
+        </Interface>
         {deleted &&
         <div className='ProgramMasterClassListItem-deleted'>
           <div className='ProgramMasterClassListItem-deleted-inner'>
