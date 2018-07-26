@@ -8,13 +8,14 @@ export default class Interface extends Component {
     const {
       props: {
         need_admin,
-        children
-      },
-      user: {
-        is_admin
-      } = {}
+        children,
+        user: {
+          is_admin
+        } = {}
+
+      }
     } = this
-    if (need_admin & !is_admin) return false
+    if (need_admin && !is_admin) return false
     return (
       <Fragment>
         {children}

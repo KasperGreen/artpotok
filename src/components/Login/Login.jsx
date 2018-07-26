@@ -109,10 +109,5 @@ export default class Login extends Component {
     } = this
 
     authAttempt(user_data)
-      .then((response_data) => {
-        console.log(' → ', response_data, ' ← response_data | ')
-
-      })
-
   }
 }
