@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PageWrapper from 'components/PageWrapper'
-import Info from 'components/Info'
+import PartnersList from 'components/PartnersList'
 
-export default class InfoContainer extends Component {
+export default class PartnersListContainer extends Component {
   render () {
     return (
       <PageWrapper>
-        <Info />
+        <PartnersList />
       </PageWrapper>
     )
   }

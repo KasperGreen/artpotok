@@ -17,26 +17,33 @@ import AboutContainer from 'containers/AboutContainer'
 import PageNotFound from 'containers/PageNotFoundContainer'
 import ParticipationContainer from 'containers/ParticipationContainer'
 import ProgramContainer from 'containers/ProgramContainer'
-import InfoContainer from 'containers/InfoContainer'
 import BuyTicketContainer from 'containers/BuyTicketContainer'
 import 'css/margins.css'
 import {
   ADD_ASHRAM_URL,
+  ADD_INFORMATION_URL,
+  ADD_LECTURE_URL,
   ADD_MASTER_CLASS_URL,
   ADD_MUSIC_ARTIST_URL,
   ADD_MUSIC_STAGE_URL,
+  ADD_PARTNER_URL,
   ADD_PRACTICE_URL,
   EDIT_ASHRAM_URL,
+  EDIT_INFORMATION_URL,
+  EDIT_LECTURE_URL,
   EDIT_MASTER_CLASS_URL,
   EDIT_MUSIC_ARTIST_URL,
   EDIT_MUSIC_STAGE_URL,
   EDIT_PAGE_URL,
+  EDIT_PARTNER_URL,
   EDIT_PRACTICE_URL,
+  INFORMATION_URL,
   LECTURE_URL,
   LOGIN_URL,
   LOGOUT_URL,
   MASTER_CLASS_URL,
   MUSIC_URL,
+  PARTNER_URL,
   PRACTICE_URL,
   PROFILE_URL,
   PROGRAM_URL,
@@ -82,6 +89,15 @@ import EditPracticeContainer from 'containers/EditPracticeContainer/EditPractice
 import NewPracticeContainer from 'containers/NewPractice'
 import AshramsState from 'context/Ashrams/AshramsState'
 import PracticesState from 'context/Practices/PracticesState'
+import NewInformationContainer from 'containers/NewInformation'
+import EditInformationContainer from 'containers/EditInformationContainer'
+import InformationListContainer from 'containers/InformationListContainer/InformationListContainer'
+import InformationContainer from 'containers/InformationContainer/InformationContainer'
+import NewLectureContainer from 'containers/NewLecture/NewLectureContainer'
+import EditLectureContainer from 'containers/EditLectureContainer'
+import NewPartnerContainer from 'containers/NewPartner'
+import EditPartnerContainer from 'containers/EditPartnerContainer'
+import PartnersListContainer from 'containers/PartnersListContainer'
 
 Moment.globalLocale = 'ru'
 
@@ -167,17 +183,6 @@ class App extends Component {
                 component={ProgramMasterClassContainer}
               />
 
-              <Route
-                path={LECTURE_URL}
-                exact
-                component={ProgramLectureListContainer}
-              />
-              <Route
-                path={LECTURE_URL + '/:lecture_name'}
-                exact
-                component={ProgramLectureContainer}
-              />
-
 
               <Route path={ADD_PRACTICE_URL} component={NewPracticeContainer} />
               <Route path={EDIT_PRACTICE_URL + '/:id'} component={EditPracticeContainer} />
@@ -191,6 +196,45 @@ class App extends Component {
                 exact
                 component={ProgramPracticeContainer}
               />
+
+
+              <Route path={ADD_INFORMATION_URL} component={NewInformationContainer} />
+              <Route path={EDIT_INFORMATION_URL + '/:id'} component={EditInformationContainer} />
+              <Route
+                path={INFORMATION_URL}
+                exact
+                component={InformationListContainer}
+              />
+              <Route
+                path={INFORMATION_URL + '/:information_name'}
+                exact
+                component={InformationContainer}
+              />
+
+
+              <Route path={ADD_LECTURE_URL} component={NewLectureContainer} />
+              <Route path={EDIT_LECTURE_URL + '/:id'} component={EditLectureContainer} />
+              <Route
+                path={LECTURE_URL}
+                exact
+                component={ProgramLectureListContainer}
+              />
+              <Route
+                path={LECTURE_URL + '/:lecture_name'}
+                exact
+                component={ProgramLectureContainer}
+              />
+
+
+
+              <Route path={ADD_PARTNER_URL} component={NewPartnerContainer} />
+              <Route path={EDIT_PARTNER_URL + '/:id'} component={EditPartnerContainer} />
+              <Route
+                path={PARTNER_URL}
+                exact
+                component={PartnersListContainer}
+              />
+
 
               <Route path={ADD_ASHRAM_URL} component={NewAshramContainer} />
               <Route path={EDIT_ASHRAM_URL + '/:id'} component={EditAshramContainer} />
@@ -223,9 +267,6 @@ class App extends Component {
                 exact
                 component={EditPageContainer}
               />
-
-
-              <Route path={'/info'} exact component={InfoContainer} />
 
 
               <Route component={PageNotFound} />
