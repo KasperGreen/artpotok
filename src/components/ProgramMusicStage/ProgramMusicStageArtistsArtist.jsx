@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import { IMAGES_URL } from 'constants/API'
 import { withRouter } from 'react-router'
 import artistsContextConnection from 'context/Artists/artistsContextConnection'
+import Interface from 'containers/Interface'
+import Button from 'components/Button'
 
 @withRouter
 @artistsContextConnection('context')
@@ -15,8 +17,6 @@ export default class ProgramMusicStageArtistsArtist extends Component {
       props: {
         stage_name,
         image,
-        description,
-        sound_cloud_url,
         name,
         title,
         deleted
@@ -39,19 +39,17 @@ export default class ProgramMusicStageArtistsArtist extends Component {
             {title}
           </h3>
           <img className='ProgramMusicArtistsArtist-image' src={IMAGES_URL + '/size400/' + image} alt={title} />
-          <div>
-            {description}
-          </div>
-          <div>
-            {sound_cloud_url}
-          </div>
-          <button onClick={deleteArtist}>
-            Delete
-          </button>
-          <button onClick={editArtist}>
-            Редактировать
-          </button>
         </Link>
+        <Interface need_admin>
+          <div className='ProgramMusicStagesStage-buttons'>
+            <Button onClick={deleteArtist}>
+              Delete
+            </Button>
+            <Button onClick={editArtist}>
+              Редактировать
+            </Button>
+          </div>
+        </Interface>
       </section>
     )
   }

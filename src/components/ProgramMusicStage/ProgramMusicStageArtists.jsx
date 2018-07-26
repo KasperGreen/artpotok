@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import './ProgramMusicStageArtists.css'
 import ProgramMusicStageArtistsArtist from 'components/ProgramMusicStage/ProgramMusicStageArtistsArtist'
 import _ from 'lodash'
+import ActionButton from 'components/ActionButton'
 
 @artistsContextConnection
 export default class ProgramMusicStageArtists extends Component {
@@ -30,9 +31,13 @@ export default class ProgramMusicStageArtists extends Component {
             })}
           </ul>
         </nav>
-        <Link to={[ADD_MUSIC_ARTIST_URL, stage_id].join('/')}>
-          Добавить артиста
-        </Link>
+        <ActionButton>
+          <Link
+            to={[ADD_MUSIC_ARTIST_URL, stage_id].join('/')}
+            title={'Добавить нового артиста'}
+          >+
+          </Link>
+        </ActionButton>
       </div>
     )
   }
