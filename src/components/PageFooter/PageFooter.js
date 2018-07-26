@@ -8,7 +8,7 @@ export default class PageFooter extends Component {
     return (
       <footer className='PageFooter'>
         <Container>
-          <div>Это подвал</div>
+          <a href={'https:/Kasper.Green'} target='_blank'>Kasper.Green</a>
         </Container>
       </footer>
     )
