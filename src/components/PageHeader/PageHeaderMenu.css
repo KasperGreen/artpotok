@@ -44,11 +44,13 @@
       top: 42px;
       width: 100%;
       height: calc(100vh - 32px);
-      transform: translateX(100%);
+      transform: translateY(100%);
       opacity: .42;
       transition: .22s ease-out;
+      display: none;
       .menu_is_opened & {
-        transform: translateX(0);
+        display: flex;
+        transform: translateY(0);
         opacity: 1;
 
       }
