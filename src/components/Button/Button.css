@@ -8,6 +8,7 @@
   text-decoration: none;
   height: 22px;
   cursor: pointer;
+  letter-spacing: 2px;
 
   &:hover {
     color: #f13f40;

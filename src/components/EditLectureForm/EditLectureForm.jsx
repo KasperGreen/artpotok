@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import './EditStageForm.css'
+import './EditLectureForm.css'
 import Form from 'ui/Form'
 import FormInput from 'ui/Form/FormInput'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import _ from 'lodash'
-import { MUSIC_URL } from 'constants/URL'
+import { LECTURE_URL, MUSIC_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
+import Button from 'components/Button'
 
-export default class EditStageForm extends Component {
+export default class EditLectureForm extends Component {
   state = {
     updated: false
   }
@@ -39,10 +40,13 @@ export default class EditStageForm extends Component {
     if (updated) return (
       <div>
         <div>
-          Сцена <strong>{name}</strong> Обновлена. <Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link>
+          Лекция <strong>{name}</strong> Обновлена. <Button><Link to={[LECTURE_URL, name].join('/')}>Перейти к
+          лекции</Link></Button>
         </div>
         <div>
-          <Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link>
+          <Button>
+            <Link to={MUSIC_URL}>Вернуться ко списку всех лекций</Link>
+          </Button>
         </div>
       </div>)
 

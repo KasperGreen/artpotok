@@ -1,18 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewArtistForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { ADD_MUSIC_ARTIST_URL, MUSIC_URL } from 'constants/URL'
+import { MUSIC_URL } from 'constants/URL'
 import _ from 'lodash'
 import artistsContextConnection from 'context/Artists/artistsContextConnection'
+import NavButtons from 'templates/NavButtons'
+import Button from 'components/Button'
+import PageCreated from 'components/PageCreated'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
+import CreatePageExtend from 'extends/CreatePageExtend'
 
-@artistsContextConnection('context')
+@artistsContextConnection('artist')
 @stagesContextConnection('stage')
-export default class NewArtistForm extends Component {
+export default class NewArtistForm extends CreatePageExtend {
   state = {
     form: {},
     created: false,
@@ -28,36 +32,57 @@ export default class NewArtistForm extends Component {
     const {
         state: {
           created,
-          name,
+          title,
+          id
         },
         props: {
           stage_id,
-          stage: {
-            getStageById
+          artist: {
+            getArtistById
           },
-          context: {
+          stage: {
+            getStageById,
+          },
+          artist: {
             add_artist_progress,
             add_form_errors
           }
         },
-        onSubmit
+        resetForm,
+        onSubmit,
       } = this,
+      artist = getArtistById(id),
       stage = getStageById(stage_id)
 
     if (created) return (
-      <div>
-        <div>
-          Артист <strong>{name}</strong> создан. <Link to={[MUSIC_URL, stage.name, name].join('/')}>Перейти к
-          артисту</Link>
+      <PageCreated>
+        <div className='NewArtistForm-created'>
+          <div className='NewArtistForm-title'>
+            Артист <strong>{title}</strong> создан.
+          </div>
+          <NavButtons>
+            <ul>
+              <li>
+                <Button>
+                  <Link to={MUSIC_URL + '/' + stage.name + '/' + artist.name}>
+                    Перейти к артисту
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button>
+                  <Link to={MUSIC_URL + '/' + stage.name}>Вернуться к списку артистов</Link>
+                </Button>
+              </li>
+              <li>
+                <Button onClick={resetForm}>
+                  Добавить другого артиста
+                </Button>
+              </li>
+            </ul>
+          </NavButtons>
         </div>
-        <div>
-          <Link to={MUSIC_URL + '/' + stage.name}>Вернуться к списку артистов</Link>
-        </div>
-        <div>
-          <Link to={ADD_MUSIC_ARTIST_URL + '/' + stage_id}>Добавить другого артиста</Link>
-        </div>
-
-      </div>)
+      </PageCreated>)
 
     return (
       <div className='NewArtistForm'>
@@ -69,15 +94,15 @@ export default class NewArtistForm extends Component {
             default_form_data: {stage_id}
           }}>
             <FormInput
+              required
+              name={'title'}
+              label={'Название артиста'}
+            />
+            <FormInput
               name={'name'}
               required
               pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
               label={'Имя латиницей для URL'}
-            />
-            <FormInput
-              required
-              name={'title'}
-              label={'Название артиста'}
             />
             <FormInput
               name={'sound_cloud_url'}
@@ -95,7 +120,9 @@ export default class NewArtistForm extends Component {
               label={'Изображение'}
               name={'image'}
             />
-            <button disabled={add_artist_progress}>Создать</button>
+            <Button disabled={add_artist_progress}>
+              Создать
+            </Button>
           </Form>
           {add_artist_progress && <h1>Данные отправляются</h1>}
         </Container>
@@ -104,7 +131,7 @@ export default class NewArtistForm extends Component {
   }
 
   onSubmit = (data) => {
-    this.props.context.addArtist(data).then((response) => {
+    this.props.artist.addArtist(data).then((response) => {
 
       this.setState(
         (state) => {
@@ -114,7 +141,6 @@ export default class NewArtistForm extends Component {
           }
         }
       )
-
     })
   }
 

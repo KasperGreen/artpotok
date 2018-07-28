@@ -1,0 +1,7 @@
+.PageCreated {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: var(--without-header-height);
+  align-content: center;
+}

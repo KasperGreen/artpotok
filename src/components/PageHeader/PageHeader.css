@@ -7,10 +7,7 @@
 
   &-inner {
     display: flex;
-    height: 50px;
-    @media (--mobile) {
-        height: 42px;
-    }
+    height: var(--header-height);
     align-items: center;
     justify-content: space-around;
   }

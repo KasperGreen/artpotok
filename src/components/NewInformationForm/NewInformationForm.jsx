@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
-import './NewStageForm.css'
+import './NewInformationForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { ADD_MUSIC_STAGE_URL, MUSIC_URL } from 'constants/URL'
+import { ADD_INFORMATION_URL, MUSIC_URL } from 'constants/URL'
 import _ from 'lodash'
-import stagesContextConnection from 'context/Stages/stagesContextConnection'
+import informationsContextConnection from 'context/Informations/informationsContextConnection'
 import Button from 'components/Button'
 import Text from 'templates/Text'
 import NavButtons from 'templates/NavButtons'
 
-@stagesContextConnection('context')
-export default class NewStageForm extends Component {
+@informationsContextConnection('context')
+export default class NewInformationForm extends Component {
   state = {
     form: {},
     created: false,
@@ -33,7 +33,7 @@ export default class NewStageForm extends Component {
       },
       props: {
         context: {
-          add_stage_progress,
+          add_information_progress,
           add_form_errors
         }
       },
@@ -41,7 +41,7 @@ export default class NewStageForm extends Component {
     } = this
 
     if (created) return (
-      <div className='NewStageForm-created'>
+      <div className='NewInformationForm-created'>
         <Text>
           <div>
             Сцена <strong>{name}</strong> создана.
@@ -50,7 +50,7 @@ export default class NewStageForm extends Component {
             <ul>
               <li><Button><Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link></Button></li>
               <li><Button><Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link></Button></li>
-              <li><Button><Link to={ADD_MUSIC_STAGE_URL}>Создать другую сцену</Link></Button></li>
+              <li><Button><Link to={ADD_INFORMATION_URL}>Создать другую сцену</Link></Button></li>
             </ul>
           </NavButtons>
         </Text>
@@ -58,14 +58,14 @@ export default class NewStageForm extends Component {
       </div>)
 
     return (
-      <div className='NewStageForm'>
+      <div className='NewInformationForm'>
         <Container>
-          <h2 className='NewStageForm-title'>
+          <h2 className='NewInformationForm-title'>
             Новая сцена
           </h2>
           <Form {...{
             onSubmit,
-            progress: add_stage_progress,
+            progress: add_information_progress,
             errors: add_form_errors,
           }}>
             <FormInput
@@ -79,7 +79,7 @@ export default class NewStageForm extends Component {
               required
               pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
               label={'Имя латиницей для URL'}
-              placeholder={'new-stage'}
+              placeholder={'new-information'}
             />
             <FormTextArea
               required
@@ -92,18 +92,18 @@ export default class NewStageForm extends Component {
               label={'Изображение'}
               name={'image'}
             />
-            <div className='NewStageForm-buttons'>
-              <Button disabled={add_stage_progress}>Сохранить</Button>
+            <div className='NewInformationForm-buttons'>
+              <Button disabled={add_information_progress}>Сохранить</Button>
             </div>
           </Form>
-          {add_stage_progress && <h1>Данные отправляются</h1>}
+          {add_information_progress && <h1>Данные отправляются</h1>}
         </Container>
       </div>
     )
   }
 
   onSubmit = (data) => {
-    this.props.context.addStage(data).then((response) => {
+    this.props.context.addInformation(data).then((response) => {
 
       this.setState(
         (state) => {

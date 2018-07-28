@@ -8,6 +8,7 @@ import _ from 'lodash'
 import { MUSIC_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
+import Button from 'components/Button'
 
 @stagesContextConnection('stage')
 export default class EditArtistForm extends Component {
@@ -77,7 +78,9 @@ export default class EditArtistForm extends Component {
             <FormInput label={'SoundCloud URL'} name='sound_cloud_url' />
             <FormTextArea label={'Описание'} name='description' />
             <FormInput label={'Изображение'} file name='image' />
-            <button>Сохранить</button>
+            <Button>
+              Сохранить
+            </Button>
           </Form>
           }
         </Container>

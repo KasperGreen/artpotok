@@ -1,19 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewStageForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { ADD_MUSIC_STAGE_URL, MUSIC_URL } from 'constants/URL'
+import { MUSIC_URL } from 'constants/URL'
 import _ from 'lodash'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
 import Button from 'components/Button'
 import Text from 'templates/Text'
 import NavButtons from 'templates/NavButtons'
+import PageCreated from 'components/PageCreated'
+import CreatePageExtend from 'extends/CreatePageExtend'
 
 @stagesContextConnection('context')
-export default class NewStageForm extends Component {
+export default class NewStageForm extends CreatePageExtend {
   state = {
     form: {},
     created: false,
@@ -30,6 +32,7 @@ export default class NewStageForm extends Component {
       state: {
         created,
         name,
+        title
       },
       props: {
         context: {
@@ -37,25 +40,45 @@ export default class NewStageForm extends Component {
           add_form_errors
         }
       },
-      onSubmit
+      onSubmit,
+      resetForm
     } = this
 
     if (created) return (
-      <div className='NewStageForm-created'>
-        <Text>
-          <div>
-            Сцена <strong>{name}</strong> создана.
-          </div>
-          <NavButtons>
-            <ul>
-              <li><Button><Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link></Button></li>
-              <li><Button><Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link></Button></li>
-              <li><Button><Link to={ADD_MUSIC_STAGE_URL}>Создать другую сцену</Link></Button></li>
-            </ul>
-          </NavButtons>
-        </Text>
+      <PageCreated>
+        <div className='NewStageForm-created'>
+          <Text>
+            <div className='NewLectureForm-title'>
+              Сцена <strong>{title}</strong> создана.
+            </div>
+            <NavButtons>
+              <ul>
+                <li>
+                  <Button>
+                    <Link to={[MUSIC_URL, name].join('/')}>
+                      Перейти к сцене
+                    </Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button>
+                    <Link to={MUSIC_URL}>
+                      Вернуться ко списку всех сцен
+                    </Link>
+                  </Button>
+                </li>
+                <li>
+                  <Button onClick={resetForm}>
+                    Создать другую сцену
+                  </Button>
+                </li>
+              </ul>
+            </NavButtons>
+          </Text>
 
-      </div>)
+        </div>
+      </PageCreated>
+    )
 
     return (
       <div className='NewStageForm'>

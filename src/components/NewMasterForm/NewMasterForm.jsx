@@ -1,17 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewMasterForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { ADD_MASTER_CLASS_URL, MASTER_CLASS_URL } from 'constants/URL'
+import { MASTER_CLASS_URL } from 'constants/URL'
 import _ from 'lodash'
 import mastersContextConnection from 'context/Masters/mastersContextConnection'
 import Button from 'components/Button'
+import PageCreated from 'components/PageCreated'
+import NavButtons from 'templates/NavButtons'
+import CreatePageExtend from 'extends/CreatePageExtend'
 
 @mastersContextConnection('context')
-export default class NewMasterForm extends Component {
+export default class NewMasterForm extends CreatePageExtend {
   state = {
     form: {},
     created: false,
@@ -28,6 +31,7 @@ export default class NewMasterForm extends Component {
       state: {
         created,
         name,
+        title,
       },
       props: {
         context: {
@@ -35,22 +39,40 @@ export default class NewMasterForm extends Component {
           add_form_errors
         }
       },
-      onSubmit
+      onSubmit,
+      resetForm
     } = this
 
     if (created) return (
-      <div className='NewMasterForm-created'>
-        <div>
-          Мастер-Класс <strong>{name}</strong> создан. <Link to={[MASTER_CLASS_URL, name].join('/')}>Перейти к мастер-классу</Link>
+      <PageCreated>
+        <div className='NewMasterForm-created'>
+          <div className='NewLectureForm-title'>
+            Мастер-Класс <strong>{title}</strong> создан.
+          </div>
+          <NavButtons>
+            <ul>
+              <li>
+                <Button>
+                  <Link to={[MASTER_CLASS_URL, name].join('/')}>Перейти к
+                    мастер-классу</Link>
+                </Button>
+              </li>
+              <li>
+                <Button>
+                  <Link to={MASTER_CLASS_URL}>
+                    Вернуться ко списку всех мастер-классов
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button onClick={resetForm}>
+                  Создать другой мастер-класс
+                </Button>
+              </li>
+            </ul>
+          </NavButtons>
         </div>
-        <div>
-          <Link to={MASTER_CLASS_URL}>Вернуться ко списку всех мастер-классов</Link>
-        </div>
-        <div>
-          <Link to={ADD_MASTER_CLASS_URL}>Создать другой мастер-класс</Link>
-        </div>
-
-      </div>)
+      </PageCreated>)
 
     return (
       <div className='NewMasterForm'>

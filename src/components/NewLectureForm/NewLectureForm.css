@@ -1,4 +1,4 @@
-.NewStageForm {
+.NewLectureForm {
   margin-bottom: 42px;
   &-title {
     font-size: 2rem;
@@ -12,6 +12,5 @@
     justify-content: center;
   }
   &-created {
-    height: calc(100vh - 32px)
   }
 }

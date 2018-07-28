@@ -4,6 +4,7 @@
     margin-bottom: 12px;
   }
   ul {
+    list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: center;

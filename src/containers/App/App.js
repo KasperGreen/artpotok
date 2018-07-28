@@ -6,6 +6,7 @@ import Moment from 'react-moment'
 import AppContext from 'context/AppContext'
 import { DETECTED_KEYBOARD_USER_CLASS_NAME } from 'constants/APP'
 import 'normalize.css'
+import './variables.css'
 import './App.css'
 import _ from 'lodash'
 import AppUpdateNotifier from 'containers/App/AppUpdateNotifier'
@@ -98,6 +99,7 @@ import EditLectureContainer from 'containers/EditLectureContainer'
 import NewPartnerContainer from 'containers/NewPartner'
 import EditPartnerContainer from 'containers/EditPartnerContainer'
 import PartnersListContainer from 'containers/PartnersListContainer'
+import LecturesState from 'context/Lectures/LecturesState'
 
 Moment.globalLocale = 'ru'
 
@@ -108,6 +110,7 @@ Moment.globalLocale = 'ru'
 @MastersState
 @AshramsState
 @PracticesState
+@LecturesState
 class App extends Component {
 
   render () {

@@ -1,5 +1,5 @@
 {
-  "name": "NewStageForm",
+  "name": "NewLectureForm",
   "version": "1.0.0",
-  "main": "NewStageForm.jsx"
+  "main": "NewLectureForm.jsx"
 }
