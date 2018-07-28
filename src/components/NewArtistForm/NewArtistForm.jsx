@@ -5,7 +5,7 @@ import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { MUSIC_URL } from 'constants/URL'
+import { ADD_MUSIC_ARTIST_URL, MUSIC_URL } from 'constants/URL'
 import _ from 'lodash'
 import artistsContextConnection from 'context/Artists/artistsContextConnection'
 import NavButtons from 'templates/NavButtons'
@@ -76,7 +76,9 @@ export default class NewArtistForm extends CreatePageExtend {
               </li>
               <li>
                 <Button onClick={resetForm}>
-                  Добавить другого артиста
+                  <Link to={ADD_MUSIC_ARTIST_URL}>
+                    Добавить другого артиста
+                  </Link>
                 </Button>
               </li>
             </ul>
@@ -96,6 +98,7 @@ export default class NewArtistForm extends CreatePageExtend {
             <FormInput
               required
               name={'title'}
+              seo_name_hack
               label={'Название артиста'}
             />
             <FormInput
@@ -120,9 +123,11 @@ export default class NewArtistForm extends CreatePageExtend {
               label={'Изображение'}
               name={'image'}
             />
-            <Button disabled={add_artist_progress}>
-              Создать
-            </Button>
+            <div className='NewArtistForm-buttons'>
+              <Button disabled={add_artist_progress}>
+                Создать
+              </Button>
+            </div>
           </Form>
           {add_artist_progress && <h1>Данные отправляются</h1>}
         </Container>

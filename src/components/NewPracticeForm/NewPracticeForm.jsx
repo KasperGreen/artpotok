@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewPracticeForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
@@ -9,9 +9,12 @@ import { ADD_PRACTICE_URL, PRACTICE_URL } from 'constants/URL'
 import _ from 'lodash'
 import practicesContextConnection from 'context/Practices/practicesContextConnection'
 import Button from 'components/Button'
+import PageCreated from 'components/PageCreated'
+import NavButtons from 'templates/NavButtons'
+import CreatePageExtend from 'extends/CreatePageExtend'
 
 @practicesContextConnection('context')
-export default class NewPracticeForm extends Component {
+export default class NewPracticeForm extends CreatePageExtend {
   state = {
     form: {},
     created: false,
@@ -28,6 +31,7 @@ export default class NewPracticeForm extends Component {
       state: {
         created,
         name,
+        title
       },
       props: {
         context: {
@@ -35,22 +39,43 @@ export default class NewPracticeForm extends Component {
           add_form_errors
         }
       },
+      resetForm,
       onSubmit
     } = this
 
     if (created) return (
-      <div className='NewPracticeForm-created'>
-        <div>
-          Практика <strong>{name}</strong> создана. <Link to={[PRACTICE_URL, name].join('/')}>Перейти к практике</Link>
-        </div>
-        <div>
-          <Link to={PRACTICE_URL}>Вернуться ко списку всех практик</Link>
-        </div>
-        <div>
-          <Link to={ADD_PRACTICE_URL}>Создать другую практику</Link>
-        </div>
+      <PageCreated>
+        <div className='NewPracticeForm-created'>
+          <div className='NewPracticeForm-title'>
+            Практика <strong>{title}</strong> создана.
+          </div>
+          <NavButtons>
+            <ul>
+              <li>
+                <Button>
+                  <Link to={[PRACTICE_URL, name].join('/')}>
+                    Перейти к практике
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button>
+                  <Link to={PRACTICE_URL}>
+                    Вернуться ко списку всех практик
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button onClick={resetForm}>
+                  <Link to={ADD_PRACTICE_URL}>Создать другую практику</Link>
+                </Button>
+              </li>
+            </ul>
+          </NavButtons>
 
-      </div>)
+        </div>
+      </PageCreated>
+    )
 
     return (
       <div className='NewPracticeForm'>

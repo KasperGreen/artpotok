@@ -5,7 +5,7 @@ import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { MUSIC_URL } from 'constants/URL'
+import { ADD_MUSIC_STAGE_URL, MUSIC_URL } from 'constants/URL'
 import _ from 'lodash'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
 import Button from 'components/Button'
@@ -69,7 +69,9 @@ export default class NewStageForm extends CreatePageExtend {
                 </li>
                 <li>
                   <Button onClick={resetForm}>
-                    Создать другую сцену
+                    <Link to={ADD_MUSIC_STAGE_URL}>
+                      Создать другую сцену
+                    </Link>
                   </Button>
                 </li>
               </ul>

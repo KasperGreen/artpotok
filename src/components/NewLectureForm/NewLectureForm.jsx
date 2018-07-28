@@ -1,19 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewLectureForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { ADD_LECTURE_URL, MUSIC_URL } from 'constants/URL'
+import { ADD_LECTURE_URL, LECTURE_URL } from 'constants/URL'
 import _ from 'lodash'
 import lecturesContextConnection from 'context/Lectures/lecturesContextConnection'
 import Button from 'components/Button'
-import Text from 'templates/Text'
 import NavButtons from 'templates/NavButtons'
+import CreatePageExtend from 'extends/CreatePageExtend'
+import PageCreated from 'components/PageCreated'
 
 @lecturesContextConnection('context')
-export default class NewLectureForm extends Component {
+export default class NewLectureForm extends CreatePageExtend {
   state = {
     form: {},
     created: false,
@@ -38,32 +39,33 @@ export default class NewLectureForm extends Component {
           add_form_errors
         }
       },
-      onSubmit
+      onSubmit,
+      resetForm
     } = this
 
     if (created) return (
-      <div className='NewLectureForm-created'>
-        <Text>
-          <div>
+      <PageCreated>
+        <div className='NewLectureForm-created'>
+          <div className='NewLectureForm-title'>
             Лекция <strong>{title}</strong> создана.
           </div>
           <NavButtons>
             <ul>
               <li>
                 <Button>
-                  <Link to={[MUSIC_URL, name].join('/')}>
+                  <Link to={[LECTURE_URL, name].join('/')}>
                     Перейти к лекции
                   </Link>
                 </Button>
               </li>
               <li>
                 <Button>
-                  <Link to={MUSIC_URL}>
+                  <Link to={LECTURE_URL}>
                     Вернуться ко списку всех лекций
                   </Link>
                 </Button></li>
               <li>
-                <Button>
+                <Button onClick={resetForm}>
                   <Link to={ADD_LECTURE_URL}>
                     Создать другую лекцию
                   </Link>
@@ -71,9 +73,8 @@ export default class NewLectureForm extends Component {
               </li>
             </ul>
           </NavButtons>
-        </Text>
-
-      </div>)
+        </div>
+      </PageCreated>)
 
     return (
       <div className='NewLectureForm'>

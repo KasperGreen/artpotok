@@ -5,7 +5,7 @@ import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { MASTER_CLASS_URL } from 'constants/URL'
+import { ADD_MASTER_CLASS_URL, MASTER_CLASS_URL } from 'constants/URL'
 import _ from 'lodash'
 import mastersContextConnection from 'context/Masters/mastersContextConnection'
 import Button from 'components/Button'
@@ -66,7 +66,9 @@ export default class NewMasterForm extends CreatePageExtend {
               </li>
               <li>
                 <Button onClick={resetForm}>
-                  Создать другой мастер-класс
+                  <Link to={ADD_MASTER_CLASS_URL}>
+                    Создать другой мастер-класс
+                  </Link>
                 </Button>
               </li>
             </ul>

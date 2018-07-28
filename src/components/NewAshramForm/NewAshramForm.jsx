@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewAshramForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
@@ -9,9 +9,12 @@ import { ADD_ASHRAM_URL, TECHNO_ASHRAM_URL } from 'constants/URL'
 import _ from 'lodash'
 import ashramsContextConnection from 'context/Ashrams/ashramsContextConnection'
 import Button from 'components/Button'
+import PageCreated from 'components/PageCreated'
+import CreatePageExtend from 'extends/CreatePageExtend'
+import NavButtons from 'templates/NavButtons'
 
 @ashramsContextConnection('context')
-export default class NewAshramForm extends Component {
+export default class NewAshramForm extends CreatePageExtend {
   state = {
     form: {},
     created: false,
@@ -28,6 +31,7 @@ export default class NewAshramForm extends Component {
       state: {
         created,
         name,
+        title,
       },
       props: {
         context: {
@@ -35,22 +39,43 @@ export default class NewAshramForm extends Component {
           add_form_errors
         }
       },
-      onSubmit
+      onSubmit,
+      resetForm
     } = this
 
     if (created) return (
-      <div className='NewAshramForm-created'>
-        <div>
-          Ашрам <strong>{name}</strong> создан. <Link to={[TECHNO_ASHRAM_URL, name].join('/')}>Перейти к Ашраму</Link>
+      <PageCreated>
+        <div className='NewAshramForm-created'>
+          <div className='NewAshramForm-title'>
+            Ашрам <strong>{title}</strong> создан.
+          </div>
+          <NavButtons>
+            <ul>
+              <li>
+                <Button>
+                  <Link to={[TECHNO_ASHRAM_URL, name].join('/')}>
+                    Перейти к Ашраму
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button>
+                  <Link to={TECHNO_ASHRAM_URL}>
+                    Вернуться ко списку всех Ашрамов
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button onClick={resetForm}>
+                  <Link to={ADD_ASHRAM_URL}>
+                    Создать другой Ашрам
+                  </Link>
+                </Button>
+              </li>
+            </ul>
+          </NavButtons>
         </div>
-        <div>
-          <Link to={TECHNO_ASHRAM_URL}>Вернуться ко списку всех Ашрамов</Link>
-        </div>
-        <div>
-          <Link to={ADD_ASHRAM_URL}>Создать другой Ашрам</Link>
-        </div>
-
-      </div>)
+      </PageCreated>)
 
     return (
       <div className='NewAshramForm'>
