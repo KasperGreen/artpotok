@@ -1,5 +1,5 @@
 {
-  "name": "EditStageForm",
+  "name": "EditPartnerForm",
   "version": "1.0.0",
-  "main": "EditStageForm.jsx"
+  "main": "EditPartnerForm.jsx"
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './PartnersListItem.css'
 import PropTypes from 'prop-types'
-import { EDIT_PRACTICE_URL, PRACTICE_URL } from 'constants/URL'
+import { EDIT_PARTNER_URL, PARTNER_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
 import { IMAGES_URL } from 'constants/API'
 import partnersContextConnection from 'context/Partners/partnersContextConnection'
@@ -23,14 +23,14 @@ export default class PartnersListItem extends Component {
         image,
         deleted
       },
-      deletePractice,
-      restorePractice,
-      editPractice
+      deletePartner,
+      restorePartner,
+      editPartner
     } = this
 
     return (
       <section className='PartnersListItem'>
-        <Link className='PartnersListItem-link' to={[PRACTICE_URL, name].join('/')}>
+        <Link className='PartnersListItem-link' to={[PARTNER_URL, name].join('/')}>
           <h3 className='PartnersListItem-title'>
             {title}
           </h3>
@@ -42,11 +42,11 @@ export default class PartnersListItem extends Component {
         </Link>
         <div className='PartnersListItem-buttons'>
           <Button
-            onClick={deletePractice}
+            onClick={deletePartner}
           >Удалить
           </Button>
           <Button
-            onClick={editPractice}
+            onClick={editPartner}
           >Редактировать
           </Button>
         </div>
@@ -54,7 +54,11 @@ export default class PartnersListItem extends Component {
         <div className='PartnersListItem-deleted'>
           <div className='PartnersListItem-deleted-inner'>
             <div className='mb-m'>Удалено.</div>
-            <div><Button onClick={restorePractice}>Восстановить</Button></div>
+            <div>
+              <Button onClick={restorePartner}>
+                Восстановить
+              </Button>
+            </div>
           </div>
         </div>
         }
@@ -62,20 +66,20 @@ export default class PartnersListItem extends Component {
     )
   }
 
-  deletePractice = (e) => {
+  deletePartner = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const {
       props: {
         id,
         context: {
-          deletePractice
+          deletePartner
         }
       }
     } = this
-    deletePractice(id)
+    deletePartner(id)
   }
-  editPractice = (e) => {
+  editPartner = (e) => {
     e.preventDefault()
     e.stopPropagation()
 
@@ -86,20 +90,20 @@ export default class PartnersListItem extends Component {
       }
     } = this
 
-    history.push([EDIT_PRACTICE_URL, id].join('/'))
+    history.push([EDIT_PARTNER_URL, id].join('/'))
   }
-  restorePractice = (e) => {
+  restorePartner = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const {
       props: {
         id,
         context: {
-          restorePractice
+          restorePartner
         }
       }
     } = this
-    restorePractice(id)
+    restorePartner(id)
   }
 
   static propTypes = {
