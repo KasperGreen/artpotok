@@ -100,6 +100,7 @@ import NewPartnerContainer from 'containers/NewPartner'
 import EditPartnerContainer from 'containers/EditPartnerContainer'
 import PartnersListContainer from 'containers/PartnersListContainer'
 import LecturesState from 'context/Lectures/LecturesState'
+import InformationsState from 'context/Informations/InformationsState'
 
 Moment.globalLocale = 'ru'
 
@@ -111,6 +112,7 @@ Moment.globalLocale = 'ru'
 @AshramsState
 @PracticesState
 @LecturesState
+@InformationsState
 class App extends Component {
 
   render () {
@@ -227,7 +229,6 @@ class App extends Component {
                 exact
                 component={ProgramLectureContainer}
               />
-
 
 
               <Route path={ADD_PARTNER_URL} component={NewPartnerContainer} />

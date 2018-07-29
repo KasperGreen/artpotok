@@ -3,7 +3,7 @@ import './InformationList.css'
 import Container from 'components/Container'
 import PageTitle from 'components/PageTitle'
 import { Link } from 'react-router-dom'
-import { ADD_PRACTICE_URL } from 'constants/URL'
+import { ADD_INFORMATION_URL } from 'constants/URL'
 import informationsContextConnection from 'context/Informations/informationsContextConnection'
 import _ from 'lodash'
 import InformationListItem from 'components/InformationList/InformationListItem'
@@ -21,7 +21,7 @@ export default class InformationList extends Component {
       <div className='InformationList'>
         <Container>
           <PageTitle>
-            Список практик
+            Дополнительная информация
           </PageTitle>
           <nav>
             <ul className='ProgramMasterClassList-ul'>
@@ -35,7 +35,7 @@ export default class InformationList extends Component {
             </ul>
           </nav>
           <ActionButton>
-            <Link to={ADD_PRACTICE_URL} title={'Добавить новую практику'}>+</Link>
+            <Link to={ADD_INFORMATION_URL} title={'Добавить новую информацию'}>+</Link>
           </ActionButton>
         </Container>
       </div>

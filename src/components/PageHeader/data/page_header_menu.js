@@ -1,14 +1,16 @@
+import { INFORMATION_URL, PARTNER_URL, PROGRAM_URL } from 'constants/URL'
+
 export default [
   {
     title: 'Программа',
-    to: '/program'
+    to: PROGRAM_URL
   },
   {
     title: 'Подробности',
-    to: '/info'
+    to: INFORMATION_URL
   },
   {
     title: 'Партнёры',
-    to: '/partners'
+    to: PARTNER_URL
   },
 ]

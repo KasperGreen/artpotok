@@ -1,19 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewInformationForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
 import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { ADD_INFORMATION_URL, MUSIC_URL } from 'constants/URL'
+import { ADD_INFORMATION_URL, INFORMATION_URL } from 'constants/URL'
 import _ from 'lodash'
 import informationsContextConnection from 'context/Informations/informationsContextConnection'
 import Button from 'components/Button'
-import Text from 'templates/Text'
 import NavButtons from 'templates/NavButtons'
+import PageCreated from 'components/PageCreated'
+import CreatePageExtend from 'extends/CreatePageExtend'
+import FormWaitMessage from 'components/FormWaitMessage'
 
 @informationsContextConnection('context')
-export default class NewInformationForm extends Component {
+export default class NewInformationForm extends CreatePageExtend {
   state = {
     form: {},
     created: false,
@@ -30,6 +32,7 @@ export default class NewInformationForm extends Component {
       state: {
         created,
         name,
+        title,
       },
       props: {
         context: {
@@ -37,31 +40,49 @@ export default class NewInformationForm extends Component {
           add_form_errors
         }
       },
-      onSubmit
+      onSubmit,
+      resetForm
     } = this
 
     if (created) return (
-      <div className='NewInformationForm-created'>
-        <Text>
-          <div>
-            Сцена <strong>{name}</strong> создана.
+      <PageCreated>
+        <div className='NewInformationForm-created'>
+          <div className='NewInformationForm-title'>
+            Раздел <strong>{title}</strong> создан.
           </div>
           <NavButtons>
             <ul>
-              <li><Button><Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link></Button></li>
-              <li><Button><Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link></Button></li>
-              <li><Button><Link to={ADD_INFORMATION_URL}>Создать другую сцену</Link></Button></li>
+              <li>
+                <Button>
+                  <Link to={[INFORMATION_URL, name].join('/')}>
+                    Перейти к информационному разделу
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button>
+                  <Link to={INFORMATION_URL}>
+                    Вернуться в раздел информации
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button onClick={resetForm}>
+                  <Link to={ADD_INFORMATION_URL}>
+                    Создать другой раздел
+                  </Link>
+                </Button>
+              </li>
             </ul>
           </NavButtons>
-        </Text>
-
-      </div>)
+        </div>
+      </PageCreated>)
 
     return (
       <div className='NewInformationForm'>
         <Container>
           <h2 className='NewInformationForm-title'>
-            Новая сцена
+            Новый информационный раздел
           </h2>
           <Form {...{
             onSubmit,
@@ -71,8 +92,8 @@ export default class NewInformationForm extends Component {
             <FormInput
               required
               name={'title'}
-              label={'Название сцены'}
-              placeholder={'Новая сцена'}
+              label={'Название раздела'}
+              placeholder={'Новый раздел'}
             />
             <FormInput
               name={'name'}
@@ -84,7 +105,7 @@ export default class NewInformationForm extends Component {
             <FormTextArea
               required
               name={'description'}
-              label={'Описание сцены'}
+              label={'Текст раздела'}
             />
             <FormInput
               file
@@ -92,11 +113,13 @@ export default class NewInformationForm extends Component {
               label={'Изображение'}
               name={'image'}
             />
+            {add_information_progress && <FormWaitMessage />}
             <div className='NewInformationForm-buttons'>
-              <Button disabled={add_information_progress}>Сохранить</Button>
+              <Button disabled={add_information_progress}>
+                Сохранить
+              </Button>
             </div>
           </Form>
-          {add_information_progress && <h1>Данные отправляются</h1>}
         </Container>
       </div>
     )
