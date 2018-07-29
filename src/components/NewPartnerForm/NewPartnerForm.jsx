@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NewPartnerForm.css'
 import FormInput from 'ui/Form/FormInput'
 import Form from 'ui/Form'
-import FormTextArea from 'ui/Form/FormTextArea'
 import Container from 'components/Container'
 import { Link } from 'react-router-dom'
-import { ADD_PARTNER_URL, MUSIC_URL } from 'constants/URL'
+import { ADD_PARTNER_URL, PARTNER_URL } from 'constants/URL'
 import _ from 'lodash'
 import partnersContextConnection from 'context/Partners/partnersContextConnection'
 import Button from 'components/Button'
-import Text from 'templates/Text'
 import NavButtons from 'templates/NavButtons'
+import PageCreated from 'components/PageCreated'
+import CreatePageExtend from 'extends/CreatePageExtend'
 
 @partnersContextConnection('context')
-export default class NewPartnerForm extends Component {
+export default class NewPartnerForm extends CreatePageExtend {
   state = {
     form: {},
     created: false,
@@ -29,7 +29,7 @@ export default class NewPartnerForm extends Component {
     const {
       state: {
         created,
-        name,
+        title
       },
       props: {
         context: {
@@ -37,25 +37,37 @@ export default class NewPartnerForm extends Component {
           add_form_errors
         }
       },
+      resetForm,
       onSubmit
     } = this
 
     if (created) return (
-      <div className='NewPartnerForm-created'>
-        <Text>
-          <div>
-            Сцена <strong>{name}</strong> создана.
+      <PageCreated>
+        <div className='NewPartnerForm-created'>
+          <div className='NewPartnerForm-title'>
+            Партнёр <strong>{title}</strong> добавлен.
           </div>
           <NavButtons>
             <ul>
-              <li><Button><Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link></Button></li>
-              <li><Button><Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link></Button></li>
-              <li><Button><Link to={ADD_PARTNER_URL}>Создать другую сцену</Link></Button></li>
+              <li>
+                <Button>
+                  <Link
+                    to={PARTNER_URL}
+                  >Вернуться ко списку всех партнёров
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button onClick={resetForm}>
+                  <Link to={ADD_PARTNER_URL}>
+                    Добавить другого партнёра
+                  </Link>
+                </Button>
+              </li>
             </ul>
           </NavButtons>
-        </Text>
-
-      </div>)
+        </div>
+      </PageCreated>)
 
     return (
       <div className='NewPartnerForm'>
@@ -71,20 +83,15 @@ export default class NewPartnerForm extends Component {
             <FormInput
               required
               name={'title'}
-              label={'Название сцены'}
-              placeholder={'Новая сцена'}
+              label={'Название партнёра'}
+              placeholder={'Новый партнёр'}
             />
             <FormInput
-              name={'name'}
+              url
               required
-              pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
-              label={'Имя латиницей для URL'}
-              placeholder={'new-partner'}
-            />
-            <FormTextArea
-              required
-              name={'description'}
-              label={'Описание сцены'}
+              name={'url'}
+              label={'Ссылка на сайт'}
+              placeholder={'https://example.com/'}
             />
             <FormInput
               file

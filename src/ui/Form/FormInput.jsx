@@ -14,6 +14,7 @@ export default class FormInput extends Component {
           label,
           number,
           phone,
+          url,
           email,
           password,
           file,
@@ -31,6 +32,7 @@ export default class FormInput extends Component {
     else if (email) additional_props.type = 'email'
     else if (password) additional_props.type = 'password'
     else if (file) additional_props.type = 'file'
+    else if (url) additional_props.type = 'url'
     else if (checkbox) additional_props.type = 'checkbox'
 
     return (
@@ -50,6 +52,7 @@ export default class FormInput extends Component {
   static propTypes = {
     phone: PropTypes.bool,
     checkbox: PropTypes.bool,
+    url: PropTypes.bool,
     number: PropTypes.bool,
     email: PropTypes.bool,
     file: PropTypes.bool,

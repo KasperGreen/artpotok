@@ -3,7 +3,7 @@ import './PartnersList.css'
 import Container from 'components/Container'
 import PageTitle from 'components/PageTitle'
 import { Link } from 'react-router-dom'
-import { ADD_PRACTICE_URL } from 'constants/URL'
+import { ADD_PARTNER_URL } from 'constants/URL'
 import partnersContextConnection from 'context/Partners/partnersContextConnection'
 import _ from 'lodash'
 import PartnersListItem from 'components/PartnersList/PartnersListItem'
@@ -21,10 +21,10 @@ export default class PartnersList extends Component {
       <div className='PartnersList'>
         <Container>
           <PageTitle>
-            Список практик
+            Список партнёров
           </PageTitle>
           <nav>
-            <ul className='ProgramMasterClassList-ul'>
+            <ul className='PartnersList-ul'>
               {_.map(partners_list, (partner, key) => {
                 return (
                   <li key={key}>
@@ -35,7 +35,7 @@ export default class PartnersList extends Component {
             </ul>
           </nav>
           <ActionButton>
-            <Link to={ADD_PRACTICE_URL} title={'Добавить новую практику'}>+</Link>
+            <Link to={ADD_PARTNER_URL} title={'Добавить нового партнёра'}>+</Link>
           </ActionButton>
         </Container>
       </div>

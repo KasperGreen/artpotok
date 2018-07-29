@@ -101,6 +101,7 @@ import EditPartnerContainer from 'containers/EditPartnerContainer'
 import PartnersListContainer from 'containers/PartnersListContainer'
 import LecturesState from 'context/Lectures/LecturesState'
 import InformationsState from 'context/Informations/InformationsState'
+import PartnersState from 'context/Partners/PartnersState'
 
 Moment.globalLocale = 'ru'
 
@@ -113,6 +114,7 @@ Moment.globalLocale = 'ru'
 @PracticesState
 @LecturesState
 @InformationsState
+@PartnersState
 class App extends Component {
 
   render () {
