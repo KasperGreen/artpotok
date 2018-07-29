@@ -1,0 +1,14 @@
+.EditInformationForm {
+  margin-bottom: 42px;
+  &-title {
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 24px;
+    margin-bottom: 16px;
+  }
+  &-buttons {
+    padding-top: 16px;
+    display: flex;
+    justify-content: center;
+  }
+}

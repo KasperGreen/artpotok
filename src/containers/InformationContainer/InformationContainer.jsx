@@ -8,7 +8,7 @@ export default class InformationContainer extends Component {
       props: {
         match: {
           params: {
-            practice_name
+            information_name
           }
         }
       }
@@ -16,7 +16,7 @@ export default class InformationContainer extends Component {
 
     return (
       <PageWrapper>
-        <Information {...{practice_name}} />
+        <Information {...{information_name}} />
       </PageWrapper>
     )
   }

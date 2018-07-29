@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './InformationListItem.css'
 import PropTypes from 'prop-types'
-import { EDIT_PRACTICE_URL, PRACTICE_URL } from 'constants/URL'
+import { EDIT_INFORMATION_URL, INFORMATION_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
 import { IMAGES_URL } from 'constants/API'
 import informationsContextConnection from 'context/Informations/informationsContextConnection'
@@ -23,14 +23,14 @@ export default class InformationListItem extends Component {
         image,
         deleted
       },
-      deletePractice,
-      restorePractice,
-      editPractice
+      deleteInformation,
+      restoreInformation,
+      editInformation
     } = this
 
     return (
       <section className='InformationListItem'>
-        <Link className='InformationListItem-link' to={[PRACTICE_URL, name].join('/')}>
+        <Link className='InformationListItem-link' to={[INFORMATION_URL, name].join('/')}>
           <h3 className='InformationListItem-title'>
             {title}
           </h3>
@@ -42,11 +42,11 @@ export default class InformationListItem extends Component {
         </Link>
         <div className='InformationListItem-buttons'>
           <Button
-            onClick={deletePractice}
+            onClick={deleteInformation}
           >Удалить
           </Button>
           <Button
-            onClick={editPractice}
+            onClick={editInformation}
           >Редактировать
           </Button>
         </div>
@@ -54,7 +54,7 @@ export default class InformationListItem extends Component {
         <div className='InformationListItem-deleted'>
           <div className='InformationListItem-deleted-inner'>
             <div className='mb-m'>Удалено.</div>
-            <div><Button onClick={restorePractice}>Восстановить</Button></div>
+            <div><Button onClick={restoreInformation}>Восстановить</Button></div>
           </div>
         </div>
         }
@@ -62,20 +62,20 @@ export default class InformationListItem extends Component {
     )
   }
 
-  deletePractice = (e) => {
+  deleteInformation = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const {
       props: {
         id,
         context: {
-          deletePractice
+          deleteInformation
         }
       }
     } = this
-    deletePractice(id)
+    deleteInformation(id)
   }
-  editPractice = (e) => {
+  editInformation = (e) => {
     e.preventDefault()
     e.stopPropagation()
 
@@ -86,20 +86,20 @@ export default class InformationListItem extends Component {
       }
     } = this
 
-    history.push([EDIT_PRACTICE_URL, id].join('/'))
+    history.push([EDIT_INFORMATION_URL, id].join('/'))
   }
-  restorePractice = (e) => {
+  restoreInformation = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const {
       props: {
         id,
         context: {
-          restorePractice
+          restoreInformation
         }
       }
     } = this
-    restorePractice(id)
+    restoreInformation(id)
   }
 
   static propTypes = {
