@@ -7,6 +7,10 @@ import Container from 'components/Container'
 import _ from 'lodash'
 import { MUSIC_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
+import Button from 'components/Button'
+import FormWaitMessage from 'components/FormWaitMessage'
+import PageCreated from 'components/PageCreated'
+import NavButtons from 'templates/NavButtons'
 
 export default class EditStageForm extends Component {
   state = {
@@ -37,14 +41,27 @@ export default class EditStageForm extends Component {
     } = this
 
     if (updated) return (
-      <div>
+      <PageCreated>
         <div>
-          Сцена <strong>{name}</strong> Обновлена. <Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link>
+          <div className='EditStageForm-title'>
+            Сцена <strong>{title}</strong> Обновлена.
+          </div>
+          <NavButtons>
+            <ul>
+              <li>
+                <Button>
+                  <Link to={[MUSIC_URL, name].join('/')}>Перейти к сцене</Link>
+                </Button>
+              </li>
+              <li>
+                <Button>
+                  <Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link>
+                </Button>
+              </li>
+            </ul>
+          </NavButtons>
         </div>
-        <div>
-          <Link to={MUSIC_URL}>Вернуться ко списку всех сцен</Link>
-        </div>
-      </div>)
+      </PageCreated>)
 
     return (
       <div className='EditStageForm'>
@@ -57,14 +74,14 @@ export default class EditStageForm extends Component {
           >
             <FormInput
               required
-              pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
-              label={'Имя для URL (не менять без крайней необходимости)'}
-              name='name'
+              label={'Название'}
+              name='title'
             />
             <FormInput
               required
-              label={'Название'}
-              name='title'
+              pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
+              label={'Имя для URL (не менять без крайней необходимости)'}
+              name='name'
             />
             <FormTextArea
               required
@@ -76,7 +93,12 @@ export default class EditStageForm extends Component {
               label={'Изображение'}
               name='image'
             />
-            <button>Сохранить</button>
+            {update_stage_progress && <FormWaitMessage />}
+            <div className='EditStageForm-buttons'>
+              <Button disabled={update_stage_progress}>
+                Сохранить
+              </Button>
+            </div>
           </Form>
           }
         </Container>

@@ -13,6 +13,7 @@ import Text from 'templates/Text'
 import NavButtons from 'templates/NavButtons'
 import PageCreated from 'components/PageCreated'
 import CreatePageExtend from 'extends/CreatePageExtend'
+import FormWaitMessage from 'components/FormWaitMessage'
 
 @stagesContextConnection('context')
 export default class NewStageForm extends CreatePageExtend {
@@ -117,11 +118,11 @@ export default class NewStageForm extends CreatePageExtend {
               label={'Изображение'}
               name={'image'}
             />
+            {add_stage_progress && <FormWaitMessage />}
             <div className='NewStageForm-buttons'>
               <Button disabled={add_stage_progress}>Сохранить</Button>
             </div>
           </Form>
-          {add_stage_progress && <h1>Данные отправляются</h1>}
         </Container>
       </div>
     )

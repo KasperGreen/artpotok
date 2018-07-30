@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './PageCreated.css'
+import Container from 'components/Container'
 
 export default class PageCreated extends Component {
   render () {
@@ -9,9 +10,11 @@ export default class PageCreated extends Component {
       }
     } = this
     return (
-      <div className='PageCreated'>
-        {children}
-      </div>
+      <Container>
+        <div className='PageCreated'>
+          {children}
+        </div>
+      </Container>
     )
   }
 }
