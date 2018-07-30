@@ -76,14 +76,14 @@ export default class EditInformationForm extends Component {
           >
             <FormInput
               required
-              pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
-              label={'Имя для URL (не менять без крайней необходимости)'}
-              name='name'
+              label={'Название раздела'}
+              name='title'
             />
             <FormInput
               required
-              label={'Название раздела'}
-              name='title'
+              pattern={'[A-Za-z-]+[A-Za-z-0-9]*'}
+              label={'Имя для URL (не менять без крайней необходимости)'}
+              name='name'
             />
             <FormTextArea
               required

@@ -11,6 +11,7 @@ import Button from 'components/Button'
 import NavButtons from 'templates/NavButtons'
 import PageCreated from 'components/PageCreated'
 import CreatePageExtend from 'extends/CreatePageExtend'
+import FormWaitMessage from 'components/FormWaitMessage'
 
 @partnersContextConnection('context')
 export default class NewPartnerForm extends CreatePageExtend {
@@ -99,11 +100,11 @@ export default class NewPartnerForm extends CreatePageExtend {
               label={'Изображение'}
               name={'image'}
             />
+            {add_partner_progress && <FormWaitMessage />}
             <div className='NewPartnerForm-buttons'>
               <Button disabled={add_partner_progress}>Сохранить</Button>
             </div>
           </Form>
-          {add_partner_progress && <h1>Данные отправляются</h1>}
         </Container>
       </div>
     )
