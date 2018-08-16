@@ -6,6 +6,9 @@ import localforageHelper from 'helpers/localforageHelper'
 
 export default function (WrappedComponent) {
   return class UserState extends Component {
+
+    storage_name = 'User'
+
     state = user_initial_state
 
     render () {

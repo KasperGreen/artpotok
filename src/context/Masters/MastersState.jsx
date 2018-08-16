@@ -7,6 +7,8 @@ import _ from 'lodash'
 
 export default function (WrappedComponent) {
   return class MastersState extends Component {
+    storage_name = 'Masters'
+
     state = masters_initial_state
 
     render () {

@@ -8,7 +8,7 @@ import _ from 'lodash'
 export default function (WrappedComponent) {
   return class PagesState extends Component {
     state = pages_initial_state
-
+    storage_name = 'Pages'
     render () {
       const {
         deletePage, restorePage, addPage, updatePage,

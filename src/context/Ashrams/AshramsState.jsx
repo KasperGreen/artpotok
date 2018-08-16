@@ -8,6 +8,8 @@ import _ from 'lodash'
 export default function (WrappedComponent) {
   return class AshramsState extends Component {
     state = ashrams_initial_state
+    storage_name = 'Ashram'
+
 
     render () {
       const {

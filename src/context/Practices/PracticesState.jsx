@@ -7,6 +7,8 @@ import _ from 'lodash'
 
 export default function (WrappedComponent) {
   return class PracticesState extends Component {
+    storage_name = 'Practices'
+
     state = practices_initial_state
 
     render () {
