@@ -9,6 +9,8 @@ import { MUSIC_URL } from 'constants/URL'
 import { Link } from 'react-router-dom'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
 import Button from 'components/Button'
+import PageCreated from 'components/PageCreated'
+import NavButtons from 'templates/NavButtons'
 
 @stagesContextConnection('stage')
 export default class EditArtistForm extends Component {
@@ -18,41 +20,56 @@ export default class EditArtistForm extends Component {
 
   render () {
     const {
-      onSubmit,
-      props: {
-        stage: {
-          getStageById
-        },
-        update_artist_form_errors,
-        update_artist_progress,
-        match: {
-          params: {
-            id
+        onSubmit,
+        props: {
+          stage: {
+            getStageById
+          },
+          update_artist_form_errors,
+          update_artist_progress,
+          match: {
+            params: {
+              id
+            }
+          },
+          artists_list: {
+            [id]: {
+              title, description, name, sound_cloud_url, stage_id,
+            } = {},
+            [id]: artist_data
           }
         },
-        artists_list: {
-          [id]: {
-            title, description, name, sound_cloud_url, stage_id,
-          } = {},
-          [id]: artist_data
+        state: {
+          updated
         }
-      },
-      state: {
-        updated
-      }
-    } = this,
+      } = this,
       stage = getStageById(stage_id)
 
     if (updated) return (
-      <div>
+      <PageCreated>
         <div>
-          Артист <strong>{name}</strong> Обновлён. <Link to={[MUSIC_URL, stage.name, name].join('/')}>Перейти к артисту.</Link>
+          <div className='EditArtistForm-title'>
+            Артист <strong>{name}</strong> Обновлён.
+          </div>
+          <NavButtons>
+            <ul>
+              <li>
+                <Button>
+                  <Link to={[MUSIC_URL, stage.name, name].join('/')}>
+                    Перейти к артисту.
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <Button>
+                  <Link to={[MUSIC_URL, stage.name].join('/')}>Вернуться ко списку всех артистов на
+                    сцене {stage.title}</Link>
+                </Button>
+              </li>
+            </ul>
+          </NavButtons>
         </div>
-        <div>
-          <Link to={[MUSIC_URL, stage.name].join('/')}>Вернуться ко списку всех артистов на сцене {stage.title}</Link>
-        </div>
-      </div>)
-
+      </PageCreated>)
 
     if (updated) return (
       <div>

@@ -43,7 +43,7 @@ export default class ProgramMusicStageArtistsArtist extends Component {
         <Interface need_admin>
           <div className='ProgramMusicStagesStage-buttons'>
             <Button onClick={deleteArtist}>
-              Delete
+              Удалить
             </Button>
             <Button onClick={editArtist}>
               Редактировать

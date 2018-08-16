@@ -13,6 +13,7 @@ import Button from 'components/Button'
 import PageCreated from 'components/PageCreated'
 import stagesContextConnection from 'context/Stages/stagesContextConnection'
 import CreatePageExtend from 'extends/CreatePageExtend'
+import FormWaitMessage from 'components/FormWaitMessage'
 
 @artistsContextConnection('artist')
 @stagesContextConnection('stage')
@@ -37,13 +38,11 @@ export default class NewArtistForm extends CreatePageExtend {
         },
         props: {
           stage_id,
-          artist: {
-            getArtistById
-          },
           stage: {
             getStageById,
           },
           artist: {
+            getArtistById,
             add_artist_progress,
             add_form_errors
           }
@@ -76,7 +75,7 @@ export default class NewArtistForm extends CreatePageExtend {
               </li>
               <li>
                 <Button onClick={resetForm}>
-                  <Link to={ADD_MUSIC_ARTIST_URL}>
+                  <Link to={ADD_MUSIC_ARTIST_URL + '/' + stage_id}>
                     Добавить другого артиста
                   </Link>
                 </Button>
@@ -123,13 +122,13 @@ export default class NewArtistForm extends CreatePageExtend {
               label={'Изображение'}
               name={'image'}
             />
+            {add_artist_progress && <FormWaitMessage />}
             <div className='NewArtistForm-buttons'>
               <Button disabled={add_artist_progress}>
                 Создать
               </Button>
             </div>
           </Form>
-          {add_artist_progress && <h1>Данные отправляются</h1>}
         </Container>
       </div>
     )

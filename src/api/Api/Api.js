@@ -154,6 +154,7 @@ class Api {
     ControlledComponent.setState(
       (controlled_state) => {
         const state = stateFunction(controlled_state)
+        alert(ControlledComponent.constructor.name)
         localforage.setItem(ControlledComponent.constructor.name, state)
         return state
       }
